@@ -323,48 +323,49 @@ def sync_shopify_orders():
         create_order(order)
 
 def validate_customer_and_product(order):
-    if not order.get("customer"):
-        # This is a non member order, we enforce it to a default walk in customer.
-        order["user_id"] = 26626372
+    # if not order.get("customer"):
+    #     # This is a non member order, we enforce it to a default walk in customer.
+    #     order["user_id"] = 26626372
 
-        order["customer"]["total_spent"] = order["subtotal_price"]
-        order["customer"]["first_name"] = u"Non"
-        order["customer"]["last_name"] = u"Member"
-        order["customer"]["last_order_name"] = u"#3-1473"
-        order["customer"]["orders_count"] = 1
-        order["customer"]["created_at"] = u"2015-11-06T15:20:53+08:00"
-        order["customer"]["tags"] = u""
-        order["customer"]["updated_at"] = u"2015-11-07T19:43:20+08:00"
-        order["customer"]["email"] = None
-        order["customer"]["note"] = u""
+    #     order["customer"]["total_spent"] = order["subtotal_price"]
+    #     order["customer"]["first_name"] = u"Non"
+    #     order["customer"]["last_name"] = u"Member"
+    #     order["customer"]["last_order_name"] = u"#3-1473"
+    #     order["customer"]["orders_count"] = 1
+    #     order["customer"]["created_at"] = u"2015-11-06T15:20:53+08:00"
+    #     order["customer"]["tags"] = u""
+    #     order["customer"]["updated_at"] = u"2015-11-07T19:43:20+08:00"
+    #     order["customer"]["email"] = None
+    #     order["customer"]["note"] = u""
 
-        order["customer"]["default_address"]["province"] = u"Pulau Pinang"
-        order["customer"]["default_address"]["city"] = u""
-        order["customer"]["default_address"]["first_name"] = u"Non"
-        order["customer"]["default_address"]["last_name"] = u"Member"
-        order["customer"]["default_address"]["name"] = u"Non Member"
-        order["customer"]["default_address"]["zip"] = u""
-        order["customer"]["default_address"]["province_code"] = u"PNG"
-        order["customer"]["default_address"]["default"] = True
-        order["customer"]["default_address"]["address1"] = u""
-        order["customer"]["default_address"]["address2"] = u""
-        order["customer"]["default_address"]["id"] = 1988439940
-        order["customer"]["default_address"]["phone"] = u""
-        order["customer"]["default_address"]["country_code"] = u"MY"
-        order["customer"]["default_address"]["country"] = u"Malaysia"
-        order["customer"]["default_address"]["country_name"] = u"Malaysia"
-        order["customer"]["default_address"]["company"] = u""
+    #     order["customer"]["default_address"]["province"] = u"Pulau Pinang"
+    #     order["customer"]["default_address"]["city"] = u""
+    #     order["customer"]["default_address"]["first_name"] = u"Non"
+    #     order["customer"]["default_address"]["last_name"] = u"Member"
+    #     order["customer"]["default_address"]["name"] = u"Non Member"
+    #     order["customer"]["default_address"]["zip"] = u""
+    #     order["customer"]["default_address"]["province_code"] = u"PNG"
+    #     order["customer"]["default_address"]["default"] = True
+    #     order["customer"]["default_address"]["address1"] = u""
+    #     order["customer"]["default_address"]["address2"] = u""
+    #     order["customer"]["default_address"]["id"] = 1988439940
+    #     order["customer"]["default_address"]["phone"] = u""
+    #     order["customer"]["default_address"]["country_code"] = u"MY"
+    #     order["customer"]["default_address"]["country"] = u"Malaysia"
+    #     order["customer"]["default_address"]["country_name"] = u"Malaysia"
+    #     order["customer"]["default_address"]["company"] = u""
 
-        order["customer"]["state"] = u"disabled"
-        order["customer"]["multipass_identifier"] = None
-        order["customer"]["tax_exempt"] = False
-        order["customer"]["accepts_marketing"] = False
-        order["customer"]["id"] = 1828210884
-        order["customer"]["last_order_id"] = 1777711300
-        order["customer"]["verified_email"] = False
+    #     order["customer"]["state"] = u"disabled"
+    #     order["customer"]["multipass_identifier"] = None
+    #     order["customer"]["tax_exempt"] = False
+    #     order["customer"]["accepts_marketing"] = False
+    #     order["customer"]["id"] = 1828210884
+    #     order["customer"]["last_order_id"] = 1777711300
+    #     order["customer"]["verified_email"] = False
 
-    if not frappe.db.get_value("Customer", {"shopify_id": order.get("customer").get("id")}, "name"):
-        create_customer(order.get("customer"))
+    if order.get("customer")
+        if not frappe.db.get_value("Customer", {"shopify_id": order.get("customer").get("id")}, "name"):
+            create_customer(order.get("customer"))
     
     warehouse = frappe.get_doc("Shopify Settings", "Shopify Settings").warehouse
     for item in order.get("line_items"):
