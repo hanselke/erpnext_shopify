@@ -317,6 +317,7 @@ def sync_orders():
 	sync_shopify_orders()
 
 def sync_shopify_orders():
+	raise ValueError(get_shopify_orders())
 	for order in get_shopify_orders():
 		validate_customer_and_product(order)
 		create_order(order)
