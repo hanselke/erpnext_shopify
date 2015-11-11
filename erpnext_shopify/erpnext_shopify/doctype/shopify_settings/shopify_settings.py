@@ -363,7 +363,7 @@ def validate_customer_and_product(order):
     #     order["customer"]["last_order_id"] = 1777711300
     #     order["customer"]["verified_email"] = False
 
-    if order.get("customer")
+    if order.get("customer"):
         if not frappe.db.get_value("Customer", {"shopify_id": order.get("customer").get("id")}, "name"):
             create_customer(order.get("customer"))
     
