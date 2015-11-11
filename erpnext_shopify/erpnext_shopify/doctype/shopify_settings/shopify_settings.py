@@ -322,7 +322,7 @@ def sync_shopify_orders():
 		create_order(order)
 
 def validate_customer_and_product(order):
-	if not order.get("customer")
+	if not order.get("customer"):
 		# This is a non member order, we enforce it to a default walk in customer.
 		order[u"user_id"] = 26626372
 
