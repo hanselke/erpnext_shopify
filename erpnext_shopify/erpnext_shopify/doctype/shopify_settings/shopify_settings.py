@@ -378,35 +378,39 @@ def get_shopify_id(item):pass
 def create_order(order):
     shopify_settings = frappe.get_doc("Shopify Settings", "Shopify Settings")
     so = create_salse_order(order, shopify_settings)
-    if order.get("financial_status") == "paid":
-        create_sales_invoice(order, shopify_settings, so)
-        
-    if order.get("fulfillments"):
-        create_delivery_note(order, shopify_settings, so)
+    if so:
+        if order.get("financial_status") == "paid":
+            create_sales_invoice(order, shopify_settings, so)
+            
+        if order.get("fulfillments"):
+            create_delivery_note(order, shopify_settings, so)
 
 def create_salse_order(order, shopify_settings):
-    so = frappe.db.get_value("Sales Order", {"shopify_id": order.get("id")}, "name")
-    if not so:
-        so = frappe.get_doc({
-            "doctype": "Sales Order",
-            "naming_series": shopify_settings.sales_order_series or "SO-Shopify-",
-            "shopify_id": order.get("id"),
-            "customer": frappe.db.get_value("Customer", {"shopify_id": order.get("customer").get("id")}, "name"),
-            "delivery_date": nowdate(),
-            "selling_price_list": shopify_settings.price_list,
-            "ignore_pricing_rule": 1,
-            "apply_discount_on": "Net Total",
-            "discount_amount": get_discounted_amount(order),
-            "items": get_item_line(order.get("line_items"), shopify_settings),
-            "taxes": get_tax_line(order, order.get("shipping_lines"), shopify_settings)
-        }).insert()
+    if hasattr(order, "customer"):
+        so = frappe.db.get_value("Sales Order", {"shopify_id": order.get("id")}, "name")
+        if not so:
+            so = frappe.get_doc({
+                "doctype": "Sales Order",
+                "naming_series": shopify_settings.sales_order_series or "SO-Shopify-",
+                "shopify_id": order.get("id"),
+                "customer": frappe.db.get_value("Customer", {"shopify_id": order.get("customer").get("id")}, "name"),
+                "delivery_date": nowdate(),
+                "selling_price_list": shopify_settings.price_list,
+                "ignore_pricing_rule": 1,
+                "apply_discount_on": "Net Total",
+                "discount_amount": get_discounted_amount(order),
+                "items": get_item_line(order.get("line_items"), shopify_settings),
+                "taxes": get_tax_line(order, order.get("shipping_lines"), shopify_settings)
+            }).insert()
+        
+            so.submit()
+        
+        else:
+            so = frappe.get_doc("Sales Order", so)
+
+        return so
     
-        so.submit()
-    
-    else:
-        so = frappe.get_doc("Sales Order", so)
-    
-    return so
+    return None
 
 def create_sales_invoice(order, shopify_settings, so):
     sales_invoice = frappe.db.get_value("Sales Order", {"shopify_id": order.get("id")},\
