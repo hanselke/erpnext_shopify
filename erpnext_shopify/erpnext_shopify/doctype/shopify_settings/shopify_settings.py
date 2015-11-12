@@ -53,7 +53,7 @@ def sync_shopify_items(warehouse):
             make_item(warehouse, item)
 
 def make_item(warehouse, item):
-    raise ValueError(item)
+    if hasattr(item, "description")
     if has_variants(item):
         attributes = create_attribute(item)
         create_item(item, warehouse, 1, attributes)
@@ -98,9 +98,9 @@ def create_item(item, warehouse, has_variant=0, attributes=[],variant_of=None):
         "doctype": "Item",
         "shopify_id": item.get("id"),
         "variant_of": variant_of,
-        "item_code": cstr(item.get("item_code")) or cstr(item.get("id")),
+        "item_code": cstr(item.get("item_code")) or cstr(item.get("id")) or u"-0000000000",
         "item_name": item.get("title"),
-        "description": item.get("title"),
+        "description": item.get("title") or u"Please refer to the product pics.",
         "item_group": get_item_group(item.get("product_type")),
         "has_variants": has_variant,
         "attributes":attributes,
