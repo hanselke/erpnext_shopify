@@ -11,7 +11,7 @@ from erpnext.selling.doctype.sales_order.sales_order import make_delivery_note, 
 from erpnext_shopify.utils import get_request, get_shopify_customers, get_address_type, post_request,\
  get_shopify_items, get_shopify_orders
 
-shopify_variants_attr_list = ["option1", "option2", "option3"] 
+shopify_variants_attr_list = ["option1", "option2", "option3 
 
 class ShopifyError(Exception):pass
 
@@ -61,7 +61,7 @@ def make_item(warehouse, item):
         create_item(item, warehouse)
                 
 def has_variants(item):
-    if len(item.get("options")) > 1 and "Default Title" not in item.get("options")[0]["values"]:
+    if len(item.get("options")) > 1 and "Default Title" not in item.get("options")[0]["values:
         return True
     return False
     
@@ -128,7 +128,7 @@ def create_item_variants(item, warehouse, attributes, shopify_variants_attr_list
         
 def get_attribute_value(variant_attr_val, attribute):
     return frappe.db.sql("""select attribute_value from `tabItem Attribute Value` 
-        where parent = '{0}' and (abbr = '{1}' or attribute_value = '{2}')""".format(attribute["attribute"], variant_attr_val,
+        where parent = '{0}' and (abbr = '{1}' or attribute_value = '{2}')""".format(attribute["attribute, variant_attr_val,
         variant_attr_val))[0][0]
 
 def get_item_group(product_type=None):
@@ -182,13 +182,13 @@ def sync_erp_items(price_list, warehouse):
         if item.get("has_variants"):
             variant_list, options, variant_item_code = get_variant_attributes(item, price_list, warehouse)
             
-            item_data["product"]["variants"] = variant_list
-            item_data["product"]["options"] = options
+            item_data["product["variants = variant_list
+            item_data["product["options = options
             
             variant_item_code_list.extend(variant_item_code)
             
         else:
-            item_data["product"]["variants"] = [get_price_and_stock_details(item, item.get("stock_uom"), warehouse, price_list)]
+            item_data["product["variants = [get_price_and_stock_details(item, item.get("stock_uom"), warehouse, price_list)]
 
         new_item = post_request("/admin/products.json", item_data)
         erp_item = frappe.get_doc("Item", item.get("item_code"))
@@ -200,7 +200,7 @@ def sync_erp_items(price_list, warehouse):
 def update_variant_item(new_item, item_code_list):
     for i, item_code in enumerate(item_code_list):
         erp_item = frappe.get_doc("Item", item_code)
-        erp_item.shopify_id = new_item['product']["variants"][i].get("id")
+        erp_item.shopify_id = new_item['product']["variants[i].get("id")
         erp_item.save()
             
 def get_variant_attributes(item, price_list, warehouse):
@@ -309,7 +309,7 @@ def sync_erp_customers():
                         tabAddress addr where addr.customer ='%s' """%(customer['customer_name']), as_dict=1)
         
         if addresses:
-            cust["addresses"] = addresses
+            cust["addresses = addresses
                         
         cust = post_request("/admin/customers.json", { "customer": cust})
 
@@ -323,50 +323,49 @@ def sync_orders():
 def sync_shopify_orders():
     for order in get_shopify_orders():
 
-        temp = order
-
         if not hasattr(order, "customer"):
             # This is a non member order, we enforce it to a default walk in customer.
-            temp["user_id"] = 26626372
+            order.user_id = 26626372
 
-            temp["customer"]["total_spent"] = order["subtotal_price"]
-            temp["customer"]["first_name"] = u"Non"
-            temp["customer"]["last_name"] = u"Member"
-            temp["customer"]["last_order_name"] = u"#3-1473"
-            temp["customer"]["orders_count"] = 1
-            temp["customer"]["created_at"] = u"2015-11-06T15:20:53+08:00"
-            temp["customer"]["tags"] = u""
-            temp["customer"]["updated_at"] = u"2015-11-07T19:43:20+08:00"
-            temp["customer"]["email"] = None
-            temp["customer"]["note"] = u""
+            order.customer = {}
+            order.customer.total_spent = order.subtotal_price
+            order.customer.first_name = u"Non"
+            order.customer.last_name = u"Member"
+            order.customer.last_order_name = u"#3-1473"
+            order.customer.orders_count = 1
+            order.customer.created_at = u"2015-11-06T15:20:53+08:00"
+            order.customer.tags = u""
+            order.customer.updated_at = u"2015-11-07T19:43:20+08:00"
+            order.customer.email = None
+            order.customer.note = u""
 
-            # order["customer"]["default_address"]["province"] = u"Pulau Pinang"
-            # order["customer"]["default_address"]["city"] = u""
-            # order["customer"]["default_address"]["first_name"] = u"Non"
-            # order["customer"]["default_address"]["last_name"] = u"Member"
-            # order["customer"]["default_address"]["name"] = u"Non Member"
-            # order["customer"]["default_address"]["zip"] = u""
-            # order["customer"]["default_address"]["province_code"] = u"PNG"
-            # order["customer"]["default_address"]["default"] = True
-            # order["customer"]["default_address"]["address1"] = u""
-            # order["customer"]["default_address"]["address2"] = u""
-            # order["customer"]["default_address"]["id"] = 1988439940
-            # order["customer"]["default_address"]["phone"] = u""
-            # order["customer"]["default_address"]["country_code"] = u"MY"
-            # order["customer"]["default_address"]["country"] = u"Malaysia"
-            # order["customer"]["default_address"]["country_name"] = u"Malaysia"
-            # order["customer"]["default_address"]["company"] = u""
+            # order.customer.default_address.province = u"Pulau Pinang"
+            # order.customer.default_address.city = u""
+            # order.customer.default_address.first_name = u"Non"
+            # order.customer.default_address.last_name = u"Member"
+            # order.customer.default_address.name = u"Non Member"
+            # order.customer.default_address.zip = u""
+            # order.customer.default_address.province_code = u"PNG"
+            # order.customer.default_address.default = True
+            # order.customer.default_address.address1 = u""
+            # order.customer.default_address.address2 = u""
+            # order.customer.default_address.id = 1988439940
+            # order.customer.default_address.phone = u""
+            # order.customer.default_address.country_code = u"MY"
+            # order.customer.default_address.country = u"Malaysia"
+            # order.customer.default_address.country_name = u"Malaysia"
+            # order.customer.default_address.company = u""
 
-            temp["customer"]["state"] = u"disabled"
-            temp["customer"]["multipass_identifier"] = None
-            temp["customer"]["tax_exempt"] = False
-            temp["customer"]["accepts_marketing"] = False
-            temp["customer"]["id"] = 1828210884
-            temp["customer"]["last_order_id"] = 1777711300
-            temp["customer"]["verified_email"] = False
+            order.customer.state = u"disabled"
+            order.customer.multipass_identifier = None
+            order.customer.tax_exempt = False
+            order.customer.accepts_marketing = False
+            order.customer.id = 1828210884
+            order.customer.last_order_id = 1777711300
+            order.customer.verified_email = False
 
-        validate_customer_and_product(temp)
-        create_order(temp)
+        validate_customer_and_product(order)
+        create_order(order)
 
 def validate_customer_and_product(order):
     if not frappe.db.get_value("Customer", {"shopify_id": order.get("customer").get("id")}, "name"):
@@ -378,7 +377,7 @@ def validate_customer_and_product(order):
     # warehouse = frappe.get_doc("Shopify Settings", "Shopify Settings").warehouse
     # for item in order.get("line_items"):
     #     if not frappe.db.get_value("Item", {"shopify_id": item.get("product_id")}, "name"):
-    #         item = get_request("/admin/products/{}.json".format(item.get("product_id")))["product"]
+    #         item = get_request("/admin/products/{}.json".format(item.get("product_id")))["product
     #         make_item(warehouse, item)
 
 def get_shopify_id(item):pass
@@ -427,10 +426,10 @@ def create_salse_order(order, shopify_settings):
 
 def create_sales_invoice(order, shopify_settings, so):
     sales_invoice = frappe.db.get_value("Sales Order", {"shopify_id": order.get("id")},\
-         ["ifnull(per_billed, '') as per_billed"], as_dict=1)
+         ["ifnull(per_billed, '') as per_billed, as_dict=1)
          
     if not frappe.db.get_value("Sales Invoice", {"shopify_id": order.get("id")}, "name") and so.docstatus==1 \
-        and not sales_invoice["per_billed"]:
+        and not sales_invoice["per_billed:
         si = make_sales_invoice(so.name)
         si.shopify_id = order.get("id")
         si.naming_series = shopify_settings.sales_invoice_series or "SI-Shopify-"
@@ -505,8 +504,8 @@ def update_taxes_with_shipping_rule(taxes, shipping_lines):
         taxes.append({
             "charge_type": _("Actual"),
             "account_head": get_tax_account_head(shipping_charge),
-            "description": shipping_charge["title"],
-            "tax_amount": shipping_charge["price"]
+            "description": shipping_charge["title,
+            "tax_amount": shipping_charge["price
         })
         
     return taxes
