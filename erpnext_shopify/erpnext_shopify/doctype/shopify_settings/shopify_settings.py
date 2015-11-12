@@ -408,6 +408,7 @@ def create_salse_order(order, shopify_settings):
             "naming_series": shopify_settings.sales_order_series or "SO-Shopify-",
             "shopify_id": order.get("id"),
             "customer": frappe.db.get_value("Customer", {"shopify_id": order.get("customer").get("id")}, "name"),
+            "transaction_date": order.get("updated_at"),
             "delivery_date": nowdate(),
             "selling_price_list": shopify_settings.price_list,
             "ignore_pricing_rule": 1,
