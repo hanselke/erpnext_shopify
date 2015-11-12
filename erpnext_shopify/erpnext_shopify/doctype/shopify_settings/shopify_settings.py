@@ -53,13 +53,12 @@ def sync_shopify_items(warehouse):
             make_item(warehouse, item)
 
 def make_item(warehouse, item):
+    raise ValueError(item)
     if has_variants(item):
-        raise ValueError(item)
         attributes = create_attribute(item)
         create_item(item, warehouse, 1, attributes)
         create_item_variants(item, warehouse, attributes, shopify_variants_attr_list)
     else:
-        raise ValueError(item)
         create_item(item, warehouse)
                 
 def has_variants(item):
@@ -371,11 +370,12 @@ def validate_customer_and_product(order):
     if not frappe.db.get_value("Customer", {"shopify_id": order.get("customer").get("id")}, "name"):
         create_customer(order.get("customer"))
     
-    warehouse = frappe.get_doc("Shopify Settings", "Shopify Settings").warehouse
-    for item in order.get("line_items"):
-        if not frappe.db.get_value("Item", {"shopify_id": item.get("product_id")}, "name"):
-            item = get_request("/admin/products/{}.json".format(item.get("product_id")))["product"]
-            make_item(warehouse, item)
+    # Why do we need to make item here again?
+    # warehouse = frappe.get_doc("Shopify Settings", "Shopify Settings").warehouse
+    # for item in order.get("line_items"):
+    #     if not frappe.db.get_value("Item", {"shopify_id": item.get("product_id")}, "name"):
+    #         item = get_request("/admin/products/{}.json".format(item.get("product_id")))["product"]
+    #         make_item(warehouse, item)
 
 def get_shopify_id(item):pass
         
