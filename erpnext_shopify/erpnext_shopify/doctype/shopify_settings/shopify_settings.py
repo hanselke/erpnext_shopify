@@ -325,45 +325,43 @@ def sync_shopify_orders():
 
         if not hasattr(order, "customer"):
             # This is a non member order, we enforce it to a default walk in customer.
-            setattr(order, "user_id", 26626372)
+            order["user_id"] = 26626372
+            
+            order["customer"]["total_spent"] = order["subtotal_price"]
+            order["customer"]["first_name"] = u"Non"
+            order["customer"]["last_name"] = u"Member"
+            order["customer"]["last_order_name"] = u"#3-1473"
+            order["customer"]["orders_count"] = 1
+            order["customer"]["created_at"] = u"2015-11-06T15:20:53+08:00"
+            order["customer"]["tags"] = u""
+            order["customer"]["updated_at"] = u"2015-11-07T19:43:20+08:00"
+            order["customer"]["email"] = None
+            order["customer"]["note"] = u""
 
-            setattr(order, "customer", {})
-            setattr(order.customer, "total_spent", order["subtotal_price"])
-            setattr(order.customer, "first_name", u"Non")
-            setattr(order.customer, "last_name", u"Member")
-            setattr(order.customer, "last_order_name", u"#3-1473")
-            setattr(order.customer, "orders_count", 1)
-            setattr(order.customer, "created_at", u"2015-11-06T15:20:53+08:00")
-            setattr(order.customer, "tags", u"")
-            setattr(order.customer, "updated_at", u"2015-11-07T19:43:20+08:00")
-            setattr(order.customer, "email", None)
-            setattr(order.customer, "note", u"")
+            # order["customer"]["default_address"]["province"] = u"Pulau Pinang"
+            # order["customer"]["default_address"]["city"] = u""
+            # order["customer"]["default_address"]["first_name"] = u"Non"
+            # order["customer"]["default_address"]["last_name"] = u"Member"
+            # order["customer"]["default_address"]["name"] = u"Non Member"
+            # order["customer"]["default_address"]["zip"] = u""
+            # order["customer"]["default_address"]["province_code"] = u"PNG"
+            # order["customer"]["default_address"]["default"] = True
+            # order["customer"]["default_address"]["address1"] = u""
+            # order["customer"]["default_address"]["address2"] = u""
+            # order["customer"]["default_address"]["id"] = 1988439940
+            # order["customer"]["default_address"]["phone"] = u""
+            # order["customer"]["default_address"]["country_code"] = u"MY"
+            # order["customer"]["default_address"]["country"] = u"Malaysia"
+            # order["customer"]["default_address"]["country_name"] = u"Malaysia"
+            # order["customer"]["default_address"]["company"] = u""
 
-            setattr(order.customer, "default_address", {})
-            setattr(order.customer.default_address, "province", u"Pulau Pinang")
-            setattr(order.customer.default_address, "city", u"")
-            setattr(order.customer.default_address, "first_name", u"Non")
-            setattr(order.customer.default_address, "last_name", u"Member")
-            setattr(order.customer.default_address, "name", u"Non Member")
-            setattr(order.customer.default_address, "zip", u"")
-            setattr(order.customer.default_address, "province_code", u"PNG")
-            setattr(order.customer.default_address, "default", True)
-            setattr(order.customer.default_address, "address1", u"")
-            setattr(order.customer.default_address, "address2", u"")
-            setattr(order.customer.default_address, "id", 1988439940)
-            setattr(order.customer.default_address, "phone", u"")
-            setattr(order.customer.default_address, "country_code", u"MY")
-            setattr(order.customer.default_address, "country", u"Malaysia")
-            setattr(order.customer.default_address, "country_name", u"Malaysia")
-            setattr(order.customer.default_address, "company", u"")
-
-            setattr(order.customer, "state", u"disabled")
-            setattr(order.customer, "multipass_identifier", None)
-            setattr(order.customer, "tax_exempt", False)
-            setattr(order.customer, "accepts_marketing", False)
-            setattr(order.customer, "id", 1828210884)
-            setattr(order.customer, "last_order_id", 1777711300)
-            setattr(order.customer, "verified_email", False)
+            order["customer"]["state"] = u"disabled"
+            order["customer"]["multipass_identifier"] = None
+            order["customer"]["tax_exempt"] = False
+            order["customer"]["accepts_marketing"] = False
+            order["customer"]["id"] = 1828210884
+            order["customer"]["last_order_id"] = 1777711300
+            order["customer"]["verified_email"] = False
 
         validate_customer_and_product(order)
         create_order(order)
