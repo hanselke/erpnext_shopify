@@ -55,7 +55,6 @@ def sync_shopify_items(warehouse):
             make_item(warehouse, item)
 
 def make_item(warehouse, item):
-    if hasattr(item, "description")
     if has_variants(item):
         attributes = create_attribute(item)
         create_item(item, warehouse, 1, attributes)
