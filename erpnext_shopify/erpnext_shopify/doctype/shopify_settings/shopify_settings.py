@@ -326,7 +326,7 @@ def sync_shopify_orders():
         if not hasattr(order, "customer"):
             # This is a non member order, we enforce it to a default walk in customer.
             order["user_id"] = 26626372
-            
+
             order["customer"]["total_spent"] = order["subtotal_price"]
             order["customer"]["first_name"] = u"Non"
             order["customer"]["last_name"] = u"Member"
@@ -393,7 +393,6 @@ def create_order(order):
 
 def create_salse_order(order, shopify_settings):
     so = frappe.db.get_value("Sales Order", {"shopify_id": order.get("id")}, "name")
-    raise ValueError(order)
     if not so:
         so = frappe.get_doc({
             "doctype": "Sales Order",
