@@ -11,6 +11,8 @@ from erpnext.selling.doctype.sales_order.sales_order import make_delivery_note, 
 from erpnext_shopify.utils import get_request, get_shopify_customers, get_address_type, post_request,\
  get_shopify_items, get_shopify_orders
 
+import uuid
+
 shopify_variants_attr_list = ["option1", "option2", "option3"] 
 
 class ShopifyError(Exception):pass
@@ -98,7 +100,7 @@ def create_item(item, warehouse, has_variant=0, attributes=[],variant_of=None):
         "doctype": "Item",
         "shopify_id": item.get("id"),
         "variant_of": variant_of,
-        "item_code": cstr(item.get("item_code")) or cstr(item.get("id")) or u"-0000000000",
+        "item_code": cstr(item.get("item_code")) or cstr(item.get("id")) or uuid.uuid4(),
         "item_name": item.get("title"),
         "description": item.get("title") or u"Please refer to the product pics.",
         "item_group": get_item_group(item.get("product_type")),
