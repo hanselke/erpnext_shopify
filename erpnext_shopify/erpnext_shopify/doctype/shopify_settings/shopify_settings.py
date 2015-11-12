@@ -382,14 +382,22 @@ def validate_customer_and_product(order):
 def get_shopify_id(item):pass
         
 def create_order(order):
-    shopify_settings = frappe.get_doc("Shopify Settings", "Shopify Settings")
-    so = create_salse_order(order, shopify_settings)
-    if so:
-        if order.get("financial_status") == "paid":
-            create_sales_invoice(order, shopify_settings, so)
-            
-        if order.get("fulfillments"):
-            create_delivery_note(order, shopify_settings, so)
+    can_be_created = True
+
+    for item in order.get("line_items"):
+        if not get_item_code(item):
+            can_be_created = False
+            break
+
+    if can_be_created:
+        shopify_settings = frappe.get_doc("Shopify Settings", "Shopify Settings")
+        so = create_salse_order(order, shopify_settings)
+        if so:
+            if order.get("financial_status") == "paid":
+                create_sales_invoice(order, shopify_settings, so)
+                
+            if order.get("fulfillments"):
+                create_delivery_note(order, shopify_settings, so)
 
 def create_salse_order(order, shopify_settings):
     so = frappe.db.get_value("Sales Order", {"shopify_id": order.get("id")}, "name")
@@ -451,16 +459,15 @@ def get_item_line(order_items, shopify_settings):
     items = []
     for item in order_items:
         item_code = get_item_code(item)
-        if item_code:
-            items.append({
-                "item_code": item_code,
-                "item_name": item.get("name"),
-                "description": item.get("title") or u"Please refer to the product pics.",
-                "rate": item.get("price"),
-                "qty": item.get("quantity"),
-                "stock_uom": item.get("sku"),
-                "warehouse": shopify_settings.warehouse
-            })
+        items.append({
+            "item_code": item_code,
+            "item_name": item.get("name"),
+            "description": item.get("title") or u"Please refer to the product pics.",
+            "rate": item.get("price"),
+            "qty": item.get("quantity"),
+            "stock_uom": item.get("sku"),
+            "warehouse": shopify_settings.warehouse
+        })
     return items
     
 def get_item_code(item):
