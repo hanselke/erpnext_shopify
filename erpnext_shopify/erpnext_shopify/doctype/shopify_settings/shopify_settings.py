@@ -19,11 +19,11 @@ class ShopifySettings(Document): pass
     
 @frappe.whitelist()
 def get_series():
-        return {
-            "sales_order_series" : frappe.get_meta("Sales Order").get_options("naming_series") or "SO-Shopify-",
-            "sales_invoice_series" : frappe.get_meta("Sales Invoice").get_options("naming_series")  or "SI-Shopify-",
-            "delivery_note_series" : frappe.get_meta("Delivery Note").get_options("naming_series")  or "DN-Shopify-"
-        }
+    return {
+        "sales_order_series" : frappe.get_meta("Sales Order").get_options("naming_series") or "SO-Shopify-",
+        "sales_invoice_series" : frappe.get_meta("Sales Invoice").get_options("naming_series")  or "SI-Shopify-",
+        "delivery_note_series" : frappe.get_meta("Delivery Note").get_options("naming_series")  or "DN-Shopify-"
+    }
 
 @frappe.whitelist() 
 def sync_shopify():
@@ -38,10 +38,11 @@ def sync_shopify():
         try :
             sync_products(shopify_settings.price_list, shopify_settings.warehouse)
             sync_customers()
-            # sync_orders()
+            sync_orders()
             
         except ShopifyError:
-            pass            
+            pass
+
 def sync_products(price_list, warehouse):
     sync_shopify_items(warehouse)
     sync_erp_items(price_list, warehouse)
@@ -276,23 +277,24 @@ def create_customer(customer):
         create_customer_address(erp_cust, customer)
 
 def create_customer_address(erp_cust, customer):
-    if customer.get("addresses"):
-        for i, address in enumerate(customer.get("addresses")):
-            addr = frappe.get_doc({
-                "doctype": "Address",
-                "address_title": erp_cust.customer_name,
-                "address_type": get_address_type(i),
-                "address_line1": address.get("address1") or "Address 1",
-                "address_line2": address.get("address2"),
-                "city": address.get("city") or "City",
-                "state": address.get("province"),
-                "pincode": address.get("zip"),
-                "country": address.get("country"),
-                "phone": address.get("phone"),
-                "email_id": customer.get("email"),
-                "customer": erp_cust.name,
-                "customer_name":  erp_cust.customer_name
-            }).insert()
+    if hasattr(customer, "addresses"):
+        if customer.get("addresses"):
+            for i, address in enumerate(customer.get("addresses")):
+                addr = frappe.get_doc({
+                    "doctype": "Address",
+                    "address_title": erp_cust.customer_name,
+                    "address_type": get_address_type(i),
+                    "address_line1": address.get("address1") or "Address 1",
+                    "address_line2": address.get("address2"),
+                    "city": address.get("city") or "City",
+                    "state": address.get("province"),
+                    "pincode": address.get("zip"),
+                    "country": address.get("country"),
+                    "phone": address.get("phone"),
+                    "email_id": customer.get("email"),
+                    "customer": erp_cust.name,
+                    "customer_name":  erp_cust.customer_name
+                }).insert()
 
 def sync_erp_customers():
     for customer in frappe.db.sql("""select name, customer_name from tabCustomer where ifnull(shopify_id, '') = '' 
@@ -319,53 +321,53 @@ def sync_orders():
 
 def sync_shopify_orders():
     for order in get_shopify_orders():
+
+        if not hasattr(order, "customer"):
+            # This is a non member order, we enforce it to a default walk in customer.
+            order["user_id"] = 26626372
+
+            order["customer"]["total_spent"] = order["subtotal_price"]
+            order["customer"]["first_name"] = u"Non"
+            order["customer"]["last_name"] = u"Member"
+            order["customer"]["last_order_name"] = u"#3-1473"
+            order["customer"]["orders_count"] = 1
+            order["customer"]["created_at"] = u"2015-11-06T15:20:53+08:00"
+            order["customer"]["tags"] = u""
+            order["customer"]["updated_at"] = u"2015-11-07T19:43:20+08:00"
+            order["customer"]["email"] = None
+            order["customer"]["note"] = u""
+
+            order["customer"]["default_address"]["province"] = u"Pulau Pinang"
+            order["customer"]["default_address"]["city"] = u""
+            order["customer"]["default_address"]["first_name"] = u"Non"
+            order["customer"]["default_address"]["last_name"] = u"Member"
+            order["customer"]["default_address"]["name"] = u"Non Member"
+            order["customer"]["default_address"]["zip"] = u""
+            order["customer"]["default_address"]["province_code"] = u"PNG"
+            order["customer"]["default_address"]["default"] = True
+            order["customer"]["default_address"]["address1"] = u""
+            order["customer"]["default_address"]["address2"] = u""
+            order["customer"]["default_address"]["id"] = 1988439940
+            order["customer"]["default_address"]["phone"] = u""
+            order["customer"]["default_address"]["country_code"] = u"MY"
+            order["customer"]["default_address"]["country"] = u"Malaysia"
+            order["customer"]["default_address"]["country_name"] = u"Malaysia"
+            order["customer"]["default_address"]["company"] = u""
+
+            order["customer"]["state"] = u"disabled"
+            order["customer"]["multipass_identifier"] = None
+            order["customer"]["tax_exempt"] = False
+            order["customer"]["accepts_marketing"] = False
+            order["customer"]["id"] = 1828210884
+            order["customer"]["last_order_id"] = 1777711300
+            order["customer"]["verified_email"] = False
+
         validate_customer_and_product(order)
         create_order(order)
 
 def validate_customer_and_product(order):
-    # if not order.get("customer"):
-    #     # This is a non member order, we enforce it to a default walk in customer.
-    #     order["user_id"] = 26626372
-
-    #     order["customer"]["total_spent"] = order["subtotal_price"]
-    #     order["customer"]["first_name"] = u"Non"
-    #     order["customer"]["last_name"] = u"Member"
-    #     order["customer"]["last_order_name"] = u"#3-1473"
-    #     order["customer"]["orders_count"] = 1
-    #     order["customer"]["created_at"] = u"2015-11-06T15:20:53+08:00"
-    #     order["customer"]["tags"] = u""
-    #     order["customer"]["updated_at"] = u"2015-11-07T19:43:20+08:00"
-    #     order["customer"]["email"] = None
-    #     order["customer"]["note"] = u""
-
-    #     order["customer"]["default_address"]["province"] = u"Pulau Pinang"
-    #     order["customer"]["default_address"]["city"] = u""
-    #     order["customer"]["default_address"]["first_name"] = u"Non"
-    #     order["customer"]["default_address"]["last_name"] = u"Member"
-    #     order["customer"]["default_address"]["name"] = u"Non Member"
-    #     order["customer"]["default_address"]["zip"] = u""
-    #     order["customer"]["default_address"]["province_code"] = u"PNG"
-    #     order["customer"]["default_address"]["default"] = True
-    #     order["customer"]["default_address"]["address1"] = u""
-    #     order["customer"]["default_address"]["address2"] = u""
-    #     order["customer"]["default_address"]["id"] = 1988439940
-    #     order["customer"]["default_address"]["phone"] = u""
-    #     order["customer"]["default_address"]["country_code"] = u"MY"
-    #     order["customer"]["default_address"]["country"] = u"Malaysia"
-    #     order["customer"]["default_address"]["country_name"] = u"Malaysia"
-    #     order["customer"]["default_address"]["company"] = u""
-
-    #     order["customer"]["state"] = u"disabled"
-    #     order["customer"]["multipass_identifier"] = None
-    #     order["customer"]["tax_exempt"] = False
-    #     order["customer"]["accepts_marketing"] = False
-    #     order["customer"]["id"] = 1828210884
-    #     order["customer"]["last_order_id"] = 1777711300
-    #     order["customer"]["verified_email"] = False
-
-    if hasattr(order, "customer"):
-        if not frappe.db.get_value("Customer", {"shopify_id": order.get("customer").get("id")}, "name"):
-            create_customer(order.get("customer"))
+    if not frappe.db.get_value("Customer", {"shopify_id": order.get("customer").get("id")}, "name"):
+        create_customer(order.get("customer"))
     
     warehouse = frappe.get_doc("Shopify Settings", "Shopify Settings").warehouse
     for item in order.get("line_items"):
@@ -386,31 +388,28 @@ def create_order(order):
             create_delivery_note(order, shopify_settings, so)
 
 def create_salse_order(order, shopify_settings):
-    if hasattr(order, "customer"):
-        so = frappe.db.get_value("Sales Order", {"shopify_id": order.get("id")}, "name")
-        if not so:
-            so = frappe.get_doc({
-                "doctype": "Sales Order",
-                "naming_series": shopify_settings.sales_order_series or "SO-Shopify-",
-                "shopify_id": order.get("id"),
-                "customer": frappe.db.get_value("Customer", {"shopify_id": order.get("customer").get("id")}, "name"),
-                "delivery_date": nowdate(),
-                "selling_price_list": shopify_settings.price_list,
-                "ignore_pricing_rule": 1,
-                "apply_discount_on": "Net Total",
-                "discount_amount": get_discounted_amount(order),
-                "items": get_item_line(order.get("line_items"), shopify_settings),
-                "taxes": get_tax_line(order, order.get("shipping_lines"), shopify_settings)
-            }).insert()
-        
-            so.submit()
-        
-        else:
-            so = frappe.get_doc("Sales Order", so)
-
-        return so
+    so = frappe.db.get_value("Sales Order", {"shopify_id": order.get("id")}, "name")
+    if not so:
+        so = frappe.get_doc({
+            "doctype": "Sales Order",
+            "naming_series": shopify_settings.sales_order_series or "SO-Shopify-",
+            "shopify_id": order.get("id"),
+            "customer": frappe.db.get_value("Customer", {"shopify_id": order.get("customer").get("id")}, "name"),
+            "delivery_date": nowdate(),
+            "selling_price_list": shopify_settings.price_list,
+            "ignore_pricing_rule": 1,
+            "apply_discount_on": "Net Total",
+            "discount_amount": get_discounted_amount(order),
+            "items": get_item_line(order.get("line_items"), shopify_settings),
+            "taxes": get_tax_line(order, order.get("shipping_lines"), shopify_settings)
+        }).insert()
     
-    return None
+        so.submit()
+    
+    else:
+        so = frappe.get_doc("Sales Order", so)
+
+    return so
 
 def create_sales_invoice(order, shopify_settings, so):
     sales_invoice = frappe.db.get_value("Sales Order", {"shopify_id": order.get("id")},\
