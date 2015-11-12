@@ -38,7 +38,7 @@ def sync_shopify():
         try :
             sync_products(shopify_settings.price_list, shopify_settings.warehouse)
             sync_customers()
-            sync_orders()
+            # sync_orders()
             
         except ShopifyError:
             pass            
