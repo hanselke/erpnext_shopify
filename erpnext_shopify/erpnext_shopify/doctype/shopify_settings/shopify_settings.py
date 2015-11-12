@@ -370,7 +370,9 @@ def validate_customer_and_product(order):
     if not frappe.db.get_value("Customer", {"shopify_id": order.get("customer").get("id")}, "name"):
         create_customer(order.get("customer"))
     
-    # Why do we need to make item here again?
+    #
+    ## Why do we need to make item here again?
+    #
     # warehouse = frappe.get_doc("Shopify Settings", "Shopify Settings").warehouse
     # for item in order.get("line_items"):
     #     if not frappe.db.get_value("Item", {"shopify_id": item.get("product_id")}, "name"):
