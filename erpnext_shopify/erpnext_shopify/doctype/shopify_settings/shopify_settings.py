@@ -11,8 +11,6 @@ from erpnext.selling.doctype.sales_order.sales_order import make_delivery_note, 
 from erpnext_shopify.utils import get_request, get_shopify_customers, get_address_type, post_request,\
  get_shopify_items, get_shopify_orders
 
-import uuid
-
 shopify_variants_attr_list = ["option1", "option2", "option3"] 
 
 class ShopifyError(Exception):pass
@@ -99,7 +97,7 @@ def create_item(item, warehouse, has_variant=0, attributes=[],variant_of=None):
         "doctype": "Item",
         "shopify_id": item.get("id"),
         "variant_of": variant_of,
-        "item_code": cstr(item.get("item_code")) or cstr(item.get("id")) or uuid.uuid4(),
+        "item_code": cstr(item.get("item_code")) or cstr(item.get("id")),
         "item_name": item.get("title"),
         "description": item.get("title") or u"Please refer to the product pics.",
         "item_group": get_item_group(item.get("product_type")),
@@ -174,12 +172,12 @@ def sync_erp_items(price_list, warehouse):
         variant_item_code_list = []
         
         item_data = {
-                    "product": {
-                        "title": item.get("item_code"),
-                        "body_html": item.get("description"),
-                        "product_type": item.get("item_group")
-                    }
-                }
+            "product": {
+                "title": item.get("item_code"),
+                "body_html": item.get("description"),
+                "product_type": item.get("item_group")
+            }
+        }
                 
         if item.get("has_variants"):
             variant_list, options, variant_item_code = get_variant_attributes(item, price_list, warehouse)
@@ -191,6 +189,7 @@ def sync_erp_items(price_list, warehouse):
             
         else:
             item_data["product"]["variants"] = [get_price_and_stock_details(item, item.get("stock_uom"), warehouse, price_list)]
+
         new_item = post_request("/admin/products.json", item_data)
         erp_item = frappe.get_doc("Item", item.get("item_code"))
         erp_item.shopify_id = new_item['product'].get("id")
@@ -394,6 +393,7 @@ def create_order(order):
 
 def create_salse_order(order, shopify_settings):
     so = frappe.db.get_value("Sales Order", {"shopify_id": order.get("id")}, "name")
+    raise ValueError(order)
     if not so:
         so = frappe.get_doc({
             "doctype": "Sales Order",
