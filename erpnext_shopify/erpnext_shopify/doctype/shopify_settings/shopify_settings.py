@@ -323,20 +323,22 @@ def sync_orders():
 def sync_shopify_orders():
     for order in get_shopify_orders():
 
+        temp = order
+
         if not hasattr(order, "customer"):
             # This is a non member order, we enforce it to a default walk in customer.
-            order["user_id"] = 26626372
+            temp["user_id"] = 26626372
 
-            order["customer"]["total_spent"] = order["subtotal_price"]
-            order["customer"]["first_name"] = u"Non"
-            order["customer"]["last_name"] = u"Member"
-            order["customer"]["last_order_name"] = u"#3-1473"
-            order["customer"]["orders_count"] = 1
-            order["customer"]["created_at"] = u"2015-11-06T15:20:53+08:00"
-            order["customer"]["tags"] = u""
-            order["customer"]["updated_at"] = u"2015-11-07T19:43:20+08:00"
-            order["customer"]["email"] = None
-            order["customer"]["note"] = u""
+            temp["customer"]["total_spent"] = order["subtotal_price"]
+            temp["customer"]["first_name"] = u"Non"
+            temp["customer"]["last_name"] = u"Member"
+            temp["customer"]["last_order_name"] = u"#3-1473"
+            temp["customer"]["orders_count"] = 1
+            temp["customer"]["created_at"] = u"2015-11-06T15:20:53+08:00"
+            temp["customer"]["tags"] = u""
+            temp["customer"]["updated_at"] = u"2015-11-07T19:43:20+08:00"
+            temp["customer"]["email"] = None
+            temp["customer"]["note"] = u""
 
             # order["customer"]["default_address"]["province"] = u"Pulau Pinang"
             # order["customer"]["default_address"]["city"] = u""
@@ -355,16 +357,16 @@ def sync_shopify_orders():
             # order["customer"]["default_address"]["country_name"] = u"Malaysia"
             # order["customer"]["default_address"]["company"] = u""
 
-            order["customer"]["state"] = u"disabled"
-            order["customer"]["multipass_identifier"] = None
-            order["customer"]["tax_exempt"] = False
-            order["customer"]["accepts_marketing"] = False
-            order["customer"]["id"] = 1828210884
-            order["customer"]["last_order_id"] = 1777711300
-            order["customer"]["verified_email"] = False
+            temp["customer"]["state"] = u"disabled"
+            temp["customer"]["multipass_identifier"] = None
+            temp["customer"]["tax_exempt"] = False
+            temp["customer"]["accepts_marketing"] = False
+            temp["customer"]["id"] = 1828210884
+            temp["customer"]["last_order_id"] = 1777711300
+            temp["customer"]["verified_email"] = False
 
-        validate_customer_and_product(order)
-        create_order(order)
+        validate_customer_and_product(temp)
+        create_order(temp)
 
 def validate_customer_and_product(order):
     if not frappe.db.get_value("Customer", {"shopify_id": order.get("customer").get("id")}, "name"):
