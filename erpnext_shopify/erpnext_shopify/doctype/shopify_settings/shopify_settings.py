@@ -451,7 +451,7 @@ def get_item_line(order_items, shopify_settings):
     items = []
     for item in order_items:
         item_code = get_item_code(item)
-        if item_code
+        if item_code:
             items.append({
                 "item_code": item_code,
                 "item_name": item.get("name"),
