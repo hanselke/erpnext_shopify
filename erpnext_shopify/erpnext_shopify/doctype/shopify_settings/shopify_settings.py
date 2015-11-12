@@ -113,8 +113,7 @@ def create_item_variants(item, warehouse, attributes, shopify_variants_attr_list
     for variant in item.get("variants"):
         variant_item = {
             "id" : variant.get("id"),
-            "item_code": variant.get("id") or cstr(item.get("item_code")) or cstr(item.get("id")),
-            "description": item.get("title") or u"Please refer to the product pics.",
+            "item_code": variant.get("id"),
             "title": item.get("title"),
             "product_type": item.get("product_type"),
             "uom": get_stock_uom(item),
@@ -452,14 +451,16 @@ def get_item_line(order_items, shopify_settings):
     items = []
     for item in order_items:
         item_code = get_item_code(item)
-        items.append({
-            "item_code": item_code,
-            "item_name": item.get("name"),
-            "rate": item.get("price"),
-            "qty": item.get("quantity"),
-            "stock_uom": item.get("sku"),
-            "warehouse": shopify_settings.warehouse
-        })
+        if item_code
+            items.append({
+                "item_code": item_code,
+                "item_name": item.get("name"),
+                "description": item.get("title") or u"Please refer to the product pics.",
+                "rate": item.get("price"),
+                "qty": item.get("quantity"),
+                "stock_uom": item.get("sku"),
+                "warehouse": shopify_settings.warehouse
+            })
     return items
     
 def get_item_code(item):
