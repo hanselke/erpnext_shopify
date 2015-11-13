@@ -1,16 +1,16 @@
-import frappe
+import frappe, math
 from frappe.utils import get_request_session
 from frappe.exceptions import AuthenticationError, ValidationError
 from functools import wraps
+from __future__ import division
 
 import hashlib, base64, hmac, json
 
 def get_shopify_items():
-	pagesNumber = get_request('/admin/products/count.json')
-	raise ValueError(pagesNumber)
+	pagesNumber = int(math.ceil(get_request('/admin/products/count.json').get('count') / 250))
 	products = []
 	for x in range(1, pagesNumber):
-		products.extend(get_request('/admin/products.json&limit=50&page=x')['products'])
+		products.extend(get_request('/admin/products.json&limit=250&page=x')['products'])
 	# return get_request('/admin/products.json')['products']
 	return products
 
