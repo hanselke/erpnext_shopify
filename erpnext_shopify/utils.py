@@ -17,22 +17,19 @@ def get_shopify_items():
 
 def get_shopify_orders():
 	orders = []
-	end = get_collection_pages_number('orders') + 1
-	for x in range(1, end):
+	for x in range(1, get_collection_pages_number('orders') + 1):
 		orders.extend(get_request('/admin/orders.json?limit=250&page=x')['orders'])
 	return orders
 
 def get_country():
 	countries = []
-	end = get_collection_pages_number('countries') + 1
-	for x in range(1, end):
+	for x in range(1, get_collection_pages_number('countries') + 1):
 		countries.extend(get_request('/admin/countries.json?limit=250&page=x')['countries'])
 	return countries
 	
 def get_shopify_customers():
 	customers = []
-	end = get_collection_pages_number('customers') + 1
-	for x in range(1, end):
+	for x in range(1, get_collection_pages_number('customers') + 1):
 		customers.extend(get_request('/admin/customers.json?limit=250&page=x')['customers'])
 	return customers
 
