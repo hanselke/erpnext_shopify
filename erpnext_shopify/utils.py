@@ -11,8 +11,7 @@ def get_collection_pages_number(type):
 
 def get_shopify_items():
 	products = []
-	end = get_collection_pages_number('products') + 1
-	for x in range(1, end):
+	for x in range(1, get_collection_pages_number('products') + 1):
 		products.extend(get_request('/admin/products.json?limit=250&page=x')['products'])
 	return products
 
