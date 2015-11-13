@@ -254,7 +254,10 @@ def sync_customers():
     sync_erp_customers()
 
 def sync_shopify_customers():
+    raise ValueError(get_shopify_customers)
     for customer in get_shopify_customers():
+        # Add the 'membership_number' field
+        # customer["membership_number"] = customer.name
         if not frappe.db.get_value("Customer", {"shopify_id": customer.get('id')}, "name"):
             create_customer(customer)
 
@@ -341,22 +344,23 @@ def sync_shopify_orders():
             order["customer"]["email"] = None
             order["customer"]["note"] = u""
 
-            # order["customer"]["default_address"]["province"] = u"Pulau Pinang"
-            # order["customer"]["default_address"]["city"] = u""
-            # order["customer"]["default_address"]["first_name"] = u"Non"
-            # order["customer"]["default_address"]["last_name"] = u"Member"
-            # order["customer"]["default_address"]["name"] = u"Non Member"
-            # order["customer"]["default_address"]["zip"] = u""
-            # order["customer"]["default_address"]["province_code"] = u"PNG"
-            # order["customer"]["default_address"]["default"] = True
-            # order["customer"]["default_address"]["address1"] = u""
-            # order["customer"]["default_address"]["address2"] = u""
-            # order["customer"]["default_address"]["id"] = 1988439940
-            # order["customer"]["default_address"]["phone"] = u""
-            # order["customer"]["default_address"]["country_code"] = u"MY"
-            # order["customer"]["default_address"]["country"] = u"Malaysia"
-            # order["customer"]["default_address"]["country_name"] = u"Malaysia"
-            # order["customer"]["default_address"]["company"] = u""
+            order["customer"]["default_address"] = {}
+            order["customer"]["default_address"]["province"] = u"Pulau Pinang"
+            order["customer"]["default_address"]["city"] = u""
+            order["customer"]["default_address"]["first_name"] = u"Non"
+            order["customer"]["default_address"]["last_name"] = u"Member"
+            order["customer"]["default_address"]["name"] = u"Non Member"
+            order["customer"]["default_address"]["zip"] = u""
+            order["customer"]["default_address"]["province_code"] = u"PNG"
+            order["customer"]["default_address"]["default"] = True
+            order["customer"]["default_address"]["address1"] = u""
+            order["customer"]["default_address"]["address2"] = u""
+            order["customer"]["default_address"]["id"] = 1988439940
+            order["customer"]["default_address"]["phone"] = u""
+            order["customer"]["default_address"]["country_code"] = u"MY"
+            order["customer"]["default_address"]["country"] = u"Malaysia"
+            order["customer"]["default_address"]["country_name"] = u"Malaysia"
+            order["customer"]["default_address"]["company"] = u""
 
             order["customer"]["state"] = u"disabled"
             order["customer"]["multipass_identifier"] = None
