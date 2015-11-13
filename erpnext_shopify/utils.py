@@ -11,7 +11,6 @@ def get_shopify_items():
 	products = []
 	for x in range(1, pagesNumber):
 		products.extend(get_request('/admin/products.json?limit=250&page=x')['products'])
-	# return get_request('/admin/products.json')['products']
 	return products
 
 def get_shopify_orders():
