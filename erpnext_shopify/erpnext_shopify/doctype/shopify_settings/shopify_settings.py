@@ -326,6 +326,7 @@ def sync_orders():
     sync_shopify_orders()
 
 def sync_shopify_orders():
+    raise ValueError(get_shopify_orders())
     for order in sorted(get_shopify_orders(), key=lambda x: datetime.datetime.strptime(x["processed_at"][:-6], "%Y-%m-%dT%H:%M:%S")):
 
         if not hasattr(order, "customer"):
