@@ -1,0 +1,4122 @@
+[
+  {
+    u'handle': u'nano-mist',
+    u'template_suffix': None,
+    u'product_type': u'Add on',
+    u'published_scope': u'global',
+    u'title': u'*Nano Mist',
+    u'created_at': u'2015-09-27T18:15:10+08:00',
+    u'tags': u'',
+    u'body_html': u'',
+    u'updated_at': u'2015-10-02T15:27:28+08:00',
+    u'published_at': None,
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Default Title'
+        ],
+        u'id': 1972208452,
+        u'name': u'Title',
+        u'product_id': 1613136452
+      }
+    ],
+    u'image': None,
+    u'images': [
+      
+    ],
+    u'vendor': u'Massimo Hair Lab',
+    u'variants': [
+      {
+        u'weight': 0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-09-27T21:58:35+08:00',
+        u'inventory_quantity': 1,
+        u'compare_at_price': None,
+        u'id': 5733097604,
+        u'sku': u'',
+        u'title': u'Default Title',
+        u'inventory_policy': u'deny',
+        u'inventory_management': None,
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Default Title',
+        u'price': u'30.00',
+        u'barcode': u'',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 1,
+        u'grams': 0,
+        u'product_id': 1613136452,
+        u'created_at': u'2015-09-27T18:15:10+08:00',
+        u'position': 1
+      }
+    ],
+    u'id': 1613136452
+  },
+  {
+    u'handle': u'1-step',
+    u'template_suffix': None,
+    u'product_type': u'Add on',
+    u'published_scope': u'global',
+    u'title': u'1 Step',
+    u'created_at': u'2015-09-27T18:12:30+08:00',
+    u'tags': u'',
+    u'body_html': u'',
+    u'updated_at': u'2015-10-02T15:27:28+08:00',
+    u'published_at': None,
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Default Title'
+        ],
+        u'id': 1972201028,
+        u'name': u'Title',
+        u'product_id': 1613130500
+      }
+    ],
+    u'image': None,
+    u'images': [
+      
+    ],
+    u'vendor': u'Massimo Hair Lab',
+    u'variants': [
+      {
+        u'weight': 0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-09-27T21:58:44+08:00',
+        u'inventory_quantity': 1,
+        u'compare_at_price': None,
+        u'id': 5733059204,
+        u'sku': u'',
+        u'title': u'Default Title',
+        u'inventory_policy': u'deny',
+        u'inventory_management': None,
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Default Title',
+        u'price': u'100.00',
+        u'barcode': u'',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 1,
+        u'grams': 0,
+        u'product_id': 1613130500,
+        u'created_at': u'2015-09-27T18:12:30+08:00',
+        u'position': 1
+      }
+    ],
+    u'id': 1613130500
+  },
+  {
+    u'handle': u'1-step-treatment',
+    u'template_suffix': None,
+    u'product_type': u'photo',
+    u'published_scope': u'global',
+    u'title': u'1 Step Treatment',
+    u'created_at': u'2015-10-17T17:26:12+08:00',
+    u'tags': u'',
+    u'body_html': u'',
+    u'updated_at': u'2015-10-19T18:21:43+08:00',
+    u'published_at': None,
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Medium',
+          u'Long'
+        ],
+        u'id': 2247389700,
+        u'name': u'Size',
+        u'product_id': 1842439748
+      }
+    ],
+    u'image': None,
+    u'images': [
+      
+    ],
+    u'vendor': u'Package',
+    u'variants': [
+      {
+        u'weight': 0,
+        u'requires_shipping': True,
+        u'updated_at': u'2015-11-01T15:26:30+08:00',
+        u'inventory_quantity': 0,
+        u'compare_at_price': None,
+        u'id': 6574815108,
+        u'sku': u'',
+        u'title': u'Medium',
+        u'inventory_policy': u'deny',
+        u'inventory_management': None,
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Medium',
+        u'price': u'80.00',
+        u'barcode': u'',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 0,
+        u'grams': 0,
+        u'product_id': 1842439748,
+        u'created_at': u'2015-10-17T17:26:12+08:00',
+        u'position': 1
+      },
+      {
+        u'weight': 0,
+        u'requires_shipping': True,
+        u'updated_at': u'2015-10-17T17:26:12+08:00',
+        u'inventory_quantity': 1,
+        u'compare_at_price': None,
+        u'id': 6574815172,
+        u'sku': u'',
+        u'title': u'Long',
+        u'inventory_policy': u'deny',
+        u'inventory_management': None,
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Long',
+        u'price': u'120.00',
+        u'barcode': u'',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 1,
+        u'grams': 0,
+        u'product_id': 1842439748,
+        u'created_at': u'2015-10-17T17:26:12+08:00',
+        u'position': 2
+      }
+    ],
+    u'id': 1842439748
+  },
+  {
+    u'handle': u'cold',
+    u'template_suffix': None,
+    u'product_type': u'Add on',
+    u'published_scope': u'global',
+    u'title': u'2 Step Above',
+    u'created_at': u'2015-09-27T17:46:58+08:00',
+    u'tags': u'',
+    u'body_html': u'',
+    u'updated_at': u'2015-10-22T12:06:19+08:00',
+    u'published_at': None,
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Default Title'
+        ],
+        u'id': 1972136324,
+        u'name': u'Title',
+        u'product_id': 1613070596
+      }
+    ],
+    u'image': None,
+    u'images': [
+      
+    ],
+    u'vendor': u'Massimo Hair Lab',
+    u'variants': [
+      {
+        u'weight': 0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-09-28T15:09:09+08:00',
+        u'inventory_quantity': 0,
+        u'compare_at_price': None,
+        u'id': 5732650500,
+        u'sku': u'',
+        u'title': u'Default Title',
+        u'inventory_policy': u'deny',
+        u'inventory_management': None,
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Default Title',
+        u'price': u'130.00',
+        u'barcode': u'',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 0,
+        u'grams': 0,
+        u'product_id': 1613070596,
+        u'created_at': u'2015-09-27T17:46:58+08:00',
+        u'position': 1
+      }
+    ],
+    u'id': 1613070596
+  },
+  {
+    u'handle': u'adenovital-ad-eyelash-serum',
+    u'template_suffix': None,
+    u'product_type': u'Products',
+    u'published_scope': u'global',
+    u'title': u'AD Eyelash Serum',
+    u'created_at': u'2015-08-31T16:03:44+08:00',
+    u'tags': u'ADENOVITAL',
+    u'body_html': u' 6g  ',
+    u'updated_at': u'2015-11-10T13:28:54+08:00',
+    u'published_at': u'2015-08-31T16:03:00+08:00',
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Default Title'
+        ],
+        u'id': 1618028036,
+        u'name': u'Title',
+        u'product_id': 1301388996
+      }
+    ],
+    u'image': {
+      u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/075908e0b399667f6afc6d8119ce8105.jpg?v=1446629224',
+      u'product_id': 1301388996,
+      u'created_at': u'2015-11-04T17:26:47+08:00',
+      u'updated_at': u'2015-11-04T17:27:04+08:00',
+      u'variant_ids': [
+        
+      ],
+      u'position': 1,
+      u'id': 7102981508
+    },
+    u'images': [
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/075908e0b399667f6afc6d8119ce8105.jpg?v=1446629224',
+        u'product_id': 1301388996,
+        u'created_at': u'2015-11-04T17:26:47+08:00',
+        u'updated_at': u'2015-11-04T17:27:04+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 1,
+        u'id': 7102981508
+      }
+    ],
+    u'vendor': u'Shiseido',
+    u'variants': [
+      {
+        u'weight': 0.0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-11-10T13:28:54+08:00',
+        u'inventory_quantity': 4,
+        u'compare_at_price': None,
+        u'id': 4673706884,
+        u'sku': u'',
+        u'title': u'Default Title',
+        u'inventory_policy': u'deny',
+        u'inventory_management': u'shopify',
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'lb',
+        u'option1': u'Default Title',
+        u'price': u'74.00',
+        u'barcode': u'4901872675555',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 4,
+        u'grams': 0,
+        u'product_id': 1301388996,
+        u'created_at': u'2015-08-31T16:03:44+08:00',
+        u'position': 1
+      }
+    ],
+    u'id': 1301388996
+  },
+  {
+    u'handle': u'ad-optimizing-gel',
+    u'template_suffix': None,
+    u'product_type': u'Consumable',
+    u'published_scope': u'web',
+    u'title': u'AD Optimizing Gel',
+    u'created_at': u'2015-09-03T14:46:52+08:00',
+    u'tags': u'ADENOVITAL',
+    u'body_html': u' 40gx6  ',
+    u'updated_at': u'2015-09-28T10:29:39+08:00',
+    u'published_at': None,
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Default Title'
+        ],
+        u'id': 1660794436,
+        u'name': u'Title',
+        u'product_id': 1339559236
+      }
+    ],
+    u'image': {
+      u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AD_Optimizing_Gel_40gx6.jpg?v=1441262830',
+      u'product_id': 1339559236,
+      u'created_at': u'2015-09-03T14:47:10+08:00',
+      u'updated_at': u'2015-09-03T14:47:10+08:00',
+      u'variant_ids': [
+        
+      ],
+      u'position': 1,
+      u'id': 3425881092
+    },
+    u'images': [
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AD_Optimizing_Gel_40gx6.jpg?v=1441262830',
+        u'product_id': 1339559236,
+        u'created_at': u'2015-09-03T14:47:10+08:00',
+        u'updated_at': u'2015-09-03T14:47:10+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 1,
+        u'id': 3425881092
+      }
+    ],
+    u'vendor': u'Shiseido',
+    u'variants': [
+      {
+        u'weight': 0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-09-28T10:29:39+08:00',
+        u'inventory_quantity': 3,
+        u'compare_at_price': None,
+        u'id': 4776864580,
+        u'sku': u'',
+        u'title': u'Default Title',
+        u'inventory_policy': u'deny',
+        u'inventory_management': u'shopify',
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Default Title',
+        u'price': u'116.60',
+        u'barcode': u'4901872020416',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 3,
+        u'grams': 0,
+        u'product_id': 1339559236,
+        u'created_at': u'2015-09-03T14:46:52+08:00',
+        u'position': 1
+      }
+    ],
+    u'id': 1339559236
+  },
+  {
+    u'handle': u'ad-root-spray-150g',
+    u'template_suffix': None,
+    u'product_type': u'Products',
+    u'published_scope': u'web',
+    u'title': u'AD Root Spray 150g',
+    u'created_at': u'2015-09-28T14:35:03+08:00',
+    u'tags': u'ADENOVITAL',
+    u'body_html': u'150g',
+    u'updated_at': u'2015-09-29T14:58:03+08:00',
+    u'published_at': None,
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Default Title'
+        ],
+        u'id': 1979143364,
+        u'name': u'Title',
+        u'product_id': 1619518532
+      }
+    ],
+    u'image': {
+      u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AD_Rbbt_splaY_150G.jpg?v=1443509883',
+      u'product_id': 1619518532,
+      u'created_at': u'2015-09-29T14:58:03+08:00',
+      u'updated_at': u'2015-09-29T14:58:03+08:00',
+      u'variant_ids': [
+        
+      ],
+      u'position': 1,
+      u'id': 4085751620
+    },
+    u'images': [
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AD_Rbbt_splaY_150G.jpg?v=1443509883',
+        u'product_id': 1619518532,
+        u'created_at': u'2015-09-29T14:58:03+08:00',
+        u'updated_at': u'2015-09-29T14:58:03+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 1,
+        u'id': 4085751620
+      }
+    ],
+    u'vendor': u'Shiseido',
+    u'variants': [
+      {
+        u'weight': 0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-09-28T14:35:03+08:00',
+        u'inventory_quantity': 6,
+        u'compare_at_price': None,
+        u'id': 5760918788,
+        u'sku': u'',
+        u'title': u'Default Title',
+        u'inventory_policy': u'deny',
+        u'inventory_management': u'shopify',
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Default Title',
+        u'price': u'0.00',
+        u'barcode': u'',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 6,
+        u'grams': 0,
+        u'product_id': 1619518532,
+        u'created_at': u'2015-09-28T14:35:03+08:00',
+        u'position': 1
+      }
+    ],
+    u'id': 1619518532
+  },
+  {
+    u'handle': u'adenovital-ad-rootspray',
+    u'template_suffix': None,
+    u'product_type': u'Products',
+    u'published_scope': u'global',
+    u'title': u'AD Root Spray 220ml',
+    u'created_at': u'2015-08-31T16:03:44+08:00',
+    u'tags': u'ADENOVITAL',
+    u'body_html': u' 220ml  ',
+    u'updated_at': u'2015-09-28T14:36:35+08:00',
+    u'published_at': u'2015-08-31T16:03:00+08:00',
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Default Title'
+        ],
+        u'id': 1618028228,
+        u'name': u'Title',
+        u'product_id': 1301389188
+      }
+    ],
+    u'image': {
+      u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AD_Root_Spray.jpg?v=1441189109',
+      u'product_id': 1301389188,
+      u'created_at': u'2015-09-02T18:18:29+08:00',
+      u'updated_at': u'2015-09-02T18:18:29+08:00',
+      u'variant_ids': [
+        
+      ],
+      u'position': 1,
+      u'id': 3406771524
+    },
+    u'images': [
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AD_Root_Spray.jpg?v=1441189109',
+        u'product_id': 1301389188,
+        u'created_at': u'2015-09-02T18:18:29+08:00',
+        u'updated_at': u'2015-09-02T18:18:29+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 1,
+        u'id': 3406771524
+      }
+    ],
+    u'vendor': u'Shiseido',
+    u'variants': [
+      {
+        u'weight': 0.0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-10-03T18:59:11+08:00',
+        u'inventory_quantity': 0,
+        u'compare_at_price': None,
+        u'id': 4673707076,
+        u'sku': u'',
+        u'title': u'Default Title',
+        u'inventory_policy': u'deny',
+        u'inventory_management': None,
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'lb',
+        u'option1': u'Default Title',
+        u'price': u'111.00',
+        u'barcode': u'',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 0,
+        u'grams': 0,
+        u'product_id': 1301389188,
+        u'created_at': u'2015-08-31T16:03:44+08:00',
+        u'position': 1
+      }
+    ],
+    u'id': 1301389188
+  },
+  {
+    u'handle': u'adenovital-ad-scalp-essence',
+    u'template_suffix': None,
+    u'product_type': u'Products',
+    u'published_scope': u'global',
+    u'title': u'AD Scalp Essence',
+    u'created_at': u'2015-08-31T16:03:45+08:00',
+    u'tags': u'ADENOVITAL',
+    u'body_html': u' 180ml  ',
+    u'updated_at': u'2015-09-27T21:16:53+08:00',
+    u'published_at': u'2015-09-01T11:03:00+08:00',
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Default Title'
+        ],
+        u'id': 1618028292,
+        u'name': u'Title',
+        u'product_id': 1301389252
+      }
+    ],
+    u'image': {
+      u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AD_Scalp_essence_refill_480ml.jpg?v=1441172435',
+      u'product_id': 1301389252,
+      u'created_at': u'2015-09-02T13:40:35+08:00',
+      u'updated_at': u'2015-09-02T13:40:35+08:00',
+      u'variant_ids': [
+        
+      ],
+      u'position': 1,
+      u'id': 3403812036
+    },
+    u'images': [
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AD_Scalp_essence_refill_480ml.jpg?v=1441172435',
+        u'product_id': 1301389252,
+        u'created_at': u'2015-09-02T13:40:35+08:00',
+        u'updated_at': u'2015-09-02T13:40:35+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 1,
+        u'id': 3403812036
+      },
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AD_Scalp_Enssence.jpg?v=1441188979',
+        u'product_id': 1301389252,
+        u'created_at': u'2015-09-02T18:16:19+08:00',
+        u'updated_at': u'2015-09-02T18:16:19+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 2,
+        u'id': 3406745540
+      }
+    ],
+    u'vendor': u'Shiseido',
+    u'variants': [
+      {
+        u'weight': 0.0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-09-27T21:16:53+08:00',
+        u'inventory_quantity': 0,
+        u'compare_at_price': None,
+        u'id': 4673707140,
+        u'sku': u'',
+        u'title': u'Default Title',
+        u'inventory_policy': u'deny',
+        u'inventory_management': None,
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'lb',
+        u'option1': u'Default Title',
+        u'price': u'279.00',
+        u'barcode': u'',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 0,
+        u'grams': 0,
+        u'product_id': 1301389252,
+        u'created_at': u'2015-08-31T16:03:45+08:00',
+        u'position': 1
+      }
+    ],
+    u'id': 1301389252
+  },
+  {
+    u'handle': u'ad-scalp-essence-refill',
+    u'template_suffix': None,
+    u'product_type': u'Consumable',
+    u'published_scope': u'web',
+    u'title': u'AD Scalp essence (refill)',
+    u'created_at': u'2015-09-03T14:37:47+08:00',
+    u'tags': u'ADENOVITAL',
+    u'body_html': u' 480ml  ',
+    u'updated_at': u'2015-09-27T21:17:31+08:00',
+    u'published_at': None,
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Default Title'
+        ],
+        u'id': 1660746308,
+        u'name': u'Title',
+        u'product_id': 1339513476
+      }
+    ],
+    u'image': {
+      u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AD_Scalp_essence_refill_480ml_09d86d9a-48da-4725-aa0b-5811203d58a2.jpg?v=1441262283',
+      u'product_id': 1339513476,
+      u'created_at': u'2015-09-03T14:38:03+08:00',
+      u'updated_at': u'2015-09-03T14:38:03+08:00',
+      u'variant_ids': [
+        
+      ],
+      u'position': 1,
+      u'id': 3425818372
+    },
+    u'images': [
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AD_Scalp_essence_refill_480ml_09d86d9a-48da-4725-aa0b-5811203d58a2.jpg?v=1441262283',
+        u'product_id': 1339513476,
+        u'created_at': u'2015-09-03T14:38:03+08:00',
+        u'updated_at': u'2015-09-03T14:38:03+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 1,
+        u'id': 3425818372
+      }
+    ],
+    u'vendor': u'Shiseido',
+    u'variants': [
+      {
+        u'weight': 0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-09-27T21:17:31+08:00',
+        u'inventory_quantity': 1,
+        u'compare_at_price': None,
+        u'id': 4776761348,
+        u'sku': u'',
+        u'title': u'Default Title',
+        u'inventory_policy': u'deny',
+        u'inventory_management': None,
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Default Title',
+        u'price': u'325.42',
+        u'barcode': u'',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 1,
+        u'grams': 0,
+        u'product_id': 1339513476,
+        u'created_at': u'2015-09-03T14:37:47+08:00',
+        u'position': 1
+      }
+    ],
+    u'id': 1339513476
+  },
+  {
+    u'handle': u'ad-scalp-essence-v-refill',
+    u'template_suffix': None,
+    u'product_type': u'Consumable',
+    u'published_scope': u'web',
+    u'title': u'AD Scalp essence V (refill)',
+    u'created_at': u'2015-09-03T14:39:58+08:00',
+    u'tags': u'ADENOVITAL',
+    u'body_html': u' 480ml  ',
+    u'updated_at': u'2015-09-27T21:17:42+08:00',
+    u'published_at': None,
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Default Title'
+        ],
+        u'id': 1660760580,
+        u'name': u'Title',
+        u'product_id': 1339527300
+      }
+    ],
+    u'image': {
+      u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AD_Scalp_essence_V_refill_480ml.jpg?v=1441262414',
+      u'product_id': 1339527300,
+      u'created_at': u'2015-09-03T14:40:14+08:00',
+      u'updated_at': u'2015-09-03T14:40:14+08:00',
+      u'variant_ids': [
+        
+      ],
+      u'position': 1,
+      u'id': 3425838340
+    },
+    u'images': [
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AD_Scalp_essence_V_refill_480ml.jpg?v=1441262414',
+        u'product_id': 1339527300,
+        u'created_at': u'2015-09-03T14:40:14+08:00',
+        u'updated_at': u'2015-09-03T14:40:14+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 1,
+        u'id': 3425838340
+      }
+    ],
+    u'vendor': u'Shiseido',
+    u'variants': [
+      {
+        u'weight': 0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-09-27T21:17:42+08:00',
+        u'inventory_quantity': 1,
+        u'compare_at_price': None,
+        u'id': 4776788292,
+        u'sku': u'',
+        u'title': u'Default Title',
+        u'inventory_policy': u'deny',
+        u'inventory_management': None,
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Default Title',
+        u'price': u'325.42',
+        u'barcode': u'',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 1,
+        u'grams': 0,
+        u'product_id': 1339527300,
+        u'created_at': u'2015-09-03T14:39:58+08:00',
+        u'position': 1
+      }
+    ],
+    u'id': 1339527300
+  },
+  {
+    u'handle': u'adenovital-ad-scalp-essence-v',
+    u'template_suffix': None,
+    u'product_type': u'Products',
+    u'published_scope': u'global',
+    u'title': u'AD Scalp Essence V 180ml',
+    u'created_at': u'2015-08-31T16:03:45+08:00',
+    u'tags': u'ADENOVITAL',
+    u'body_html': u' 180ml  ',
+    u'updated_at': u'2015-09-28T14:31:15+08:00',
+    u'published_at': u'2015-08-31T16:03:00+08:00',
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Default Title'
+        ],
+        u'id': 1618028356,
+        u'name': u'Title',
+        u'product_id': 1301389316
+      }
+    ],
+    u'image': {
+      u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AD_Scalp_Essence_V_180ml.jpg?v=1441188825',
+      u'product_id': 1301389316,
+      u'created_at': u'2015-09-02T18:13:45+08:00',
+      u'updated_at': u'2015-09-02T18:13:45+08:00',
+      u'variant_ids': [
+        
+      ],
+      u'position': 1,
+      u'id': 3406719364
+    },
+    u'images': [
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AD_Scalp_Essence_V_180ml.jpg?v=1441188825',
+        u'product_id': 1301389316,
+        u'created_at': u'2015-09-02T18:13:45+08:00',
+        u'updated_at': u'2015-09-02T18:13:45+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 1,
+        u'id': 3406719364
+      }
+    ],
+    u'vendor': u'Shiseido',
+    u'variants': [
+      {
+        u'weight': 0.0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-09-28T10:21:54+08:00',
+        u'inventory_quantity': 6,
+        u'compare_at_price': None,
+        u'id': 4673707204,
+        u'sku': u'',
+        u'title': u'Default Title',
+        u'inventory_policy': u'deny',
+        u'inventory_management': u'shopify',
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'lb',
+        u'option1': u'Default Title',
+        u'price': u'279.00',
+        u'barcode': u'4524120169592',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 6,
+        u'grams': 0,
+        u'product_id': 1301389316,
+        u'created_at': u'2015-08-31T16:03:45+08:00',
+        u'position': 1
+      }
+    ],
+    u'id': 1301389316
+  },
+  {
+    u'handle': u'adenovital-ad-scalp-tonic',
+    u'template_suffix': None,
+    u'product_type': u'Products',
+    u'published_scope': u'global',
+    u'title': u'AD Scalp Tonic',
+    u'created_at': u'2015-08-31T16:03:45+08:00',
+    u'tags': u'ADENOVITAL',
+    u'body_html': u' 200g  ',
+    u'updated_at': u'2015-11-04T17:29:39+08:00',
+    u'published_at': u'2015-08-31T16:03:00+08:00',
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Default Title'
+        ],
+        u'id': 1618028484,
+        u'name': u'Title',
+        u'product_id': 1301389444
+      }
+    ],
+    u'image': {
+      u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/51b3eb1836356.jpg?v=1446629379',
+      u'product_id': 1301389444,
+      u'created_at': u'2015-11-04T17:29:32+08:00',
+      u'updated_at': u'2015-11-04T17:29:39+08:00',
+      u'variant_ids': [
+        
+      ],
+      u'position': 1,
+      u'id': 7103015236
+    },
+    u'images': [
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/51b3eb1836356.jpg?v=1446629379',
+        u'product_id': 1301389444,
+        u'created_at': u'2015-11-04T17:29:32+08:00',
+        u'updated_at': u'2015-11-04T17:29:39+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 1,
+        u'id': 7103015236
+      }
+    ],
+    u'vendor': u'Shiseido',
+    u'variants': [
+      {
+        u'weight': 0.0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-10-31T12:17:45+08:00',
+        u'inventory_quantity': 6,
+        u'compare_at_price': None,
+        u'id': 4673707268,
+        u'sku': u'',
+        u'title': u'Default Title',
+        u'inventory_policy': u'deny',
+        u'inventory_management': u'shopify',
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'lb',
+        u'option1': u'Default Title',
+        u'price': u'125.00',
+        u'barcode': u'4524120169615',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 6,
+        u'grams': 0,
+        u'product_id': 1301389444,
+        u'created_at': u'2015-08-31T16:03:45+08:00',
+        u'position': 1
+      }
+    ],
+    u'id': 1301389444
+  },
+  {
+    u'handle': u'ad-scalp-treatment-130gx2',
+    u'template_suffix': None,
+    u'product_type': u'Consumable',
+    u'published_scope': u'global',
+    u'title': u'AD Scalp treatment 130gx2',
+    u'created_at': u'2015-09-28T11:50:08+08:00',
+    u'tags': u'ADENOVITAL',
+    u'body_html': u'130gx2',
+    u'updated_at': u'2015-11-09T19:48:35+08:00',
+    u'published_at': u'2015-11-09T19:46:00+08:00',
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Default Title'
+        ],
+        u'id': 1977929284,
+        u'name': u'Title',
+        u'product_id': 1618367236
+      }
+    ],
+    u'image': {
+      u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AD_Scalp_treatment_130g.jpg?v=1443509521',
+      u'product_id': 1618367236,
+      u'created_at': u'2015-09-29T14:52:01+08:00',
+      u'updated_at': u'2015-09-29T14:52:01+08:00',
+      u'variant_ids': [
+        
+      ],
+      u'position': 1,
+      u'id': 4085677828
+    },
+    u'images': [
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AD_Scalp_treatment_130g.jpg?v=1443509521',
+        u'product_id': 1618367236,
+        u'created_at': u'2015-09-29T14:52:01+08:00',
+        u'updated_at': u'2015-09-29T14:52:01+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 1,
+        u'id': 4085677828
+      }
+    ],
+    u'vendor': u'Shiseido',
+    u'variants': [
+      {
+        u'weight': 0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-11-09T19:48:35+08:00',
+        u'inventory_quantity': 5,
+        u'compare_at_price': None,
+        u'id': 5756667012,
+        u'sku': u'',
+        u'title': u'Default Title',
+        u'inventory_policy': u'deny',
+        u'inventory_management': u'shopify',
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Default Title',
+        u'price': u'155.00',
+        u'barcode': u'4901872311590',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 5,
+        u'grams': 0,
+        u'product_id': 1618367236,
+        u'created_at': u'2015-09-28T11:50:09+08:00',
+        u'position': 1
+      }
+    ],
+    u'id': 1618367236
+  },
+  {
+    u'handle': u'adenovital-ad-sealinspray',
+    u'template_suffix': None,
+    u'product_type': u'Consumable',
+    u'published_scope': u'web',
+    u'title': u'AD Seal in Spray',
+    u'created_at': u'2015-08-31T16:03:45+08:00',
+    u'tags': u'ADENOVITAL',
+    u'body_html': u' 240g  ',
+    u'updated_at': u'2015-09-28T10:40:29+08:00',
+    u'published_at': None,
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Default Title'
+        ],
+        u'id': 1618028548,
+        u'name': u'Title',
+        u'product_id': 1301389508
+      }
+    ],
+    u'image': {
+      u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AD_Seal_in_Spray_771cd40b-94e9-49bd-9853-cff760c2828d.jpg?v=1441188580',
+      u'product_id': 1301389508,
+      u'created_at': u'2015-09-02T18:09:15+08:00',
+      u'updated_at': u'2015-09-02T18:09:40+08:00',
+      u'variant_ids': [
+        
+      ],
+      u'position': 1,
+      u'id': 3406681028
+    },
+    u'images': [
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AD_Seal_in_Spray_771cd40b-94e9-49bd-9853-cff760c2828d.jpg?v=1441188580',
+        u'product_id': 1301389508,
+        u'created_at': u'2015-09-02T18:09:15+08:00',
+        u'updated_at': u'2015-09-02T18:09:40+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 1,
+        u'id': 3406681028
+      }
+    ],
+    u'vendor': u'Shiseido',
+    u'variants': [
+      {
+        u'weight': 0.0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-09-28T10:40:29+08:00',
+        u'inventory_quantity': 3,
+        u'compare_at_price': None,
+        u'id': 4673707396,
+        u'sku': u'',
+        u'title': u'Default Title',
+        u'inventory_policy': u'deny',
+        u'inventory_management': u'shopify',
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'lb',
+        u'option1': u'Default Title',
+        u'price': u'61.48',
+        u'barcode': u'4901872020423',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 3,
+        u'grams': 0,
+        u'product_id': 1301389508,
+        u'created_at': u'2015-08-31T16:03:45+08:00',
+        u'position': 1
+      }
+    ],
+    u'id': 1301389508
+  },
+  {
+    u'handle': u'adenovital-ad-shampoo',
+    u'template_suffix': None,
+    u'product_type': u'Products',
+    u'published_scope': u'global',
+    u'title': u'AD Shampoo',
+    u'created_at': u'2015-08-31T16:03:45+08:00',
+    u'tags': u'ADENOVITAL',
+    u'body_html': u'',
+    u'updated_at': u'2015-11-05T14:06:40+08:00',
+    u'published_at': u'2015-08-31T16:03:45+08:00',
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'250ml',
+          u'500ml'
+        ],
+        u'id': 1618028612,
+        u'name': u'Size',
+        u'product_id': 1301389572
+      }
+    ],
+    u'image': {
+      u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AD_SHAMPOO_250ml.jpg?v=1446629101',
+      u'product_id': 1301389572,
+      u'created_at': u'2015-11-04T17:24:55+08:00',
+      u'updated_at': u'2015-11-04T17:25:01+08:00',
+      u'variant_ids': [
+        
+      ],
+      u'position': 1,
+      u'id': 7102957444
+    },
+    u'images': [
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AD_SHAMPOO_250ml.jpg?v=1446629101',
+        u'product_id': 1301389572,
+        u'created_at': u'2015-11-04T17:24:55+08:00',
+        u'updated_at': u'2015-11-04T17:25:01+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 1,
+        u'id': 7102957444
+      }
+    ],
+    u'vendor': u'Shiseido',
+    u'variants': [
+      {
+        u'weight': 0.0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-09-28T10:16:06+08:00',
+        u'inventory_quantity': 6,
+        u'compare_at_price': None,
+        u'id': 4673707460,
+        u'sku': u'',
+        u'title': u'250ml',
+        u'inventory_policy': u'deny',
+        u'inventory_management': u'shopify',
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'lb',
+        u'option1': u'250ml',
+        u'price': u'111.00',
+        u'barcode': u'4901872311569',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 6,
+        u'grams': 0,
+        u'product_id': 1301389572,
+        u'created_at': u'2015-08-31T16:03:45+08:00',
+        u'position': 1
+      },
+      {
+        u'weight': 0.0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-11-05T14:06:40+08:00',
+        u'inventory_quantity': 2,
+        u'compare_at_price': None,
+        u'id': 4673707524,
+        u'sku': u'',
+        u'title': u'500ml',
+        u'inventory_policy': u'deny',
+        u'inventory_management': u'shopify',
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'lb',
+        u'option1': u'500ml',
+        u'price': u'186.00',
+        u'barcode': u'4901872311576',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 2,
+        u'grams': 0,
+        u'product_id': 1301389572,
+        u'created_at': u'2015-08-31T16:03:45+08:00',
+        u'position': 2
+      }
+    ],
+    u'id': 1301389572
+  },
+  {
+    u'handle': u'sl-shampoo-refill',
+    u'template_suffix': None,
+    u'product_type': u'Consumable',
+    u'published_scope': u'web',
+    u'title': u'AD Shampoo (refill) 1800ml',
+    u'created_at': u'2015-09-02T19:41:05+08:00',
+    u'tags': u'ADENOVITAL',
+    u'body_html': u' 1800ml  ',
+    u'updated_at': u'2015-09-27T21:19:04+08:00',
+    u'published_at': None,
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Default Title'
+        ],
+        u'id': 1648839620,
+        u'name': u'Title',
+        u'product_id': 1328825540
+      }
+    ],
+    u'image': {
+      u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AD_sampoo_refill_1800ml.jpg?v=1441255334',
+      u'product_id': 1328825540,
+      u'created_at': u'2015-09-03T12:42:14+08:00',
+      u'updated_at': u'2015-09-03T12:42:14+08:00',
+      u'variant_ids': [
+        
+      ],
+      u'position': 1,
+      u'id': 3424632964
+    },
+    u'images': [
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AD_sampoo_refill_1800ml.jpg?v=1441255334',
+        u'product_id': 1328825540,
+        u'created_at': u'2015-09-03T12:42:14+08:00',
+        u'updated_at': u'2015-09-03T12:42:14+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 1,
+        u'id': 3424632964
+      }
+    ],
+    u'vendor': u'Shiseido',
+    u'variants': [
+      {
+        u'weight': 0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-09-27T21:19:04+08:00',
+        u'inventory_quantity': 1,
+        u'compare_at_price': None,
+        u'id': 4749895364,
+        u'sku': u'',
+        u'title': u'Default Title',
+        u'inventory_policy': u'deny',
+        u'inventory_management': None,
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Default Title',
+        u'price': u'160.06',
+        u'barcode': u'',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 1,
+        u'grams': 0,
+        u'product_id': 1328825540,
+        u'created_at': u'2015-09-02T19:41:05+08:00',
+        u'position': 1
+      }
+    ],
+    u'id': 1328825540
+  },
+  {
+    u'handle': u'ad-shampoo-1000ml',
+    u'template_suffix': None,
+    u'product_type': u'Consumable',
+    u'published_scope': u'web',
+    u'title': u'AD Shampoo 1000ml',
+    u'created_at': u'2015-09-03T13:05:25+08:00',
+    u'tags': u'ADENOVITAL',
+    u'body_html': u' 1000ml  ',
+    u'updated_at': u'2015-09-28T10:19:02+08:00',
+    u'published_at': None,
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Default Title'
+        ],
+        u'id': 1660150468,
+        u'name': u'Title',
+        u'product_id': 1338970884
+      }
+    ],
+    u'image': {
+      u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AD_Shampoo_1000ml.jpg?v=1441256728',
+      u'product_id': 1338970884,
+      u'created_at': u'2015-09-03T13:05:28+08:00',
+      u'updated_at': u'2015-09-03T13:05:28+08:00',
+      u'variant_ids': [
+        
+      ],
+      u'position': 1,
+      u'id': 3424733892
+    },
+    u'images': [
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AD_Shampoo_1000ml.jpg?v=1441256728',
+        u'product_id': 1338970884,
+        u'created_at': u'2015-09-03T13:05:28+08:00',
+        u'updated_at': u'2015-09-03T13:05:28+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 1,
+        u'id': 3424733892
+      }
+    ],
+    u'vendor': u'Shiseido',
+    u'variants': [
+      {
+        u'weight': 0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-09-28T10:19:02+08:00',
+        u'inventory_quantity': 1,
+        u'compare_at_price': None,
+        u'id': 4775121092,
+        u'sku': u'',
+        u'title': u'Default Title',
+        u'inventory_policy': u'deny',
+        u'inventory_management': u'shopify',
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Default Title',
+        u'price': u'138.60',
+        u'barcode': u'4901872667581',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 1,
+        u'grams': 0,
+        u'product_id': 1338970884,
+        u'created_at': u'2015-09-03T13:05:25+08:00',
+        u'position': 1
+      }
+    ],
+    u'id': 1338970884
+  },
+  {
+    u'handle': u'adenovital-ad-warming-primer',
+    u'template_suffix': None,
+    u'product_type': u'Consumable',
+    u'published_scope': u'web',
+    u'title': u'AD Warming Primer',
+    u'created_at': u'2015-08-31T16:03:45+08:00',
+    u'tags': u'ADENOVITAL',
+    u'body_html': u' 260g  ',
+    u'updated_at': u'2015-09-28T10:36:33+08:00',
+    u'published_at': None,
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Default Title'
+        ],
+        u'id': 1618028740,
+        u'name': u'Title',
+        u'product_id': 1301389700
+      }
+    ],
+    u'image': {
+      u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AD_Warming_Primer.jpg?v=1441187820',
+      u'product_id': 1301389700,
+      u'created_at': u'2015-09-02T17:53:19+08:00',
+      u'updated_at': u'2015-09-02T17:57:00+08:00',
+      u'variant_ids': [
+        
+      ],
+      u'position': 1,
+      u'id': 3406522372
+    },
+    u'images': [
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AD_Warming_Primer.jpg?v=1441187820',
+        u'product_id': 1301389700,
+        u'created_at': u'2015-09-02T17:53:19+08:00',
+        u'updated_at': u'2015-09-02T17:57:00+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 1,
+        u'id': 3406522372
+      }
+    ],
+    u'vendor': u'Shiseido',
+    u'variants': [
+      {
+        u'weight': 0.0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-09-28T10:32:37+08:00',
+        u'inventory_quantity': 3,
+        u'compare_at_price': None,
+        u'id': 4673707652,
+        u'sku': u'',
+        u'title': u'Default Title',
+        u'inventory_policy': u'deny',
+        u'inventory_management': u'shopify',
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'lb',
+        u'option1': u'Default Title',
+        u'price': u'279.00',
+        u'barcode': u'490187202409',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 3,
+        u'grams': 0,
+        u'product_id': 1301389700,
+        u'created_at': u'2015-08-31T16:03:45+08:00',
+        u'position': 1
+      }
+    ],
+    u'id': 1301389700
+  },
+  {
+    u'handle': u'after-chemical-treatment',
+    u'template_suffix': None,
+    u'product_type': u'Add on',
+    u'published_scope': u'global',
+    u'title': u'After Chemical Treatment',
+    u'created_at': u'2015-09-27T18:18:04+08:00',
+    u'tags': u'',
+    u'body_html': u'',
+    u'updated_at': u'2015-10-02T15:27:29+08:00',
+    u'published_at': None,
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Default Title'
+        ],
+        u'id': 1972216196,
+        u'name': u'Title',
+        u'product_id': 1613140804
+      }
+    ],
+    u'image': None,
+    u'images': [
+      
+    ],
+    u'vendor': u'Massimo Hair Lab',
+    u'variants': [
+      {
+        u'weight': 0,
+        u'requires_shipping': True,
+        u'updated_at': u'2015-10-17T18:12:45+08:00',
+        u'inventory_quantity': -7,
+        u'compare_at_price': None,
+        u'id': 5733128068,
+        u'sku': u'',
+        u'title': u'Default Title',
+        u'inventory_policy': u'deny',
+        u'inventory_management': None,
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Default Title',
+        u'price': u'50.00',
+        u'barcode': u'',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': -7,
+        u'grams': 0,
+        u'product_id': 1613140804,
+        u'created_at': u'2015-09-27T18:18:04+08:00',
+        u'position': 1
+      }
+    ],
+    u'id': 1613140804
+  },
+  {
+    u'handle': u'aquaintensive-ai-caviaressence',
+    u'template_suffix': None,
+    u'product_type': u'Products',
+    u'published_scope': u'global',
+    u'title': u'AI Caviar Essence',
+    u'created_at': u'2015-08-31T16:03:45+08:00',
+    u'tags': u'AQUA INTENSIVE',
+    u'body_html': u' 100ml  ',
+    u'updated_at': u'2015-11-09T16:44:34+08:00',
+    u'published_at': u'2015-08-31T16:03:00+08:00',
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Default Title'
+        ],
+        u'id': 1618028804,
+        u'name': u'Title',
+        u'product_id': 1301389764
+      }
+    ],
+    u'image': {
+      u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/THC_CA_ESSENCE_AI_100ml.jpg?v=1446629639',
+      u'product_id': 1301389764,
+      u'created_at': u'2015-11-04T17:33:00+08:00',
+      u'updated_at': u'2015-11-04T17:33:59+08:00',
+      u'variant_ids': [
+        
+      ],
+      u'position': 1,
+      u'id': 7103066180
+    },
+    u'images': [
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/THC_CA_ESSENCE_AI_100ml.jpg?v=1446629639',
+        u'product_id': 1301389764,
+        u'created_at': u'2015-11-04T17:33:00+08:00',
+        u'updated_at': u'2015-11-04T17:33:59+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 1,
+        u'id': 7103066180
+      }
+    ],
+    u'vendor': u'Shiseido',
+    u'variants': [
+      {
+        u'weight': 0.0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-11-09T16:44:34+08:00',
+        u'inventory_quantity': 3,
+        u'compare_at_price': None,
+        u'id': 4673707716,
+        u'sku': u'',
+        u'title': u'Default Title',
+        u'inventory_policy': u'deny',
+        u'inventory_management': u'shopify',
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'lb',
+        u'option1': u'Default Title',
+        u'price': u'159.00',
+        u'barcode': u'4901872678402',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 3,
+        u'grams': 0,
+        u'product_id': 1301389764,
+        u'created_at': u'2015-08-31T16:03:45+08:00',
+        u'position': 1
+      }
+    ],
+    u'id': 1301389764
+  },
+  {
+    u'handle': u'aquaintensive-ai-lotion',
+    u'template_suffix': None,
+    u'product_type': u'Products',
+    u'published_scope': u'global',
+    u'title': u'AI Lotion',
+    u'created_at': u'2015-08-31T16:03:45+08:00',
+    u'tags': u'AQUA INTENSIVE',
+    u'body_html': u' 125ml  ',
+    u'updated_at': u'2015-11-04T17:37:44+08:00',
+    u'published_at': u'2015-08-31T16:03:00+08:00',
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Default Title'
+        ],
+        u'id': 1618028868,
+        u'name': u'Title',
+        u'product_id': 1301389828
+      }
+    ],
+    u'image': {
+      u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/260048.jpg?v=1446629864',
+      u'product_id': 1301389828,
+      u'created_at': u'2015-11-04T17:37:39+08:00',
+      u'updated_at': u'2015-11-04T17:37:44+08:00',
+      u'variant_ids': [
+        
+      ],
+      u'position': 1,
+      u'id': 7103129028
+    },
+    u'images': [
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/260048.jpg?v=1446629864',
+        u'product_id': 1301389828,
+        u'created_at': u'2015-11-04T17:37:39+08:00',
+        u'updated_at': u'2015-11-04T17:37:44+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 1,
+        u'id': 7103129028
+      }
+    ],
+    u'vendor': u'Shiseido',
+    u'variants': [
+      {
+        u'weight': 0.0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-09-27T21:20:14+08:00',
+        u'inventory_quantity': 6,
+        u'compare_at_price': None,
+        u'id': 4673707780,
+        u'sku': u'',
+        u'title': u'Default Title',
+        u'inventory_policy': u'deny',
+        u'inventory_management': u'shopify',
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'lb',
+        u'option1': u'Default Title',
+        u'price': u'88.00',
+        u'barcode': u'4901872254781',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 6,
+        u'grams': 0,
+        u'product_id': 1301389828,
+        u'created_at': u'2015-08-31T16:03:45+08:00',
+        u'position': 1
+      }
+    ],
+    u'id': 1301389828
+  },
+  {
+    u'handle': u'aquaintensive-ai-mask',
+    u'template_suffix': None,
+    u'product_type': u'Products',
+    u'published_scope': u'global',
+    u'title': u'AI Mask 200g',
+    u'created_at': u'2015-08-31T16:03:45+08:00',
+    u'tags': u'AQUA INTENSIVE',
+    u'body_html': u' 200g  ',
+    u'updated_at': u'2015-09-29T17:09:27+08:00',
+    u'published_at': u'2015-08-31T16:03:00+08:00',
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Default Title'
+        ],
+        u'id': 1618028932,
+        u'name': u'Title',
+        u'product_id': 1301389892
+      }
+    ],
+    u'image': {
+      u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AI_MASK.jpg?v=1441115432',
+      u'product_id': 1301389892,
+      u'created_at': u'2015-09-01T21:50:32+08:00',
+      u'updated_at': u'2015-09-01T21:50:32+08:00',
+      u'variant_ids': [
+        
+      ],
+      u'position': 1,
+      u'id': 3388627652
+    },
+    u'images': [
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AI_MASK.jpg?v=1441115432',
+        u'product_id': 1301389892,
+        u'created_at': u'2015-09-01T21:50:32+08:00',
+        u'updated_at': u'2015-09-01T21:50:32+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 1,
+        u'id': 3388627652
+      }
+    ],
+    u'vendor': u'Shiseido',
+    u'variants': [
+      {
+        u'weight': 0.0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-09-27T16:08:00+08:00',
+        u'inventory_quantity': 6,
+        u'compare_at_price': None,
+        u'id': 4673707844,
+        u'sku': u'',
+        u'title': u'Default Title',
+        u'inventory_policy': u'deny',
+        u'inventory_management': u'shopify',
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'lb',
+        u'option1': u'Default Title',
+        u'price': u'178.00',
+        u'barcode': u'4901872244980',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 6,
+        u'grams': 0,
+        u'product_id': 1301389892,
+        u'created_at': u'2015-08-31T16:03:45+08:00',
+        u'position': 1
+      }
+    ],
+    u'id': 1301389892
+  },
+  {
+    u'handle': u'ai-mask-680g',
+    u'template_suffix': None,
+    u'product_type': u'Consumable',
+    u'published_scope': u'web',
+    u'title': u'AI Mask 680g',
+    u'created_at': u'2015-09-27T16:38:52+08:00',
+    u'tags': u'',
+    u'body_html': u'680g',
+    u'updated_at': u'2015-09-29T17:12:46+08:00',
+    u'published_at': None,
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Default Title'
+        ],
+        u'id': 1971743876,
+        u'name': u'Title',
+        u'product_id': 1612688580
+      }
+    ],
+    u'image': {
+      u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/shiseido-aqua-intensive-mask-680g.jpg?v=1443517966',
+      u'product_id': 1612688580,
+      u'created_at': u'2015-09-29T17:12:46+08:00',
+      u'updated_at': u'2015-09-29T17:12:46+08:00',
+      u'variant_ids': [
+        
+      ],
+      u'position': 1,
+      u'id': 4088280772
+    },
+    u'images': [
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/shiseido-aqua-intensive-mask-680g.jpg?v=1443517966',
+        u'product_id': 1612688580,
+        u'created_at': u'2015-09-29T17:12:46+08:00',
+        u'updated_at': u'2015-09-29T17:12:46+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 1,
+        u'id': 4088280772
+      }
+    ],
+    u'vendor': u'Shiseido',
+    u'variants': [
+      {
+        u'weight': 0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-09-27T16:38:52+08:00',
+        u'inventory_quantity': 1,
+        u'compare_at_price': None,
+        u'id': 5731290116,
+        u'sku': u'',
+        u'title': u'Default Title',
+        u'inventory_policy': u'deny',
+        u'inventory_management': u'shopify',
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Default Title',
+        u'price': u'178.08',
+        u'barcode': u'4901872244997',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 1,
+        u'grams': 0,
+        u'product_id': 1612688580,
+        u'created_at': u'2015-09-27T16:38:52+08:00',
+        u'position': 1
+      }
+    ],
+    u'id': 1612688580
+  },
+  {
+    u'handle': u'ai-multi-care-milk-refill',
+    u'template_suffix': None,
+    u'product_type': u'Consumable',
+    u'published_scope': u'web',
+    u'title': u'AI Multi Care Milk (refill)',
+    u'created_at': u'2015-09-03T15:51:00+08:00',
+    u'tags': u'AQUA INTENSIVE',
+    u'body_html': u' 1800ml  ',
+    u'updated_at': u'2015-09-27T02:31:49+08:00',
+    u'published_at': None,
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Default Title'
+        ],
+        u'id': 1661196164,
+        u'name': u'Title',
+        u'product_id': 1339943492
+      }
+    ],
+    u'image': {
+      u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AI_MULTI_CARE_MILK_REFILL_1800ml.jpg?v=1441266675',
+      u'product_id': 1339943492,
+      u'created_at': u'2015-09-03T15:51:15+08:00',
+      u'updated_at': u'2015-09-03T15:51:15+08:00',
+      u'variant_ids': [
+        
+      ],
+      u'position': 1,
+      u'id': 3426575684
+    },
+    u'images': [
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AI_MULTI_CARE_MILK_REFILL_1800ml.jpg?v=1441266675',
+        u'product_id': 1339943492,
+        u'created_at': u'2015-09-03T15:51:15+08:00',
+        u'updated_at': u'2015-09-03T15:51:15+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 1,
+        u'id': 3426575684
+      }
+    ],
+    u'vendor': u'Shiseido',
+    u'variants': [
+      {
+        u'weight': 0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-09-27T02:31:49+08:00',
+        u'inventory_quantity': 1,
+        u'compare_at_price': None,
+        u'id': 4778001476,
+        u'sku': u'',
+        u'title': u'Default Title',
+        u'inventory_policy': u'deny',
+        u'inventory_management': u'shopify',
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Default Title',
+        u'price': u'311.64',
+        u'barcode': u'4901872254903',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 1,
+        u'grams': 0,
+        u'product_id': 1339943492,
+        u'created_at': u'2015-09-03T15:51:00+08:00',
+        u'position': 1
+      }
+    ],
+    u'id': 1339943492
+  },
+  {
+    u'handle': u'ai-multi-care-milk-with-bottle',
+    u'template_suffix': None,
+    u'product_type': u'Consumable',
+    u'published_scope': u'web',
+    u'title': u'AI Multi Care Milk (With bottle)',
+    u'created_at': u'2015-09-03T15:53:04+08:00',
+    u'tags': u'AQUA INTENSIVE',
+    u'body_html': u' 450ml  ',
+    u'updated_at': u'2015-09-27T21:20:28+08:00',
+    u'published_at': None,
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Default Title'
+        ],
+        u'id': 1661204932,
+        u'name': u'Title',
+        u'product_id': 1339952260
+      }
+    ],
+    u'image': {
+      u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AI_mukti_care_milk_with_bottle_450ml.jpg?v=1441277494',
+      u'product_id': 1339952260,
+      u'created_at': u'2015-09-03T18:51:34+08:00',
+      u'updated_at': u'2015-09-03T18:51:34+08:00',
+      u'variant_ids': [
+        
+      ],
+      u'position': 1,
+      u'id': 3429516164
+    },
+    u'images': [
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AI_mukti_care_milk_with_bottle_450ml.jpg?v=1441277494',
+        u'product_id': 1339952260,
+        u'created_at': u'2015-09-03T18:51:34+08:00',
+        u'updated_at': u'2015-09-03T18:51:34+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 1,
+        u'id': 3429516164
+      }
+    ],
+    u'vendor': u'Shiseido',
+    u'variants': [
+      {
+        u'weight': 0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-09-27T21:20:28+08:00',
+        u'inventory_quantity': 1,
+        u'compare_at_price': None,
+        u'id': 4778043076,
+        u'sku': u'',
+        u'title': u'Default Title',
+        u'inventory_policy': u'deny',
+        u'inventory_management': u'shopify',
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Default Title',
+        u'price': u'97.52',
+        u'barcode': u'4901872254897',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 1,
+        u'grams': 0,
+        u'product_id': 1339952260,
+        u'created_at': u'2015-09-03T15:53:04+08:00',
+        u'position': 1
+      }
+    ],
+    u'id': 1339952260
+  },
+  {
+    u'handle': u'aquaintensive-ai-shampoo',
+    u'template_suffix': None,
+    u'product_type': u'Products',
+    u'published_scope': u'global',
+    u'title': u'AI Shampoo',
+    u'created_at': u'2015-08-31T16:03:45+08:00',
+    u'tags': u'AQUA INTENSIVE',
+    u'body_html': u'',
+    u'updated_at': u'2015-10-05T12:42:25+08:00',
+    u'published_at': u'2015-08-31T16:03:45+08:00',
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'250ml',
+          u'500ml'
+        ],
+        u'id': 1618028996,
+        u'name': u'Size',
+        u'product_id': 1301389956
+      }
+    ],
+    u'image': {
+      u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AL_SAMPOO.jpg?v=1441115481',
+      u'product_id': 1301389956,
+      u'created_at': u'2015-09-01T21:51:21+08:00',
+      u'updated_at': u'2015-09-01T21:51:21+08:00',
+      u'variant_ids': [
+        
+      ],
+      u'position': 1,
+      u'id': 3388642436
+    },
+    u'images': [
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AL_SAMPOO.jpg?v=1441115481',
+        u'product_id': 1301389956,
+        u'created_at': u'2015-09-01T21:51:21+08:00',
+        u'updated_at': u'2015-09-01T21:51:21+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 1,
+        u'id': 3388642436
+      }
+    ],
+    u'vendor': u'Shiseido',
+    u'variants': [
+      {
+        u'weight': 0.0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-09-28T13:24:18+08:00',
+        u'inventory_quantity': 6,
+        u'compare_at_price': None,
+        u'id': 4673707908,
+        u'sku': u'',
+        u'title': u'250ml',
+        u'inventory_policy': u'deny',
+        u'inventory_management': u'shopify',
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'lb',
+        u'option1': u'250ml',
+        u'price': u'88.00',
+        u'barcode': u'4901872292677',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 6,
+        u'grams': 0,
+        u'product_id': 1301389956,
+        u'created_at': u'2015-08-31T16:03:45+08:00',
+        u'position': 1
+      },
+      {
+        u'weight': 0.0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-10-05T12:42:25+08:00',
+        u'inventory_quantity': 2,
+        u'compare_at_price': None,
+        u'id': 4673707972,
+        u'sku': u'',
+        u'title': u'500ml',
+        u'inventory_policy': u'deny',
+        u'inventory_management': u'shopify',
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'lb',
+        u'option1': u'500ml',
+        u'price': u'148.00',
+        u'barcode': u'4901872292684',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 2,
+        u'grams': 0,
+        u'product_id': 1301389956,
+        u'created_at': u'2015-08-31T16:03:45+08:00',
+        u'position': 2
+      }
+    ],
+    u'id': 1301389956
+  },
+  {
+    u'handle': u'ai-shampoo-refill',
+    u'template_suffix': None,
+    u'product_type': u'Consumable',
+    u'published_scope': u'web',
+    u'title': u'AI Shampoo (refill)',
+    u'created_at': u'2015-09-03T14:59:08+08:00',
+    u'tags': u'AQUA INTENSIVE',
+    u'body_html': u' 1800ml  ',
+    u'updated_at': u'2015-09-27T21:21:38+08:00',
+    u'published_at': None,
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Default Title'
+        ],
+        u'id': 1660860740,
+        u'name': u'Title',
+        u'product_id': 1339623300
+      }
+    ],
+    u'image': {
+      u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AI_SAMPOO_REFILL_1800ml.jpg?v=1441263576',
+      u'product_id': 1339623300,
+      u'created_at': u'2015-09-03T14:59:36+08:00',
+      u'updated_at': u'2015-09-03T14:59:36+08:00',
+      u'variant_ids': [
+        
+      ],
+      u'position': 1,
+      u'id': 3425949444
+    },
+    u'images': [
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AI_SAMPOO_REFILL_1800ml.jpg?v=1441263576',
+        u'product_id': 1339623300,
+        u'created_at': u'2015-09-03T14:59:36+08:00',
+        u'updated_at': u'2015-09-03T14:59:36+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 1,
+        u'id': 3425949444
+      }
+    ],
+    u'vendor': u'Shiseido',
+    u'variants': [
+      {
+        u'weight': 0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-09-27T21:21:38+08:00',
+        u'inventory_quantity': 0,
+        u'compare_at_price': None,
+        u'id': 4776996484,
+        u'sku': u'',
+        u'title': u'Default Title',
+        u'inventory_policy': u'deny',
+        u'inventory_management': u'shopify',
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Default Title',
+        u'price': u'160.06',
+        u'barcode': u'',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 0,
+        u'grams': 0,
+        u'product_id': 1339623300,
+        u'created_at': u'2015-09-03T14:59:08+08:00',
+        u'position': 1
+      }
+    ],
+    u'id': 1339623300
+  },
+  {
+    u'handle': u'ai-shampoo-1000ml',
+    u'template_suffix': None,
+    u'product_type': u'Consumable',
+    u'published_scope': u'web',
+    u'title': u'AI Shampoo 1000ml',
+    u'created_at': u'2015-09-27T16:23:40+08:00',
+    u'tags': u'',
+    u'body_html': u'1000ml',
+    u'updated_at': u'2015-09-29T14:47:47+08:00',
+    u'published_at': None,
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Default Title'
+        ],
+        u'id': 1971650820,
+        u'name': u'Title',
+        u'product_id': 1612599812
+      }
+    ],
+    u'image': {
+      u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AI_Shampoo_1000ml.jpg?v=1443509267',
+      u'product_id': 1612599812,
+      u'created_at': u'2015-09-29T14:47:47+08:00',
+      u'updated_at': u'2015-09-29T14:47:47+08:00',
+      u'variant_ids': [
+        
+      ],
+      u'position': 1,
+      u'id': 4085616004
+    },
+    u'images': [
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AI_Shampoo_1000ml.jpg?v=1443509267',
+        u'product_id': 1612599812,
+        u'created_at': u'2015-09-29T14:47:47+08:00',
+        u'updated_at': u'2015-09-29T14:47:47+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 1,
+        u'id': 4085616004
+      }
+    ],
+    u'vendor': u'Shiseido',
+    u'variants': [
+      {
+        u'weight': 0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-09-27T16:35:25+08:00',
+        u'inventory_quantity': 1,
+        u'compare_at_price': None,
+        u'id': 5731002756,
+        u'sku': u'',
+        u'title': u'Default Title',
+        u'inventory_policy': u'deny',
+        u'inventory_management': u'shopify',
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Default Title',
+        u'price': u'137.80',
+        u'barcode': u'4901872236695',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 1,
+        u'grams': 0,
+        u'product_id': 1612599812,
+        u'created_at': u'2015-09-27T16:23:40+08:00',
+        u'position': 1
+      }
+    ],
+    u'id': 1612599812
+  },
+  {
+    u'handle': u'aquaintensive-ai-treatment1',
+    u'template_suffix': None,
+    u'product_type': u'Products',
+    u'published_scope': u'global',
+    u'title': u'AI Treatment 1',
+    u'created_at': u'2015-08-31T16:03:45+08:00',
+    u'tags': u'AQUA INTENSIVE',
+    u'body_html': u'',
+    u'updated_at': u'2015-11-04T17:55:54+08:00',
+    u'published_at': u'2015-08-31T16:03:45+08:00',
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'250ml',
+          u'500ml'
+        ],
+        u'id': 1618029060,
+        u'name': u'Size',
+        u'product_id': 1301390020
+      }
+    ],
+    u'image': {
+      u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/image-678118-1-zoom.jpg?v=1446630954',
+      u'product_id': 1301390020,
+      u'created_at': u'2015-11-04T17:55:38+08:00',
+      u'updated_at': u'2015-11-04T17:55:54+08:00',
+      u'variant_ids': [
+        
+      ],
+      u'position': 1,
+      u'id': 7103275716
+    },
+    u'images': [
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/image-678118-1-zoom.jpg?v=1446630954',
+        u'product_id': 1301390020,
+        u'created_at': u'2015-11-04T17:55:38+08:00',
+        u'updated_at': u'2015-11-04T17:55:54+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 1,
+        u'id': 7103275716
+      }
+    ],
+    u'vendor': u'Shiseido',
+    u'variants': [
+      {
+        u'weight': 0.0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-09-27T02:33:41+08:00',
+        u'inventory_quantity': 6,
+        u'compare_at_price': None,
+        u'id': 4673708036,
+        u'sku': u'',
+        u'title': u'250ml',
+        u'inventory_policy': u'deny',
+        u'inventory_management': u'shopify',
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'lb',
+        u'option1': u'250ml',
+        u'price': u'111.00',
+        u'barcode': u'4901872237210',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 6,
+        u'grams': 0,
+        u'product_id': 1301390020,
+        u'created_at': u'2015-08-31T16:03:45+08:00',
+        u'position': 1
+      },
+      {
+        u'weight': 0.0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-09-27T02:33:55+08:00',
+        u'inventory_quantity': 3,
+        u'compare_at_price': None,
+        u'id': 4673708100,
+        u'sku': u'',
+        u'title': u'500ml',
+        u'inventory_policy': u'deny',
+        u'inventory_management': u'shopify',
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'lb',
+        u'option1': u'500ml',
+        u'price': u'186.00',
+        u'barcode': u'4901872237227',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 3,
+        u'grams': 0,
+        u'product_id': 1301390020,
+        u'created_at': u'2015-08-31T16:03:45+08:00',
+        u'position': 2
+      }
+    ],
+    u'id': 1301390020
+  },
+  {
+    u'handle': u'ai-treatment-1-refill',
+    u'template_suffix': None,
+    u'product_type': u'Consumable',
+    u'published_scope': u'web',
+    u'title': u'AI Treatment 1 (refill) 1800g',
+    u'created_at': u'2015-09-03T15:42:35+08:00',
+    u'tags': u'AQUA INTENSIVE',
+    u'body_html': u' 1800g  ',
+    u'updated_at': u'2015-09-27T16:42:04+08:00',
+    u'published_at': None,
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Default Title'
+        ],
+        u'id': 1661146692,
+        u'name': u'Title',
+        u'product_id': 1339895108
+      }
+    ],
+    u'image': {
+      u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AI_treatment_1_1800g.jpg?v=1441266270',
+      u'product_id': 1339895108,
+      u'created_at': u'2015-09-03T15:44:30+08:00',
+      u'updated_at': u'2015-09-03T15:44:30+08:00',
+      u'variant_ids': [
+        
+      ],
+      u'position': 1,
+      u'id': 3426490372
+    },
+    u'images': [
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AI_treatment_1_1800g.jpg?v=1441266270',
+        u'product_id': 1339895108,
+        u'created_at': u'2015-09-03T15:44:30+08:00',
+        u'updated_at': u'2015-09-03T15:44:30+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 1,
+        u'id': 3426490372
+      }
+    ],
+    u'vendor': u'Shiseido',
+    u'variants': [
+      {
+        u'weight': 0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-09-27T16:42:04+08:00',
+        u'inventory_quantity': 0,
+        u'compare_at_price': None,
+        u'id': 4777822980,
+        u'sku': u'',
+        u'title': u'Default Title',
+        u'inventory_policy': u'deny',
+        u'inventory_management': u'shopify',
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Default Title',
+        u'price': u'200.34',
+        u'barcode': u'',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 0,
+        u'grams': 0,
+        u'product_id': 1339895108,
+        u'created_at': u'2015-09-03T15:42:35+08:00',
+        u'position': 1
+      }
+    ],
+    u'id': 1339895108
+  },
+  {
+    u'handle': u'ai-treatment-1',
+    u'template_suffix': None,
+    u'product_type': u'Consumable',
+    u'published_scope': u'web',
+    u'title': u'AI Treatment 1 1000g',
+    u'created_at': u'2015-09-03T15:00:57+08:00',
+    u'tags': u'AQUA INTENSIVE',
+    u'body_html': u' 1000g  ',
+    u'updated_at': u'2015-09-27T21:22:22+08:00',
+    u'published_at': None,
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Default Title'
+        ],
+        u'id': 1660872708,
+        u'name': u'Title',
+        u'product_id': 1339634372
+      }
+    ],
+    u'image': {
+      u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AI_Treatment_1_1000g.jpg?v=1441277652',
+      u'product_id': 1339634372,
+      u'created_at': u'2015-09-03T18:54:12+08:00',
+      u'updated_at': u'2015-09-03T18:54:12+08:00',
+      u'variant_ids': [
+        
+      ],
+      u'position': 1,
+      u'id': 3429572804
+    },
+    u'images': [
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AI_Treatment_1_1000g.jpg?v=1441277652',
+        u'product_id': 1339634372,
+        u'created_at': u'2015-09-03T18:54:12+08:00',
+        u'updated_at': u'2015-09-03T18:54:12+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 1,
+        u'id': 3429572804
+      }
+    ],
+    u'vendor': u'Shiseido',
+    u'variants': [
+      {
+        u'weight': 0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-09-27T21:22:22+08:00',
+        u'inventory_quantity': 1,
+        u'compare_at_price': None,
+        u'id': 4777015044,
+        u'sku': u'',
+        u'title': u'Default Title',
+        u'inventory_policy': u'deny',
+        u'inventory_management': u'shopify',
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Default Title',
+        u'price': u'191.86',
+        u'barcode': u'4901872243440',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 1,
+        u'grams': 0,
+        u'product_id': 1339634372,
+        u'created_at': u'2015-09-03T15:00:57+08:00',
+        u'position': 1
+      }
+    ],
+    u'id': 1339634372
+  },
+  {
+    u'handle': u'aquaintensive-ai-treatment2',
+    u'template_suffix': None,
+    u'product_type': u'Products',
+    u'published_scope': u'global',
+    u'title': u'AI Treatment 2',
+    u'created_at': u'2015-08-31T16:03:45+08:00',
+    u'tags': u'AQUA INTENSIVE',
+    u'body_html': u'',
+    u'updated_at': u'2015-11-04T17:52:27+08:00',
+    u'published_at': u'2015-08-31T16:03:00+08:00',
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'250ml',
+          u'500ml'
+        ],
+        u'id': 1618029124,
+        u'name': u'Size',
+        u'product_id': 1301390084
+      }
+    ],
+    u'image': {
+      u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/image-098118-1-zoom.jpg?v=1446630747',
+      u'product_id': 1301390084,
+      u'created_at': u'2015-11-04T17:52:21+08:00',
+      u'updated_at': u'2015-11-04T17:52:27+08:00',
+      u'variant_ids': [
+        
+      ],
+      u'position': 1,
+      u'id': 7103259460
+    },
+    u'images': [
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/image-098118-1-zoom.jpg?v=1446630747',
+        u'product_id': 1301390084,
+        u'created_at': u'2015-11-04T17:52:21+08:00',
+        u'updated_at': u'2015-11-04T17:52:27+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 1,
+        u'id': 7103259460
+      }
+    ],
+    u'vendor': u'Shiseido',
+    u'variants': [
+      {
+        u'weight': 0.0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-09-27T16:45:43+08:00',
+        u'inventory_quantity': 6,
+        u'compare_at_price': None,
+        u'id': 4673708164,
+        u'sku': u'',
+        u'title': u'250ml',
+        u'inventory_policy': u'deny',
+        u'inventory_management': u'shopify',
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'lb',
+        u'option1': u'250ml',
+        u'price': u'111.00',
+        u'barcode': u'4901872243662',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 6,
+        u'grams': 0,
+        u'product_id': 1301390084,
+        u'created_at': u'2015-08-31T16:03:45+08:00',
+        u'position': 1
+      },
+      {
+        u'weight': 0.0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-09-27T16:46:22+08:00',
+        u'inventory_quantity': 3,
+        u'compare_at_price': None,
+        u'id': 4673708228,
+        u'sku': u'',
+        u'title': u'500ml',
+        u'inventory_policy': u'deny',
+        u'inventory_management': u'shopify',
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'lb',
+        u'option1': u'500ml',
+        u'price': u'186.00',
+        u'barcode': u'4901872243686',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 3,
+        u'grams': 0,
+        u'product_id': 1301390084,
+        u'created_at': u'2015-08-31T16:03:45+08:00',
+        u'position': 2
+      }
+    ],
+    u'id': 1301390084
+  },
+  {
+    u'handle': u'ai-treatment-2-refill',
+    u'template_suffix': None,
+    u'product_type': u'Consumable',
+    u'published_scope': u'web',
+    u'title': u'AI Treatment 2 (refill) 1800g',
+    u'created_at': u'2015-09-03T15:47:44+08:00',
+    u'tags': u'AQUA INTENSIVE',
+    u'body_html': u' 1800g  ',
+    u'updated_at': u'2015-11-06T16:41:12+08:00',
+    u'published_at': None,
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Default Title'
+        ],
+        u'id': 1661177604,
+        u'name': u'Title',
+        u'product_id': 1339925508
+      }
+    ],
+    u'image': {
+      u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/520782173.g_160-w-st_g.jpg?v=1446799272',
+      u'product_id': 1339925508,
+      u'created_at': u'2015-11-06T16:35:44+08:00',
+      u'updated_at': u'2015-11-06T16:41:12+08:00',
+      u'variant_ids': [
+        
+      ],
+      u'position': 1,
+      u'id': 7183192324
+    },
+    u'images': [
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/520782173.g_160-w-st_g.jpg?v=1446799272',
+        u'product_id': 1339925508,
+        u'created_at': u'2015-11-06T16:35:44+08:00',
+        u'updated_at': u'2015-11-06T16:41:12+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 1,
+        u'id': 7183192324
+      }
+    ],
+    u'vendor': u'Shiseido',
+    u'variants': [
+      {
+        u'weight': 0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-09-27T16:47:44+08:00',
+        u'inventory_quantity': 1,
+        u'compare_at_price': None,
+        u'id': 4777925060,
+        u'sku': u'',
+        u'title': u'Default Title',
+        u'inventory_policy': u'deny',
+        u'inventory_management': None,
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Default Title',
+        u'price': u'200.34',
+        u'barcode': u'',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 1,
+        u'grams': 0,
+        u'product_id': 1339925508,
+        u'created_at': u'2015-09-03T15:47:44+08:00',
+        u'position': 1
+      }
+    ],
+    u'id': 1339925508
+  },
+  {
+    u'handle': u'ai-treatment-2-1000g',
+    u'template_suffix': None,
+    u'product_type': u'Consumable',
+    u'published_scope': u'web',
+    u'title': u'AI Treatment 2 1000g',
+    u'created_at': u'2015-09-03T15:46:12+08:00',
+    u'tags': u'AQUA INTENSIVE',
+    u'body_html': u' 1000g  ',
+    u'updated_at': u'2015-09-27T21:23:24+08:00',
+    u'published_at': None,
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Default Title'
+        ],
+        u'id': 1661172100,
+        u'name': u'Title',
+        u'product_id': 1339920068
+      }
+    ],
+    u'image': {
+      u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AI_Treatment_2_1000g.jpg?v=1441266381',
+      u'product_id': 1339920068,
+      u'created_at': u'2015-09-03T15:46:21+08:00',
+      u'updated_at': u'2015-09-03T15:46:21+08:00',
+      u'variant_ids': [
+        
+      ],
+      u'position': 1,
+      u'id': 3426526788
+    },
+    u'images': [
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/AI_Treatment_2_1000g.jpg?v=1441266381',
+        u'product_id': 1339920068,
+        u'created_at': u'2015-09-03T15:46:21+08:00',
+        u'updated_at': u'2015-09-03T15:46:21+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 1,
+        u'id': 3426526788
+      }
+    ],
+    u'vendor': u'Shiseido',
+    u'variants': [
+      {
+        u'weight': 0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-09-27T21:23:24+08:00',
+        u'inventory_quantity': 1,
+        u'compare_at_price': None,
+        u'id': 4777901636,
+        u'sku': u'',
+        u'title': u'Default Title',
+        u'inventory_policy': u'deny',
+        u'inventory_management': u'shopify',
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Default Title',
+        u'price': u'191.86',
+        u'barcode': u'4901872244904',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 1,
+        u'grams': 0,
+        u'product_id': 1339920068,
+        u'created_at': u'2015-09-03T15:46:12+08:00',
+        u'position': 1
+      }
+    ],
+    u'id': 1339920068
+  },
+  {
+    u'handle': u'amplea-volumizing-bath-250ml',
+    u'template_suffix': None,
+    u'product_type': u'Products',
+    u'published_scope': u'global',
+    u'title': u'Amplea Volumizing Bath 250ml',
+    u'created_at': u'2015-09-30T16:18:50+08:00',
+    u'tags': u'eLGON',
+    u'body_html': u'250ml',
+    u'updated_at': u'2015-10-31T19:21:46+08:00',
+    u'published_at': u'2015-10-05T19:13:00+08:00',
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Default Title'
+        ],
+        u'id': 2010415492,
+        u'name': u'Title',
+        u'product_id': 1642827524
+      }
+    ],
+    u'image': {
+      u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/Amplea_Volumizing_Bath_250ml.jpg?v=1443781860',
+      u'product_id': 1642827524,
+      u'created_at': u'2015-10-02T18:31:00+08:00',
+      u'updated_at': u'2015-10-02T18:31:00+08:00',
+      u'variant_ids': [
+        
+      ],
+      u'position': 1,
+      u'id': 4171174020
+    },
+    u'images': [
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/Amplea_Volumizing_Bath_250ml.jpg?v=1443781860',
+        u'product_id': 1642827524,
+        u'created_at': u'2015-10-02T18:31:00+08:00',
+        u'updated_at': u'2015-10-02T18:31:00+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 1,
+        u'id': 4171174020
+      }
+    ],
+    u'vendor': u'eLGON',
+    u'variants': [
+      {
+        u'weight': 0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-10-31T19:21:46+08:00',
+        u'inventory_quantity': 13,
+        u'compare_at_price': None,
+        u'id': 5827994564,
+        u'sku': u'',
+        u'title': u'Default Title',
+        u'inventory_policy': u'deny',
+        u'inventory_management': u'shopify',
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Default Title',
+        u'price': u'57.00',
+        u'barcode': u'',
+        u'image_id': None,
+        u'taxable': False,
+        u'old_inventory_quantity': 13,
+        u'grams': 0,
+        u'product_id': 1642827524,
+        u'created_at': u'2015-09-30T16:18:50+08:00',
+        u'position': 1
+      }
+    ],
+    u'id': 1642827524
+  },
+  {
+    u'handle': u'basin-wash',
+    u'template_suffix': None,
+    u'product_type': u'Add on',
+    u'published_scope': u'global',
+    u'title': u'Basin Wash',
+    u'created_at': u'2015-09-27T17:32:24+08:00',
+    u'tags': u'',
+    u'body_html': u'',
+    u'updated_at': u'2015-10-02T15:27:29+08:00',
+    u'published_at': None,
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Default Title'
+        ],
+        u'id': 1972083908,
+        u'name': u'Title',
+        u'product_id': 1613018692
+      }
+    ],
+    u'image': None,
+    u'images': [
+      
+    ],
+    u'vendor': u'Massimo Hair Lab',
+    u'variants': [
+      {
+        u'weight': 0,
+        u'requires_shipping': True,
+        u'updated_at': u'2015-09-27T17:32:24+08:00',
+        u'inventory_quantity': 1,
+        u'compare_at_price': None,
+        u'id': 5732388292,
+        u'sku': u'',
+        u'title': u'Default Title',
+        u'inventory_policy': u'deny',
+        u'inventory_management': None,
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Default Title',
+        u'price': u'10.00',
+        u'barcode': u'',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 1,
+        u'grams': 0,
+        u'product_id': 1613018692,
+        u'created_at': u'2015-09-27T17:32:24+08:00',
+        u'position': 1
+      }
+    ],
+    u'id': 1613018692
+  },
+  {
+    u'handle': u'blon-styling-mousse',
+    u'template_suffix': None,
+    u'product_type': u'Consumable',
+    u'published_scope': u'web',
+    u'title': u'Blondee Styling Mousse 250ml',
+    u'created_at': u'2015-09-30T17:10:17+08:00',
+    u'tags': u'',
+    u'body_html': u'250ml',
+    u'updated_at': u'2015-10-15T19:43:08+08:00',
+    u'published_at': None,
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Default Title'
+        ],
+        u'id': 2010971396,
+        u'name': u'Title',
+        u'product_id': 1643206276
+      }
+    ],
+    u'image': {
+      u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/GetAttachment_3.jpg?v=1444132208',
+      u'product_id': 1643206276,
+      u'created_at': u'2015-10-06T19:49:37+08:00',
+      u'updated_at': u'2015-10-06T19:50:08+08:00',
+      u'variant_ids': [
+        
+      ],
+      u'position': 1,
+      u'id': 4246495684
+    },
+    u'images': [
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/GetAttachment_3.jpg?v=1444132208',
+        u'product_id': 1643206276,
+        u'created_at': u'2015-10-06T19:49:37+08:00',
+        u'updated_at': u'2015-10-06T19:50:08+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 1,
+        u'id': 4246495684
+      }
+    ],
+    u'vendor': u'Other',
+    u'variants': [
+      {
+        u'weight': 0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-09-30T17:10:17+08:00',
+        u'inventory_quantity': 26,
+        u'compare_at_price': None,
+        u'id': 5828885700,
+        u'sku': u'',
+        u'title': u'Default Title',
+        u'inventory_policy': u'deny',
+        u'inventory_management': u'shopify',
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Default Title',
+        u'price': u'6.50',
+        u'barcode': u'',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 26,
+        u'grams': 0,
+        u'product_id': 1643206276,
+        u'created_at': u'2015-09-30T17:10:17+08:00',
+        u'position': 1
+      }
+    ],
+    u'id': 1643206276
+  },
+  {
+    u'handle': u'blow-dry',
+    u'template_suffix': None,
+    u'product_type': u'Services',
+    u'published_scope': u'global',
+    u'title': u'Blow Dry',
+    u'created_at': u'2015-08-31T16:03:48+08:00',
+    u'tags': u'',
+    u'body_html': u'',
+    u'updated_at': u'2015-10-02T15:24:43+08:00',
+    u'published_at': None,
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Default Title'
+        ],
+        u'id': 1618032580,
+        u'name': u'Title',
+        u'product_id': 1301393412
+      }
+    ],
+    u'image': {
+      u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/blowdry.jpg?v=1442910962',
+      u'product_id': 1301393412,
+      u'created_at': u'2015-09-22T16:36:02+08:00',
+      u'updated_at': u'2015-09-22T16:36:02+08:00',
+      u'variant_ids': [
+        
+      ],
+      u'position': 1,
+      u'id': 3890864708
+    },
+    u'images': [
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/blowdry.jpg?v=1442910962',
+        u'product_id': 1301393412,
+        u'created_at': u'2015-09-22T16:36:02+08:00',
+        u'updated_at': u'2015-09-22T16:36:02+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 1,
+        u'id': 3890864708
+      }
+    ],
+    u'vendor': u'Massimo Hair Lab',
+    u'variants': [
+      {
+        u'weight': 0.0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-10-31T19:58:53+08:00',
+        u'inventory_quantity': -3,
+        u'compare_at_price': None,
+        u'id': 4673719236,
+        u'sku': u'',
+        u'title': u'Default Title',
+        u'inventory_policy': u'deny',
+        u'inventory_management': None,
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'lb',
+        u'option1': u'Default Title',
+        u'price': u'15.00',
+        u'barcode': u'',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': -3,
+        u'grams': 0,
+        u'product_id': 1301393412,
+        u'created_at': u'2015-08-31T16:03:49+08:00',
+        u'position': 1
+      }
+    ],
+    u'id': 1301393412
+  },
+  {
+    u'handle': u'blowing-curls',
+    u'template_suffix': None,
+    u'product_type': u'Add on',
+    u'published_scope': u'global',
+    u'title': u'Blowing Curls',
+    u'created_at': u'2015-09-27T17:34:05+08:00',
+    u'tags': u'',
+    u'body_html': u'',
+    u'updated_at': u'2015-10-24T16:01:39+08:00',
+    u'published_at': None,
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Default Title'
+        ],
+        u'id': 1972088772,
+        u'name': u'Title',
+        u'product_id': 1613023428
+      }
+    ],
+    u'image': None,
+    u'images': [
+      
+    ],
+    u'vendor': u'Massimo Hair Lab',
+    u'variants': [
+      {
+        u'weight': 0,
+        u'requires_shipping': True,
+        u'updated_at': u'2015-10-24T16:01:39+08:00',
+        u'inventory_quantity': -3,
+        u'compare_at_price': None,
+        u'id': 5732421316,
+        u'sku': u'',
+        u'title': u'Default Title',
+        u'inventory_policy': u'deny',
+        u'inventory_management': None,
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Default Title',
+        u'price': u'8.00',
+        u'barcode': u'',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': -3,
+        u'grams': 0,
+        u'product_id': 1613023428,
+        u'created_at': u'2015-09-27T17:34:05+08:00',
+        u'position': 1
+      }
+    ],
+    u'id': 1613023428
+  },
+  {
+    u'handle': u'braids-x1',
+    u'template_suffix': None,
+    u'product_type': u'Add on',
+    u'published_scope': u'global',
+    u'title': u'Braids x1',
+    u'created_at': u'2015-09-27T17:43:27+08:00',
+    u'tags': u'',
+    u'body_html': u'',
+    u'updated_at': u'2015-10-02T15:27:30+08:00',
+    u'published_at': None,
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Default Title'
+        ],
+        u'id': 1972128452,
+        u'name': u'Title',
+        u'product_id': 1613063044
+      }
+    ],
+    u'image': None,
+    u'images': [
+      
+    ],
+    u'vendor': u'Massimo Hair Lab',
+    u'variants': [
+      {
+        u'weight': 0,
+        u'requires_shipping': True,
+        u'updated_at': u'2015-09-27T17:43:27+08:00',
+        u'inventory_quantity': 1,
+        u'compare_at_price': None,
+        u'id': 5732596996,
+        u'sku': u'',
+        u'title': u'Default Title',
+        u'inventory_policy': u'deny',
+        u'inventory_management': None,
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Default Title',
+        u'price': u'15.00',
+        u'barcode': u'',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 1,
+        u'grams': 0,
+        u'product_id': 1613063044,
+        u'created_at': u'2015-09-27T17:43:27+08:00',
+        u'position': 1
+      }
+    ],
+    u'id': 1613063044
+  },
+  {
+    u'handle': u'muscle-pomade-hair-wax',
+    u'template_suffix': None,
+    u'product_type': u'Products',
+    u'published_scope': u'global',
+    u'title': u'Captain Pomade - Hair Wax',
+    u'created_at': u'2015-10-01T15:41:09+08:00',
+    u'tags': u'',
+    u'body_html': u'',
+    u'updated_at': u'2015-11-05T11:34:34+08:00',
+    u'published_at': None,
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Default Title'
+        ],
+        u'id': 2022555972,
+        u'name': u'Title',
+        u'product_id': 1653222788
+      }
+    ],
+    u'image': {
+      u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/captain_pomade_1438560109_258a1b3e.jpg?v=1446618825',
+      u'product_id': 1653222788,
+      u'created_at': u'2015-11-04T14:33:45+08:00',
+      u'updated_at': u'2015-11-04T14:33:45+08:00',
+      u'variant_ids': [
+        
+      ],
+      u'position': 1,
+      u'id': 7101505092
+    },
+    u'images': [
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/captain_pomade_1438560109_258a1b3e.jpg?v=1446618825',
+        u'product_id': 1653222788,
+        u'created_at': u'2015-11-04T14:33:45+08:00',
+        u'updated_at': u'2015-11-04T14:33:45+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 1,
+        u'id': 7101505092
+      }
+    ],
+    u'vendor': u'Other',
+    u'variants': [
+      {
+        u'weight': 0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-11-05T11:34:34+08:00',
+        u'inventory_quantity': 21,
+        u'compare_at_price': None,
+        u'id': 5853813124,
+        u'sku': u'',
+        u'title': u'Default Title',
+        u'inventory_policy': u'deny',
+        u'inventory_management': u'shopify',
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Default Title',
+        u'price': u'55.00',
+        u'barcode': u'',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 21,
+        u'grams': 0,
+        u'product_id': 1653222788,
+        u'created_at': u'2015-10-01T15:41:09+08:00',
+        u'position': 1
+      }
+    ],
+    u'id': 1653222788
+  },
+  {
+    u'handle': u'cold-perm',
+    u'template_suffix': None,
+    u'product_type': u'Services',
+    u'published_scope': u'global',
+    u'title': u'Cold Perm',
+    u'created_at': u'2015-09-22T21:02:42+08:00',
+    u'tags': u'',
+    u'body_html': u'',
+    u'updated_at': u'2015-10-17T16:56:09+08:00',
+    u'published_at': None,
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Short',
+          u'Medium',
+          u'Long'
+        ],
+        u'id': 1910878660,
+        u'name': u'Size',
+        u'product_id': 1561816772
+      }
+    ],
+    u'image': {
+      u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/shiseido_digital_perm.jpg?v=1442928361',
+      u'product_id': 1561816772,
+      u'created_at': u'2015-09-22T21:26:01+08:00',
+      u'updated_at': u'2015-09-22T21:26:01+08:00',
+      u'variant_ids': [
+        
+      ],
+      u'position': 1,
+      u'id': 3896391492
+    },
+    u'images': [
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/shiseido_digital_perm.jpg?v=1442928361',
+        u'product_id': 1561816772,
+        u'created_at': u'2015-09-22T21:26:01+08:00',
+        u'updated_at': u'2015-09-22T21:26:01+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 1,
+        u'id': 3896391492
+      }
+    ],
+    u'vendor': u'Massimo Hair Lab',
+    u'variants': [
+      {
+        u'weight': 0,
+        u'requires_shipping': True,
+        u'updated_at': u'2015-11-08T14:05:07+08:00',
+        u'inventory_quantity': -3,
+        u'compare_at_price': None,
+        u'id': 5534878084,
+        u'sku': u'',
+        u'title': u'Short',
+        u'inventory_policy': u'deny',
+        u'inventory_management': None,
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Short',
+        u'price': u'130.00',
+        u'barcode': u'',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': -3,
+        u'grams': 0,
+        u'product_id': 1561816772,
+        u'created_at': u'2015-09-22T21:02:42+08:00',
+        u'position': 1
+      },
+      {
+        u'weight': 0,
+        u'requires_shipping': True,
+        u'updated_at': u'2015-09-22T21:02:42+08:00',
+        u'inventory_quantity': 1,
+        u'compare_at_price': None,
+        u'id': 5534878148,
+        u'sku': u'',
+        u'title': u'Medium',
+        u'inventory_policy': u'deny',
+        u'inventory_management': None,
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Medium',
+        u'price': u'150.00',
+        u'barcode': u'',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 1,
+        u'grams': 0,
+        u'product_id': 1561816772,
+        u'created_at': u'2015-09-22T21:02:42+08:00',
+        u'position': 2
+      },
+      {
+        u'weight': 0,
+        u'requires_shipping': True,
+        u'updated_at': u'2015-09-22T21:02:42+08:00',
+        u'inventory_quantity': 1,
+        u'compare_at_price': None,
+        u'id': 5534878212,
+        u'sku': u'',
+        u'title': u'Long',
+        u'inventory_policy': u'deny',
+        u'inventory_management': None,
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Long',
+        u'price': u'170.00',
+        u'barcode': u'',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 1,
+        u'grams': 0,
+        u'product_id': 1561816772,
+        u'created_at': u'2015-09-22T21:02:42+08:00',
+        u'position': 3
+      }
+    ],
+    u'id': 1561816772
+  },
+  {
+    u'handle': u'cold-perm-x1-rod',
+    u'template_suffix': None,
+    u'product_type': u'Add on',
+    u'published_scope': u'global',
+    u'title': u'Cold Perm x1 Rod',
+    u'created_at': u'2015-09-27T18:21:12+08:00',
+    u'tags': u'',
+    u'body_html': u'',
+    u'updated_at': u'2015-10-02T15:28:26+08:00',
+    u'published_at': None,
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Default Title'
+        ],
+        u'id': 1972222852,
+        u'name': u'Title',
+        u'product_id': 1613146500
+      }
+    ],
+    u'image': None,
+    u'images': [
+      
+    ],
+    u'vendor': u'Massimo Hair Lab',
+    u'variants': [
+      {
+        u'weight': 0,
+        u'requires_shipping': True,
+        u'updated_at': u'2015-09-27T18:21:12+08:00',
+        u'inventory_quantity': 1,
+        u'compare_at_price': None,
+        u'id': 5733177540,
+        u'sku': u'',
+        u'title': u'Default Title',
+        u'inventory_policy': u'deny',
+        u'inventory_management': None,
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Default Title',
+        u'price': u'15.00',
+        u'barcode': u'',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 1,
+        u'grams': 0,
+        u'product_id': 1613146500,
+        u'created_at': u'2015-09-27T18:21:12+08:00',
+        u'position': 1
+      }
+    ],
+    u'id': 1613146500
+  },
+  {
+    u'handle': u'color',
+    u'template_suffix': None,
+    u'product_type': u'Services',
+    u'published_scope': u'global',
+    u'title': u'Color',
+    u'created_at': u'2015-08-31T16:03:45+08:00',
+    u'tags': u'',
+    u'body_html': u'',
+    u'updated_at': u'2015-11-07T19:49:52+08:00',
+    u'published_at': None,
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Short',
+          u'Medium',
+          u'Long'
+        ],
+        u'id': 1618029252,
+        u'name': u'Length',
+        u'product_id': 1301390212
+      }
+    ],
+    u'image': {
+      u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/colour.jpg?v=1442928459',
+      u'product_id': 1301390212,
+      u'created_at': u'2015-09-22T21:27:39+08:00',
+      u'updated_at': u'2015-09-22T21:27:39+08:00',
+      u'variant_ids': [
+        
+      ],
+      u'position': 1,
+      u'id': 3896417220
+    },
+    u'images': [
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/colour.jpg?v=1442928459',
+        u'product_id': 1301390212,
+        u'created_at': u'2015-09-22T21:27:39+08:00',
+        u'updated_at': u'2015-09-22T21:27:39+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 1,
+        u'id': 3896417220
+      }
+    ],
+    u'vendor': u'Massimo Hair Lab',
+    u'variants': [
+      {
+        u'weight': 0.0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-11-13T12:25:07+08:00',
+        u'inventory_quantity': -17,
+        u'compare_at_price': None,
+        u'id': 4673708356,
+        u'sku': u'',
+        u'title': u'Short',
+        u'inventory_policy': u'deny',
+        u'inventory_management': None,
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'lb',
+        u'option1': u'Short',
+        u'price': u'138.00',
+        u'barcode': None,
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': -17,
+        u'grams': 0,
+        u'product_id': 1301390212,
+        u'created_at': u'2015-08-31T16:03:45+08:00',
+        u'position': 1
+      },
+      {
+        u'weight': 0.0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-11-10T20:20:40+08:00',
+        u'inventory_quantity': -9,
+        u'compare_at_price': None,
+        u'id': 4673708420,
+        u'sku': u'',
+        u'title': u'Medium',
+        u'inventory_policy': u'deny',
+        u'inventory_management': None,
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'lb',
+        u'option1': u'Medium',
+        u'price': u'168.00',
+        u'barcode': None,
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': -9,
+        u'grams': 0,
+        u'product_id': 1301390212,
+        u'created_at': u'2015-08-31T16:03:45+08:00',
+        u'position': 2
+      },
+      {
+        u'weight': 0.0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-11-09T19:01:09+08:00',
+        u'inventory_quantity': -14,
+        u'compare_at_price': None,
+        u'id': 4673708484,
+        u'sku': u'',
+        u'title': u'Long',
+        u'inventory_policy': u'deny',
+        u'inventory_management': None,
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'lb',
+        u'option1': u'Long',
+        u'price': u'198.00',
+        u'barcode': None,
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': -14,
+        u'grams': 0,
+        u'product_id': 1301390212,
+        u'created_at': u'2015-08-31T16:03:45+08:00',
+        u'position': 3
+      }
+    ],
+    u'id': 1301390212
+  },
+  {
+    u'handle': u'color-correction-full-head',
+    u'template_suffix': None,
+    u'product_type': u'Services',
+    u'published_scope': u'global',
+    u'title': u'Color Correction (Full Head)',
+    u'created_at': u'2015-09-22T21:00:46+08:00',
+    u'tags': u'',
+    u'body_html': u'',
+    u'updated_at': u'2015-11-07T19:49:52+08:00',
+    u'published_at': None,
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Short',
+          u'Medium',
+          u'Long'
+        ],
+        u'id': 1910793668,
+        u'name': u'Size',
+        u'product_id': 1561742724
+      }
+    ],
+    u'image': {
+      u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/colour_26679c9a-793e-4d20-8df5-2cb8e590c5d1.jpg?v=1442928579',
+      u'product_id': 1561742724,
+      u'created_at': u'2015-09-22T21:29:39+08:00',
+      u'updated_at': u'2015-09-22T21:29:39+08:00',
+      u'variant_ids': [
+        
+      ],
+      u'position': 1,
+      u'id': 3896462788
+    },
+    u'images': [
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/colour_26679c9a-793e-4d20-8df5-2cb8e590c5d1.jpg?v=1442928579',
+        u'product_id': 1561742724,
+        u'created_at': u'2015-09-22T21:29:39+08:00',
+        u'updated_at': u'2015-09-22T21:29:39+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 1,
+        u'id': 3896462788
+      }
+    ],
+    u'vendor': u'Massimo Hair Lab',
+    u'variants': [
+      {
+        u'weight': 0,
+        u'requires_shipping': True,
+        u'updated_at': u'2015-11-07T19:50:49+08:00',
+        u'inventory_quantity': -1,
+        u'compare_at_price': None,
+        u'id': 5534685508,
+        u'sku': u'',
+        u'title': u'Short',
+        u'inventory_policy': u'deny',
+        u'inventory_management': None,
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Short',
+        u'price': u'50.00',
+        u'barcode': u'',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': -1,
+        u'grams': 0,
+        u'product_id': 1561742724,
+        u'created_at': u'2015-09-22T21:00:46+08:00',
+        u'position': 1
+      },
+      {
+        u'weight': 0,
+        u'requires_shipping': True,
+        u'updated_at': u'2015-11-01T18:52:19+08:00',
+        u'inventory_quantity': 0,
+        u'compare_at_price': None,
+        u'id': 5534685636,
+        u'sku': u'',
+        u'title': u'Medium',
+        u'inventory_policy': u'deny',
+        u'inventory_management': None,
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Medium',
+        u'price': u'80.00',
+        u'barcode': u'',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 0,
+        u'grams': 0,
+        u'product_id': 1561742724,
+        u'created_at': u'2015-09-22T21:00:46+08:00',
+        u'position': 2
+      },
+      {
+        u'weight': 0,
+        u'requires_shipping': True,
+        u'updated_at': u'2015-09-22T21:00:46+08:00',
+        u'inventory_quantity': 1,
+        u'compare_at_price': None,
+        u'id': 5534685700,
+        u'sku': u'',
+        u'title': u'Long',
+        u'inventory_policy': u'deny',
+        u'inventory_management': None,
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Long',
+        u'price': u'100.00',
+        u'barcode': u'',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 1,
+        u'grams': 0,
+        u'product_id': 1561742724,
+        u'created_at': u'2015-09-22T21:00:46+08:00',
+        u'position': 3
+      }
+    ],
+    u'id': 1561742724
+  },
+  {
+    u'handle': u'color-roots',
+    u'template_suffix': None,
+    u'product_type': u'Services',
+    u'published_scope': u'global',
+    u'title': u'Color Roots',
+    u'created_at': u'2015-08-31T16:03:46+08:00',
+    u'tags': u'',
+    u'body_html': u'',
+    u'updated_at': u'2015-10-17T15:19:25+08:00',
+    u'published_at': None,
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Short',
+          u'Medium',
+          u'Long'
+        ],
+        u'id': 1618029316,
+        u'name': u'Length',
+        u'product_id': 1301390276
+      }
+    ],
+    u'image': {
+      u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/colour_53a06f92-31d8-44bb-b0c4-7abc32ddf491.jpg?v=1442910730',
+      u'product_id': 1301390276,
+      u'created_at': u'2015-09-22T16:32:10+08:00',
+      u'updated_at': u'2015-09-22T16:32:10+08:00',
+      u'variant_ids': [
+        
+      ],
+      u'position': 1,
+      u'id': 3890817284
+    },
+    u'images': [
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/colour_53a06f92-31d8-44bb-b0c4-7abc32ddf491.jpg?v=1442910730',
+        u'product_id': 1301390276,
+        u'created_at': u'2015-09-22T16:32:10+08:00',
+        u'updated_at': u'2015-09-22T16:32:10+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 1,
+        u'id': 3890817284
+      }
+    ],
+    u'vendor': u'Massimo Hair Lab',
+    u'variants': [
+      {
+        u'weight': 0.0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-11-12T13:18:55+08:00',
+        u'inventory_quantity': -6,
+        u'compare_at_price': None,
+        u'id': 4673708548,
+        u'sku': u'',
+        u'title': u'Short',
+        u'inventory_policy': u'deny',
+        u'inventory_management': None,
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'lb',
+        u'option1': u'Short',
+        u'price': u'120.00',
+        u'barcode': None,
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': -6,
+        u'grams': 0,
+        u'product_id': 1301390276,
+        u'created_at': u'2015-08-31T16:03:46+08:00',
+        u'position': 1
+      },
+      {
+        u'weight': 0.0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-10-27T13:18:59+08:00',
+        u'inventory_quantity': -2,
+        u'compare_at_price': None,
+        u'id': 4673708612,
+        u'sku': u'',
+        u'title': u'Medium',
+        u'inventory_policy': u'deny',
+        u'inventory_management': None,
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'lb',
+        u'option1': u'Medium',
+        u'price': u'140.00',
+        u'barcode': None,
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': -2,
+        u'grams': 0,
+        u'product_id': 1301390276,
+        u'created_at': u'2015-08-31T16:03:46+08:00',
+        u'position': 2
+      },
+      {
+        u'weight': 0.0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-09-25T01:35:39+08:00',
+        u'inventory_quantity': 1,
+        u'compare_at_price': None,
+        u'id': 4673708676,
+        u'sku': u'',
+        u'title': u'Long',
+        u'inventory_policy': u'deny',
+        u'inventory_management': None,
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'lb',
+        u'option1': u'Long',
+        u'price': u'160.00',
+        u'barcode': None,
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 1,
+        u'grams': 0,
+        u'product_id': 1301390276,
+        u'created_at': u'2015-08-31T16:03:46+08:00',
+        u'position': 3
+      }
+    ],
+    u'id': 1301390276
+  },
+  {
+    u'handle': u'color-spray',
+    u'template_suffix': None,
+    u'product_type': u'Add on',
+    u'published_scope': u'global',
+    u'title': u'Color Spray',
+    u'created_at': u'2015-09-27T17:35:20+08:00',
+    u'tags': u'',
+    u'body_html': u'',
+    u'updated_at': u'2015-10-02T15:28:27+08:00',
+    u'published_at': None,
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Default Title'
+        ],
+        u'id': 1972093380,
+        u'name': u'Title',
+        u'product_id': 1613028100
+      }
+    ],
+    u'image': None,
+    u'images': [
+      
+    ],
+    u'vendor': u'Massimo Hair Lab',
+    u'variants': [
+      {
+        u'weight': 0,
+        u'requires_shipping': False,
+        u'updated_at': u'2015-09-27T21:53:18+08:00',
+        u'inventory_quantity': 1,
+        u'compare_at_price': None,
+        u'id': 5732443076,
+        u'sku': u'',
+        u'title': u'Default Title',
+        u'inventory_policy': u'deny',
+        u'inventory_management': None,
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Default Title',
+        u'price': u'10.00',
+        u'barcode': u'',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 1,
+        u'grams': 0,
+        u'product_id': 1613028100,
+        u'created_at': u'2015-09-27T17:35:20+08:00',
+        u'position': 1
+      }
+    ],
+    u'id': 1613028100
+  },
+  {
+    u'handle': u'color-treatment',
+    u'template_suffix': None,
+    u'product_type': u'Services',
+    u'published_scope': u'global',
+    u'title': u'Color Treatment',
+    u'created_at': u'2015-09-22T20:52:03+08:00',
+    u'tags': u'',
+    u'body_html': u'',
+    u'updated_at': u'2015-10-02T15:24:45+08:00',
+    u'published_at': None,
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Short',
+          u'Medium',
+          u'Long'
+        ],
+        u'id': 1910655172,
+        u'name': u'Size',
+        u'product_id': 1561636804
+      }
+    ],
+    u'image': {
+      u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/treatment.jpg?v=1442928273',
+      u'product_id': 1561636804,
+      u'created_at': u'2015-09-22T21:24:33+08:00',
+      u'updated_at': u'2015-09-22T21:24:33+08:00',
+      u'variant_ids': [
+        
+      ],
+      u'position': 1,
+      u'id': 3896372932
+    },
+    u'images': [
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/treatment.jpg?v=1442928273',
+        u'product_id': 1561636804,
+        u'created_at': u'2015-09-22T21:24:33+08:00',
+        u'updated_at': u'2015-09-22T21:24:33+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 1,
+        u'id': 3896372932
+      }
+    ],
+    u'vendor': u'Massimo Hair Lab',
+    u'variants': [
+      {
+        u'weight': 0,
+        u'requires_shipping': True,
+        u'updated_at': u'2015-09-22T20:52:03+08:00',
+        u'inventory_quantity': 1,
+        u'compare_at_price': None,
+        u'id': 5534162756,
+        u'sku': u'',
+        u'title': u'Short',
+        u'inventory_policy': u'deny',
+        u'inventory_management': None,
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Short',
+        u'price': u'130.00',
+        u'barcode': u'',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 1,
+        u'grams': 0,
+        u'product_id': 1561636804,
+        u'created_at': u'2015-09-22T20:52:03+08:00',
+        u'position': 1
+      },
+      {
+        u'weight': 0,
+        u'requires_shipping': True,
+        u'updated_at': u'2015-09-22T20:52:03+08:00',
+        u'inventory_quantity': 1,
+        u'compare_at_price': None,
+        u'id': 5534162820,
+        u'sku': u'',
+        u'title': u'Medium',
+        u'inventory_policy': u'deny',
+        u'inventory_management': None,
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Medium',
+        u'price': u'160.00',
+        u'barcode': u'',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 1,
+        u'grams': 0,
+        u'product_id': 1561636804,
+        u'created_at': u'2015-09-22T20:52:03+08:00',
+        u'position': 2
+      },
+      {
+        u'weight': 0,
+        u'requires_shipping': True,
+        u'updated_at': u'2015-09-22T20:52:03+08:00',
+        u'inventory_quantity': 1,
+        u'compare_at_price': None,
+        u'id': 5534162884,
+        u'sku': u'',
+        u'title': u'Long',
+        u'inventory_policy': u'deny',
+        u'inventory_management': None,
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Long',
+        u'price': u'180.00',
+        u'barcode': u'',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': 1,
+        u'grams': 0,
+        u'product_id': 1561636804,
+        u'created_at': u'2015-09-22T20:52:03+08:00',
+        u'position': 3
+      }
+    ],
+    u'id': 1561636804
+  },
+  {
+    u'handle': u'color-highlight',
+    u'template_suffix': None,
+    u'product_type': u'Services',
+    u'published_scope': u'global',
+    u'title': u'Color+Highlight',
+    u'created_at': u'2015-09-22T20:26:43+08:00',
+    u'tags': u'',
+    u'body_html': u'',
+    u'updated_at': u'2015-10-02T15:24:46+08:00',
+    u'published_at': None,
+    u'options': [
+      {
+        u'position': 1,
+        u'values': [
+          u'Short',
+          u'Medium',
+          u'Long'
+        ],
+        u'id': 1910117380,
+        u'name': u'Color',
+        u'product_id': 1561114116
+      }
+    ],
+    u'image': {
+      u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/highlight_55235a03-4635-4d8f-bc01-3191f27d03bf.jpg?v=1442928033',
+      u'product_id': 1561114116,
+      u'created_at': u'2015-09-22T21:20:33+08:00',
+      u'updated_at': u'2015-09-22T21:20:33+08:00',
+      u'variant_ids': [
+        
+      ],
+      u'position': 1,
+      u'id': 3896267716
+    },
+    u'images': [
+      {
+        u'src': u'https://cdn.shopify.com/s/files/1/0976/9110/products/highlight_55235a03-4635-4d8f-bc01-3191f27d03bf.jpg?v=1442928033',
+        u'product_id': 1561114116,
+        u'created_at': u'2015-09-22T21:20:33+08:00',
+        u'updated_at': u'2015-09-22T21:20:33+08:00',
+        u'variant_ids': [
+          
+        ],
+        u'position': 1,
+        u'id': 3896267716
+      }
+    ],
+    u'vendor': u'Massimo Hair Lab',
+    u'variants': [
+      {
+        u'weight': 0,
+        u'requires_shipping': True,
+        u'updated_at': u'2015-11-08T17:20:08+08:00',
+        u'inventory_quantity': -2,
+        u'compare_at_price': None,
+        u'id': 5532501380,
+        u'sku': u'',
+        u'title': u'Short',
+        u'inventory_policy': u'deny',
+        u'inventory_management': None,
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Short',
+        u'price': u'230.00',
+        u'barcode': u'',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': -2,
+        u'grams': 0,
+        u'product_id': 1561114116,
+        u'created_at': u'2015-09-22T20:28:46+08:00',
+        u'position': 1
+      },
+      {
+        u'weight': 0,
+        u'requires_shipping': True,
+        u'updated_at': u'2015-11-03T17:00:40+08:00',
+        u'inventory_quantity': -2,
+        u'compare_at_price': None,
+        u'id': 5533687748,
+        u'sku': u'',
+        u'title': u'Medium',
+        u'inventory_policy': u'deny',
+        u'inventory_management': None,
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Medium',
+        u'price': u'260.00',
+        u'barcode': u'',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': -2,
+        u'grams': 0,
+        u'product_id': 1561114116,
+        u'created_at': u'2015-09-22T20:43:47+08:00',
+        u'position': 2
+      },
+      {
+        u'weight': 0,
+        u'requires_shipping': True,
+        u'updated_at': u'2015-11-01T18:52:19+08:00',
+        u'inventory_quantity': -1,
+        u'compare_at_price': None,
+        u'id': 5533687812,
+        u'sku': u'',
+        u'title': u'Long',
+        u'inventory_policy': u'deny',
+        u'inventory_management': None,
+        u'fulfillment_service': u'manual',
+        u'option2': None,
+        u'option3': None,
+        u'weight_unit': u'g',
+        u'option1': u'Long',
+        u'price': u'280.00',
+        u'barcode': u'',
+        u'image_id': None,
+        u'taxable': True,
+        u'old_inventory_quantity': -1,
+        u'grams': 0,
+        u'product_id': 1561114116,
+        u'created_at': u'2015-09-22T20:43:47+08:00',
+        u'position': 3
+      }
+    ],
+    u'id': 1561114116
+  }
+]
