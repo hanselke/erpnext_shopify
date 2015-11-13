@@ -7,6 +7,7 @@ import hashlib, base64, hmac, json
 
 def get_shopify_items():
 	pagesNumber = get_request('/admin/products/count.json')
+	raise ValueError(pagesNumber)
 	products = []
 	for x in range(1, pagesNumber):
 		products.extend(get_request('/admin/products.json&limit=50&page=x')['products'])
