@@ -19,7 +19,7 @@ def get_shopify_items():
 def get_shopify_orders():
 	orders = []
 	end = get_collection_pages_number('orders') + 1
-	for x in range(1, end)
+	for x in range(1, end):
 		orders.extend(get_request('/admin/orders.json?limit=250&page=x')['orders'])
 	return orders
 
