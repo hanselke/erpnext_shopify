@@ -50,10 +50,10 @@ def sync_products(price_list, warehouse):
     sync_erp_items(price_list, warehouse)
 
 def sync_shopify_items(warehouse):
-    raise ValueError(get_shopify_items())
     for item in get_shopify_items():
-        if not frappe.db.get_value("Item", {"shopify_id": item.get("id")}, "name"):
-            make_item(warehouse, item)
+        if item.get("published_at"):
+            if not frappe.db.get_value("Item", {"shopify_id": item.get("id")}, "name"):
+                make_item(warehouse, item)
 
 def make_item(warehouse, item):
     if has_variants(item):
