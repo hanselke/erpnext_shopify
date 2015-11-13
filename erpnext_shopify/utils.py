@@ -8,7 +8,7 @@ import hashlib, base64, hmac, json
 def get_shopify_items():
 	pagesNumber = get_request('/admin/products/count.json')
 	products = []
-	for x in range(1, pagesNumber)
+	for x in range(1, pagesNumber):
 		products.extend(get_request('/admin/products.json&limit=50&page=x')['products'])
 	# return get_request('/admin/products.json')['products']
 	return products
