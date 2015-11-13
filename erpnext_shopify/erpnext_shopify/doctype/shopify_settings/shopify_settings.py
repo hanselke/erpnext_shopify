@@ -50,6 +50,7 @@ def sync_products(price_list, warehouse):
     sync_erp_items(price_list, warehouse)
 
 def sync_shopify_items(warehouse):
+    raise ValueError(get_shopify_items())
     for item in get_shopify_items():
         if not frappe.db.get_value("Item", {"shopify_id": item.get("id")}, "name"):
             make_item(warehouse, item)
@@ -378,11 +379,11 @@ def validate_customer_and_product(order):
     if not frappe.db.get_value("Customer", {"shopify_id": order.get("customer").get("id")}, "name"):
         create_customer(order.get("customer"))
     
-    warehouse = frappe.get_doc("Shopify Settings", "Shopify Settings").warehouse
-    for item in order.get("line_items"):
-        if not frappe.db.get_value("Item", {"shopify_id": item.get("product_id")}, "name"):
-            item = get_request("/admin/products/{}.json".format(item.get("product_id")))["product"]
-            make_item(warehouse, item)
+    # warehouse = frappe.get_doc("Shopify Settings", "Shopify Settings").warehouse
+    # for item in order.get("line_items"):
+    #     if not frappe.db.get_value("Item", {"shopify_id": item.get("product_id")}, "name"):
+    #         item = get_request("/admin/products/{}.json".format(item.get("product_id")))["product"]
+    #         make_item(warehouse, item)
 
 def get_shopify_id(item):pass
         
