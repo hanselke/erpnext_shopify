@@ -254,7 +254,6 @@ def sync_customers():
     sync_erp_customers()
 
 def sync_shopify_customers():
-    raise ValueError(get_shopify_customers())
     for customer in get_shopify_customers():
         # Add the 'membership_number' field
         customer["membership_number"] = customer.get("first_name")
