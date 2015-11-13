@@ -326,9 +326,9 @@ def sync_orders():
     sync_shopify_orders()
 
 def sync_shopify_orders():
-    raise ValueError(get_shopify_orders())
-    for order in sorted(get_shopify_orders(), key=lambda x: datetime.datetime.strptime(x["processed_at"][:-6], "%Y-%m-%dT%H:%M:%S")):
-
+    orders = sorted(get_shopify_orders(), key=lambda x: datetime.datetime.strptime(x["processed_at"][:-6], "%Y-%m-%dT%H:%M:%S"))
+    raise ValueError(orders)
+    for order in orders:
         if not hasattr(order, "customer"):
             # This is a non member order, we enforce it to a default walk in customer.
             order["user_id"] = 26626372
