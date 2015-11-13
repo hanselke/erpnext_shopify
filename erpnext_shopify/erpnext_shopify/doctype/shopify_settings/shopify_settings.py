@@ -11,6 +11,8 @@ from erpnext.selling.doctype.sales_order.sales_order import make_delivery_note, 
 from erpnext_shopify.utils import get_request, get_shopify_customers, get_address_type, post_request,\
  get_shopify_items, get_shopify_orders
 
+import datetime
+
 shopify_variants_attr_list = ["option1", "option2", "option3"] 
 
 class ShopifyError(Exception):pass
@@ -321,7 +323,7 @@ def sync_orders():
     sync_shopify_orders()
 
 def sync_shopify_orders():
-    for order in get_shopify_orders():
+    for order in sorted(get_shopify_orders(), key=lambda x: datetime.datetime.strptime(x[:-6], "%Y-%m-%dT%H:%M:%S")):
 
         if not hasattr(order, "customer"):
             # This is a non member order, we enforce it to a default walk in customer.
