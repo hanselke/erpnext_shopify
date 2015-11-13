@@ -50,7 +50,7 @@ def sync_products(price_list, warehouse):
     sync_erp_items(price_list, warehouse)
 
 def sync_shopify_items(warehouse):
-    raise ValueError(len(get_shopify_items())
+    raise ValueError(len(get_shopify_items()))
     for item in get_shopify_items():
         if not frappe.db.get_value("Item", {"shopify_id": item.get("id")}, "name"):
             make_item(warehouse, item)
