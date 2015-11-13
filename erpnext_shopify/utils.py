@@ -7,29 +7,29 @@ from functools import wraps
 import hashlib, base64, hmac, json
 
 def get_collection_pages_number(type):
-	return int(math.ceil(get_request('/admin/' + type + '/count.json').get('count') / 250))
+	return int(math.ceil(get_request('/admin/' + type + '/count.json').get('count') / 250)) + 1
 
 def get_shopify_items():
 	products = []
-	for x in range(1, (get_collection_pages_number('products') + 1)):
+	for x in range(1, get_collection_pages_number('products')):
 		products.extend(get_request('/admin/products.json?limit=250&page=x')['products'])
 	return products
 
 def get_shopify_orders():
 	orders = []
-	for x in range(1, (get_collection_pages_number('orders') + 1))
+	for x in range(1, get_collection_pages_number('orders'))
 		orders.extend(get_request('/admin/orders.json?limit=250&page=x')['orders'])
 	return orders
 
 def get_country():
 	countries = []
-	for x in range(1, (get_collection_pages_number('countries') + 1)):
+	for x in range(1, get_collection_pages_number('countries')):
 		countries.extend(get_request('/admin/countries.json?limit=250&page=x')['countries'])
 	return countries
 	
 def get_shopify_customers():
 	customers = []
-	for x in range(1, (get_collection_pages_number('customers') + 1)):
+	for x in range(1, get_collection_pages_number('customers')):
 		customers.extend(get_request('/admin/customers.json?limit=250&page=x')['customers'])
 	return customers
 
