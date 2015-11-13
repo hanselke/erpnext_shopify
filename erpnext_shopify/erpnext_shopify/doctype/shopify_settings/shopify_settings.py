@@ -11,7 +11,7 @@ from erpnext.selling.doctype.sales_order.sales_order import make_delivery_note, 
 from erpnext_shopify.utils import get_request, get_shopify_customers, get_address_type, post_request,\
  get_shopify_items, get_shopify_orders
 
-import datetime
+import datetime, uuid
 
 shopify_variants_attr_list = ["option1", "option2", "option3"] 
 
@@ -256,7 +256,7 @@ def sync_customers():
 def sync_shopify_customers():
     for customer in get_shopify_customers():
         # Add the 'membership_number' field
-        customer["membership_number"] = customer.get("first_name")
+        customer["membership_number"] = customer.get("first_name") + u"-" + uuid.uuid4()
         if not frappe.db.get_value("Customer", {"shopify_id": customer.get('id')}, "name"):
             create_customer(customer)
 
@@ -270,7 +270,7 @@ def create_customer(customer):
             "doctype": "Customer",
             "name": customer.get("id"),
             "customer_name" : cust_name,
-            "membership_number": customer.get("membership_number"),
+            "membership_number": customer.get("membership_number") + u"-" + uuid.uuid4(),
             "shopify_id": customer.get("id"),
             "customer_group": "Individual",
             "territory": "All Territories",
@@ -336,7 +336,7 @@ def sync_shopify_orders():
             order["customer"]["total_spent"] = order["subtotal_price"]
             order["customer"]["first_name"] = u"Non"
             order["customer"]["last_name"] = u"Member"
-            order["customer"]["membership_number"] = order["customer"]["first_name"]
+            order["customer"]["membership_number"] = order["customer"]["first_name"] + u"-" + uuid.uuid4()
             order["customer"]["last_order_name"] = u"#3-1473"
             order["customer"]["orders_count"] = 1
             order["customer"]["created_at"] = u"2015-11-06T15:20:53+08:00"
