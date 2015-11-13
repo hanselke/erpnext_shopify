@@ -10,6 +10,7 @@ def get_shopify_items():
 	pagesNumber = int(math.ceil(get_request('/admin/products/count.json').get('count') / 250))
 	products = []
 	for x in range(1, pagesNumber):
+		raise ValueError(get_request('/admin/products.json&limit=250&page=x'))
 		products.extend(get_request('/admin/products.json&limit=250&page=x')['products'])
 	# return get_request('/admin/products.json')['products']
 	return products
