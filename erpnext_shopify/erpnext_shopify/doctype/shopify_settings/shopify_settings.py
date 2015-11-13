@@ -272,7 +272,7 @@ def create_customer(customer):
             "customer_name" : cust_name,
             "membership_number": customer.get("membership_number"),
             "shopify_id": customer.get("id"),
-            "customer_group": "Commercial",
+            "customer_group": "Individual",
             "territory": "All Territories",
             "customer_type": "Company"
         }).insert()
