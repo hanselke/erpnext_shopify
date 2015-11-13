@@ -1,8 +1,8 @@
+from __future__ import division
 import frappe, math
 from frappe.utils import get_request_session
 from frappe.exceptions import AuthenticationError, ValidationError
 from functools import wraps
-from __future__ import division
 
 import hashlib, base64, hmac, json
 
