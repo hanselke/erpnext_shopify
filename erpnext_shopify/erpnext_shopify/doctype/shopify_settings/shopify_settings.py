@@ -257,7 +257,7 @@ def sync_shopify_customers():
     raise ValueError(get_shopify_customers())
     for customer in get_shopify_customers():
         # Add the 'membership_number' field
-        # customer["membership_number"] = customer.name
+        customer["membership_number"] = customer.get("first_name")
         if not frappe.db.get_value("Customer", {"shopify_id": customer.get('id')}, "name"):
             create_customer(customer)
 
@@ -336,6 +336,7 @@ def sync_shopify_orders():
             order["customer"]["total_spent"] = order["subtotal_price"]
             order["customer"]["first_name"] = u"Non"
             order["customer"]["last_name"] = u"Member"
+            order["customer"]["membership_number"] = order["customer"]["first_name"]
             order["customer"]["last_order_name"] = u"#3-1473"
             order["customer"]["orders_count"] = 1
             order["customer"]["created_at"] = u"2015-11-06T15:20:53+08:00"
