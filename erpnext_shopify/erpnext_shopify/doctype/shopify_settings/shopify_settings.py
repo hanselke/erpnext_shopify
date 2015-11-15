@@ -51,15 +51,15 @@ def sync_products(price_list, warehouse):
 
 def sync_shopify_items(warehouse):
     for item in get_shopify_items():
-        if item.get("published_at"):
-            if not frappe.db.get_value("Item", {"shopify_id": item.get("id")}, "name"):
-                make_item(warehouse, item)
+        # if item.get("published_at"):
+        if not frappe.db.get_value("Item", {"shopify_id": item.get("id")}, "name"):
+            make_item(warehouse, item)
 
 def make_item(warehouse, item):
     if has_variants(item):
         attributes = create_attribute(item)
         create_item(item, warehouse, 1, attributes)
-        create_item_variants(item, warehouse, attributes, shopify_variants_attr_list)
+        # create_item_variants(item, warehouse, attributes, shopify_variants_attr_list)
     else:
         create_item(item, warehouse)
                 
