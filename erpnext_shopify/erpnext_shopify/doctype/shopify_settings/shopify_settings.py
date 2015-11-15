@@ -47,7 +47,7 @@ def sync_shopify():
 
 def sync_products(price_list, warehouse):
     sync_shopify_items(warehouse)
-    sync_erp_items(price_list, warehouse)
+    # sync_erp_items(price_list, warehouse)
 
 def sync_shopify_items(warehouse):
     for item in get_shopify_items():
@@ -252,7 +252,7 @@ def get_price_and_stock_details(item, uom, warehouse, price_list):
     
 def sync_customers():
     sync_shopify_customers()
-    sync_erp_customers()
+    # sync_erp_customers()
 
 def sync_shopify_customers():
     for customer in get_shopify_customers():
