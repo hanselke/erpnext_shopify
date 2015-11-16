@@ -12,25 +12,25 @@ def get_collection_pages_number(type):
 def get_shopify_items():
 	products = []
 	for x in range(1, get_collection_pages_number('products') + 1):
-		products.extend(get_request('/admin/products.json?limit=250&page=' + x)['products'])
+		products.extend(get_request('/admin/products.json?limit=250&page=' + str(x))['products'])
 	return products
 
 def get_shopify_orders():
 	orders = []
 	for x in range(1, get_collection_pages_number('orders') + 1):
-		orders.extend(get_request('/admin/orders.json?limit=250&page=' + x)['orders'])
+		orders.extend(get_request('/admin/orders.json?limit=250&page=' + str(x))['orders'])
 	return orders
 
 def get_country():
 	countries = []
 	for x in range(1, get_collection_pages_number('countries') + 1):
-		countries.extend(get_request('/admin/countries.json?limit=250&page=' + x)['countries'])
+		countries.extend(get_request('/admin/countries.json?limit=250&page=' + str(x))['countries'])
 	return countries
 	
 def get_shopify_customers():
 	customers = []
 	for x in range(1, get_collection_pages_number('customers') + 1):
-		customers.extend(get_request('/admin/customers.json?limit=250&page=' + x)['customers'])
+		customers.extend(get_request('/admin/customers.json?limit=250&page=' + str(x))['customers'])
 	return customers
 
 def get_address_type(i):
