@@ -74,7 +74,7 @@ def create_attribute(item):
             frappe.get_doc({
                 "doctype": "Item Attribute",
                 "attribute_name": attr.get("name"),
-                "item_attribute_values": [{"attribute_value":attr_value, "abbr": cstr(attr_value)[:3]} for attr_value in attr.get("values")]
+                "item_attribute_values": [{"attribute_value":attr_value, "abbr": cstr(attr_value)} for attr_value in attr.get("values")]
             }).insert()
             
         else:
@@ -91,12 +91,10 @@ def set_new_attribute_values(item_attr, values):
         if not any((d.abbr == attr_value or d.attribute_value == attr_value) for d in item_attr.item_attribute_values):
             item_attr.append("item_attribute_values", {
                 "attribute_value": attr_value,
-                "abbr": cstr(attr_value)[:3]
+                "abbr": cstr(attr_value)
             })
     
 def create_item(item, warehouse, has_variant=0, attributes=[],variant_of=None):
-    if len(attributes):
-        raise ValueError(attributes)
     item_name = frappe.get_doc({
         "doctype": "Item",
         "shopify_id": item.get("id"),
