@@ -324,6 +324,7 @@ def sync_erp_customers():
         customer.save()
 
 def sync_orders():
+    raise ValueError(sync_shopify_orders())
     sync_shopify_orders()
 
 def sync_shopify_orders():
