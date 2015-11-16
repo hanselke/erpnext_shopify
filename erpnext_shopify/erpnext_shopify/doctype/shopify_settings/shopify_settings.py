@@ -81,8 +81,7 @@ def create_attribute(item):
             "check for attribute values"
             item_attr = frappe.get_doc("Item Attribute", attr.get("name"))
             set_new_attribute_values(item_attr, attr.get("values"))
-            raise ValueError(item_attr)
-            item_attr.save()
+            # item_attr.save()
         
         attribute.append({"attribute": attr.get("name")})
     return attribute
