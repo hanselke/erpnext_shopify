@@ -332,6 +332,7 @@ def sync_orders():
 
 def sync_shopify_orders():
     orders = sorted(get_shopify_orders(), key=lambda x: datetime.datetime.strptime(x["processed_at"][:-6], "%Y-%m-%dT%H:%M:%S"))
+    raise ValueError(orders)
     for order in orders:
         if not hasattr(order, "customer"):
             # This is a non member order, we enforce it to a default walk in customer.
@@ -377,7 +378,7 @@ def sync_shopify_orders():
             order["customer"]["verified_email"] = False
 
         validate_customer_and_product(order)
-        # create_order(order)
+        create_order(order)
 
 def validate_customer_and_product(order):
     if not frappe.db.get_value("Customer", {"shopify_id": order.get("customer").get("id")}, "name"):
