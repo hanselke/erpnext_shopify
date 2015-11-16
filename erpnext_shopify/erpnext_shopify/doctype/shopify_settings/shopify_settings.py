@@ -112,7 +112,6 @@ def create_item(item, warehouse, has_variant=0, attributes=[],variant_of=None):
         add_to_price_list(item)
 
 def create_item_variants(item, warehouse, attributes, shopify_variants_attr_list):
-    raise ValueError(attributes)
     for variant in item.get("variants"):
         variant_item = {
             "id" : variant.get("id"),
