@@ -81,7 +81,7 @@ def create_attribute(item):
             "check for attribute values"
             item_attr = frappe.get_doc("Item Attribute", attr.get("name"))
             set_new_attribute_values(item_attr, attr.get("values"))
-            # item_attr.save()
+            item_attr.save()
         
         attribute.append({"attribute": attr.get("name")})
     return attribute
@@ -95,6 +95,8 @@ def set_new_attribute_values(item_attr, values):
             })
     
 def create_item(item, warehouse, has_variant=0, attributes=[],variant_of=None):
+    if has_variant:
+        raise ValueError(attributes)
     item_name = frappe.get_doc({
         "doctype": "Item",
         "shopify_id": item.get("id"),
@@ -130,8 +132,7 @@ def create_item_variants(item, warehouse, attributes, shopify_variants_attr_list
         
 def get_attribute_value(variant_attr_val, attribute):
     return frappe.db.sql("""select attribute_value from `tabItem Attribute Value` 
-        where parent = '{0}' and (abbr = '{1}' or attribute_value = '{2}')""".format(attribute["attribute"], variant_attr_val,
-        variant_attr_val))[0][0]
+        where parent = '{0}' and (abbr = '{1}' or attribute_value = '{2}')""".format(attribute["attribute"], variant_attr_val, variant_attr_val))[0][0]
 
 def get_item_group(product_type=None):
     if product_type:
