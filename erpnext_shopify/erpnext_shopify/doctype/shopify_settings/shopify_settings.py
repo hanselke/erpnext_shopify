@@ -377,7 +377,7 @@ def sync_shopify_orders():
             order["customer"]["verified_email"] = False
 
         validate_customer_and_product(order)
-        create_order(order)
+        # create_order(order)
 
 def validate_customer_and_product(order):
     if not frappe.db.get_value("Customer", {"shopify_id": order.get("customer").get("id")}, "name"):
