@@ -112,6 +112,12 @@ def create_item(item, warehouse, has_variant=0, attributes=[],variant_of=None):
         add_to_price_list(item)
 
 def create_item_variants(item, warehouse, attributes, shopify_variants_attr_list):
+
+    # HACKS: in MASSIMO they both use 'Length' and 'length'
+    for attribute in attributes:
+        if attribute.get("attribute") == u"length":
+            attribute["attribute"] = attribute.get("attribute").title()
+
     for variant in item.get("variants"):
         variant_item = {
             "id" : variant.get("id"),
