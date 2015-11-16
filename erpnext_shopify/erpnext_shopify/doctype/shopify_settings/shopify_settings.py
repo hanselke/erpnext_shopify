@@ -376,7 +376,7 @@ def sync_shopify_orders():
             order["customer"]["last_order_id"] = 1777711300
             order["customer"]["verified_email"] = False
 
-        validate_customer_and_product(order)
+        # validate_customer_and_product(order)
         create_order(order)
 
 def validate_customer_and_product(order):
