@@ -50,6 +50,7 @@ def sync_products(price_list, warehouse):
     # sync_erp_items(price_list, warehouse)
 
 def sync_shopify_items(warehouse):
+    raise ValueError(get_shopify_items())
     for item in get_shopify_items():
         if item.get("published_at"):
             if not frappe.db.get_value("Item", {"shopify_id": item.get("id")}, "name"):
@@ -328,7 +329,6 @@ def sync_orders():
 
 def sync_shopify_orders():
     orders = sorted(get_shopify_orders(), key=lambda x: datetime.datetime.strptime(x["processed_at"][:-6], "%Y-%m-%dT%H:%M:%S"))
-    raise ValueError(orders)
     for order in orders:
         if not hasattr(order, "customer"):
             # This is a non member order, we enforce it to a default walk in customer.
