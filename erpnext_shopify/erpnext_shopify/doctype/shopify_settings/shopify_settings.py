@@ -74,13 +74,14 @@ def create_attribute(item):
             frappe.get_doc({
                 "doctype": "Item Attribute",
                 "attribute_name": attr.get("name"),
-                "item_attribute_values": [{"attribute_value":attr_value, "abbr": cstr(attr_value)} for attr_value in attr.get("values")]
+                "item_attribute_values": [{"attribute_value":attr_value, "abbr": cstr(attr_value)[:3]} for attr_value in attr.get("values")]
             }).insert()
             
         else:
             "check for attribute values"
             item_attr = frappe.get_doc("Item Attribute", attr.get("name"))
             set_new_attribute_values(item_attr, attr.get("values"))
+            raise ValueError(item_attr)
             item_attr.save()
         
         attribute.append({"attribute": attr.get("name")})
@@ -91,7 +92,7 @@ def set_new_attribute_values(item_attr, values):
         if not any((d.abbr == attr_value or d.attribute_value == attr_value) for d in item_attr.item_attribute_values):
             item_attr.append("item_attribute_values", {
                 "attribute_value": attr_value,
-                "abbr": cstr(attr_value)
+                "abbr": cstr(attr_value)[:3]
             })
     
 def create_item(item, warehouse, has_variant=0, attributes=[],variant_of=None):
@@ -104,7 +105,7 @@ def create_item(item, warehouse, has_variant=0, attributes=[],variant_of=None):
         "description": item.get("title") or u"Please refer to the product pics.",
         "item_group": get_item_group(item.get("product_type")),
         "has_variants": has_variant,
-        "attributes":attributes,
+        "attributes": attributes,
         "stock_uom": item.get("uom") or get_stock_uom(item), 
         "default_warehouse": warehouse
     }).insert()
@@ -302,25 +303,25 @@ def create_customer_address(erp_cust, customer):
                     "customer_name":  erp_cust.customer_name
                 }).insert()
 
-def sync_erp_customers():
-    for customer in frappe.db.sql("""select name, customer_name from tabCustomer where ifnull(shopify_id, '') = '' 
-        and ifnull(sync_with_shopify, 0) = 1 """, as_dict=1):
-        cust = {
-            "first_name": customer['customer_name']
-        }
+# def sync_erp_customers():
+#     for customer in frappe.db.sql("""select name, customer_name from tabCustomer where ifnull(shopify_id, '') = '' 
+#         and ifnull(sync_with_shopify, 0) = 1 """, as_dict=1):
+#         cust = {
+#             "first_name": customer['customer_name']
+#         }
         
-        addresses = frappe.db.sql("""select addr.address_line1 as address1, addr.address_line2 as address2, 
-                        addr.city as city, addr.state as province, addr.country as country, addr.pincode as zip from 
-                        tabAddress addr where addr.customer ='%s' """%(customer['customer_name']), as_dict=1)
+#         addresses = frappe.db.sql("""select addr.address_line1 as address1, addr.address_line2 as address2, 
+#                         addr.city as city, addr.state as province, addr.country as country, addr.pincode as zip from 
+#                         tabAddress addr where addr.customer ='%s' """%(customer['customer_name']), as_dict=1)
         
-        if addresses:
-            cust["addresses"] = addresses
+#         if addresses:
+#             cust["addresses"] = addresses
                         
-        cust = post_request("/admin/customers.json", { "customer": cust})
+#         cust = post_request("/admin/customers.json", { "customer": cust})
 
-        customer = frappe.get_doc("Customer", customer['name'])
-        customer.shopify_id = cust['customer'].get("id")
-        customer.save()
+#         customer = frappe.get_doc("Customer", customer['name'])
+#         customer.shopify_id = cust['customer'].get("id")
+#         customer.save()
 
 def sync_orders():
     sync_shopify_orders()
