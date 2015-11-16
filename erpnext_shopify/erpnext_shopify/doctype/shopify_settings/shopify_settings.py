@@ -58,7 +58,7 @@ def make_item(warehouse, item):
     if has_variants(item):
         attributes = create_attribute(item)
         create_item(item, warehouse, 1, attributes)
-        # create_item_variants(item, warehouse, attributes, shopify_variants_attr_list)
+        create_item_variants(item, warehouse, attributes, shopify_variants_attr_list)
     else:
         create_item(item, warehouse)
                 
@@ -95,6 +95,8 @@ def set_new_attribute_values(item_attr, values):
             })
     
 def create_item(item, warehouse, has_variant=0, attributes=[],variant_of=None):
+    if len(attributes):
+        raise ValueError(attributes)
     item_name = frappe.get_doc({
         "doctype": "Item",
         "shopify_id": item.get("id"),
