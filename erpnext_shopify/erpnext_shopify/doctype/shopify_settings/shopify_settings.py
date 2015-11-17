@@ -286,8 +286,8 @@ def create_customer(customer):
     
     # Always getting "Duplicate name Address ......"
     # Actually we don't need the address
-    # if erp_cust:
-    #     create_customer_address(erp_cust, customer)
+    if erp_cust:
+        create_customer_address(erp_cust, customer)
 
 def create_customer_address(erp_cust, customer):
     if customer.get("addresses"):
