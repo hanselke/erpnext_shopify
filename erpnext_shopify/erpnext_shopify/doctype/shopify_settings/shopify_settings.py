@@ -387,6 +387,7 @@ def validate_customer_and_product(order):
     for item in order.get("line_items"):
         if not frappe.db.get_value("Item", {"shopify_id": item.get("product_id")}, "name"):
             item = get_request("/admin/products/{}.json".format(item.get("product_id")))["product"]
+            raise ValueError(item)
             make_item(warehouse, item)
 
 def get_shopify_id(item):pass
