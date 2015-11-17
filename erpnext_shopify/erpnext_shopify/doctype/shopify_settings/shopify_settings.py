@@ -334,7 +334,7 @@ def sync_shopify_orders():
     orders = sorted(get_shopify_orders(), key=lambda x: datetime.datetime.strptime(x["processed_at"][:-6], "%Y-%m-%dT%H:%M:%S"))
     for order in orders:
         # We will only sync orders from "2015-11-17T00:00:00"
-        if datetime.datetime.strptime(order.get("processed_at")[:-6], "%Y-%m-%dT%H:%M:%S") > datetime.datetime.strptime('2015-11-16T00:00:00' ,'%Y-%m-%dT%H:%M:%S'):
+        if datetime.datetime.strptime(order.get("processed_at")[:-6], "%Y-%m-%dT%H:%M:%S") > datetime.datetime.strptime('2015-11-01T00:00:00' ,'%Y-%m-%dT%H:%M:%S'):
             if not hasattr(order, "customer"):
                 # This is a non member order, we enforce it to a default walk in customer.
                 order["user_id"] = 26626372
