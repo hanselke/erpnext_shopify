@@ -275,7 +275,7 @@ def create_customer(customer):
             "doctype": "Customer",
             "name": customer.get("id"),
             "customer_name" : cust_name,
-            "membership_number": customer.get("membership_number") + u"-" + str(uuid.uuid4()),
+            "membership_number": customer.get("membership_number"),
             "shopify_id": customer.get("id"),
             "customer_group": "Individual",
             "territory": "All Territories",
@@ -288,24 +288,23 @@ def create_customer(customer):
         create_customer_address(erp_cust, customer)
 
 def create_customer_address(erp_cust, customer):
-    if hasattr(customer, "addresses"):
-        if customer.get("addresses"):
-            for i, address in enumerate(customer.get("addresses")):
-                addr = frappe.get_doc({
-                    "doctype": "Address",
-                    "address_title": erp_cust.customer_name,
-                    "address_type": get_address_type(i),
-                    "address_line1": address.get("address1") or "Address 1",
-                    "address_line2": address.get("address2"),
-                    "city": address.get("city") or "City",
-                    "state": address.get("province"),
-                    "pincode": address.get("zip"),
-                    "country": address.get("country"),
-                    "phone": address.get("phone"),
-                    "email_id": customer.get("email"),
-                    "customer": erp_cust.name,
-                    "customer_name":  erp_cust.customer_name
-                }).insert()
+    if customer.get("addresses"):
+        for i, address in enumerate(customer.get("addresses")):
+            addr = frappe.get_doc({
+                "doctype": "Address",
+                "address_title": erp_cust.customer_name,
+                "address_type": get_address_type(i),
+                "address_line1": address.get("address1") or "Address 1",
+                "address_line2": address.get("address2"),
+                "city": address.get("city") or "City",
+                "state": address.get("province"),
+                "pincode": address.get("zip"),
+                "country": address.get("country"),
+                "phone": address.get("phone"),
+                "email_id": customer.get("email"),
+                "customer": erp_cust.name,
+                "customer_name":  erp_cust.customer_name
+            }).insert()
 
 # def sync_erp_customers():
 #     for customer in frappe.db.sql("""select name, customer_name from tabCustomer where ifnull(shopify_id, '') = '' 
