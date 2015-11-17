@@ -50,6 +50,7 @@ def sync_products(price_list, warehouse):
     # sync_erp_items(price_list, warehouse)
 
 def sync_shopify_items(warehouse):
+    raise ValueError(get_shopify_items())
     for item in get_shopify_items():
         if not frappe.db.get_value("Item", {"shopify_id": item.get("id")}, "name"):
             make_item(warehouse, item)
@@ -394,12 +395,12 @@ def get_shopify_id(item):pass
 def create_order(order):
     shopify_settings = frappe.get_doc("Shopify Settings", "Shopify Settings")
     so = create_salse_order(order, shopify_settings)
-    # if so:
-    #     if order.get("financial_status") == "paid":
-    #         create_sales_invoice(order, shopify_settings, so)
+    if so:
+        if order.get("financial_status") == "paid":
+            create_sales_invoice(order, shopify_settings, so)
             
-    #     if order.get("fulfillments"):
-    #         create_delivery_note(order, shopify_settings, so)
+        if order.get("fulfillments"):
+            create_delivery_note(order, shopify_settings, so)
 
 def create_salse_order(order, shopify_settings):
     so = frappe.db.get_value("Sales Order", {"shopify_id": order.get("id")}, "name")
