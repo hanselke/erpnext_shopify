@@ -335,7 +335,6 @@ def sync_shopify_orders():
     for order in orders:
         # We will only sync orders from "2015-11-17T00:00:00"
         if datetime.datetime.strptime(order.get("processed_at")[:-6], "%Y-%m-%dT%H:%M:%S") > datetime.datetime.strptime('2015-11-17T00:00:00' ,'%Y-%m-%dT%H:%M:%S'):
-            raise ValueError(order)
             if not hasattr(order, "customer"):
                 # This is a non member order, we enforce it to a default walk in customer.
                 order["user_id"] = 26626372
@@ -411,7 +410,7 @@ def create_salse_order(order, shopify_settings):
             "doctype": "Sales Order",
             "naming_series": shopify_settings.sales_order_series or "SO-Shopify-",
             "shopify_id": order.get("id"),
-            "customer": frappe.db.get_value("Customer", {"shopify_id": order.get("customer").get("id")}, "name"),
+            "customer": frappe.db.get_value("Customer", {"shopify_id": order.get("customer").get("id")}, "membership_number"),
             "transaction_date": order.get("processed_at"),
             "delivery_date": order.get("processed_at"),
             "selling_price_list": shopify_settings.price_list,
