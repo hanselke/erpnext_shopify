@@ -166,12 +166,15 @@ def get_stock_uom(item):
         return _("Nos")
 
 def add_to_price_list(item):
-    frappe.get_doc({
-        "doctype": "Item Price",
-        "price_list": frappe.get_doc("Shopify Settings", "Shopify Settings").price_list,
-        "item_code": cstr(item.get("item_code")) or cstr(item.get("id")),
-        "price_list_rate": item.get("item_price") or item.get("variants")[0].get("price")
-    }).insert()
+    item_price = frappe.db.get_value("Item Price", {"item_code": cstr(item.get("item_code")) or cstr(item.get("id"))}, "item_code")
+    raise ValueError(item_price)
+    if not item_price:
+        frappe.get_doc({
+            "doctype": "Item Price",
+            "price_list": frappe.get_doc("Shopify Settings", "Shopify Settings").price_list,
+            "item_code": cstr(item.get("item_code")) or cstr(item.get("id")),
+            "price_list_rate": item.get("item_price") or item.get("variants")[0].get("price")
+        }).insert()
 
 # def sync_erp_items(price_list, warehouse):
 #     for item in frappe.db.sql("""select item_code, item_name, item_group, description, has_variants, stock_uom from tabItem 
