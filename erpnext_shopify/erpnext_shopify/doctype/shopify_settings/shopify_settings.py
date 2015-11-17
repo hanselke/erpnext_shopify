@@ -345,7 +345,6 @@ def sync_shopify_orders():
                 order["customer"]["total_spent"] = order["subtotal_price"]
                 order["customer"]["first_name"] = u"Non"
                 order["customer"]["last_name"] = u"Member"
-                order["customer"]["membership_number"] = order["customer"]["first_name"] + u"-" + str(uuid.uuid4())
                 order["customer"]["last_order_name"] = u"#3-1473"
                 order["customer"]["orders_count"] = 1
                 order["customer"]["created_at"] = u"2015-11-06T15:20:53+08:00"
@@ -380,6 +379,8 @@ def sync_shopify_orders():
                 order["customer"]["last_order_id"] = 1777711300
                 order["customer"]["verified_email"] = False
 
+            order["customer"]["membership_number"] = order["customer"]["first_name"] + u"-" + str(uuid.uuid4())
+
             validate_customer_and_product(order)
             create_order(order)
 
@@ -412,7 +413,8 @@ def create_salse_order(order, shopify_settings):
             "doctype": "Sales Order",
             "naming_series": shopify_settings.sales_order_series or "SO-Shopify-",
             "shopify_id": order.get("id"),
-            "customer": frappe.db.get_value("Customer", {"shopify_id": order.get("customer").get("id")}, "membership_number"),
+            "customer": frappe.db.get_value("Customer", {"shopify_id": order.get("customer").get("id")}, "name"),
+            "membership_number": order["customer"]["membership_number"],
             "transaction_date": order.get("processed_at"),
             "delivery_date": order.get("processed_at"),
             "selling_price_list": shopify_settings.price_list,
