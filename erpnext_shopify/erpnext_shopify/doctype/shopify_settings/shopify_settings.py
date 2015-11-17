@@ -167,7 +167,7 @@ def get_stock_uom(item):
 
 def add_to_price_list(item):
     item_price = frappe.db.get_value("Item Price", {"item_code": cstr(item.get("item_code")) or cstr(item.get("id"))}, "item_code")
-    if item_price
+    if item_price:
         raise ValueError(item_price)
     if not item_price:
         frappe.get_doc({
