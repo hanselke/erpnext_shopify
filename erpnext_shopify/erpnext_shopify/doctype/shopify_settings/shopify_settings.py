@@ -284,8 +284,6 @@ def create_customer(customer):
     except:
         pass
     
-    # Always getting "Duplicate name Address ......"
-    # Actually we don't need the address
     if erp_cust:
         create_customer_address(erp_cust, customer)
 
