@@ -332,8 +332,6 @@ def sync_orders():
 def sync_shopify_orders():
     orders = sorted(get_shopify_orders(), key=lambda x: datetime.datetime.strptime(x["processed_at"][:-6], "%Y-%m-%dT%H:%M:%S"))
     for order in orders:
-        if order.get("name") == u"#3-1561":
-            raise ValueError(order)
         # We will only sync orders from "2015-11-17T00:00:00"
         if datetime.datetime.strptime(order.get("processed_at")[:-6], "%Y-%m-%dT%H:%M:%S") > datetime.datetime.strptime('2015-11-17T00:00:00' ,'%Y-%m-%dT%H:%M:%S'):
             if not order.get("customer"):
@@ -419,7 +417,7 @@ def create_salse_order(order, shopify_settings):
             "selling_price_list": shopify_settings.price_list,
             "ignore_pricing_rule": 1,
             "apply_discount_on": "Net Total",
-            "discount_amount": get_discounted_amount(order),
+            "discount_amount": flt(order.get("total_discounts")),
             "items": get_item_line(order.get("line_items"), shopify_settings),
             "taxes": get_tax_line(order, order.get("shipping_lines"), shopify_settings)
         }).insert()
@@ -457,11 +455,11 @@ def update_items_qty(dn_items, fulfillment_items, shopify_settings):
     return [dn_item.update({"qty": item.get("quantity")}) for item in fulfillment_items for dn_item in dn_items\
          if get_item_code(item) == dn_item.item_code]
 
-def get_discounted_amount(order):
-    discounted_amount = 0.0
-    for discount in order.get("discount_codes"):
-        discounted_amount += flt(discount.get("amount"))
-    return discounted_amount
+# def get_discounted_amount(order):
+#     discounted_amount = 0.0
+#     for discount in order.get("discount_codes"):
+#         discounted_amount += flt(discount.get("amount"))
+#     return discounted_amount
         
 def get_item_line(order_items, shopify_settings):
     items = []
