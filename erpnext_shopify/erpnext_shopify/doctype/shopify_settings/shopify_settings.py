@@ -56,11 +56,14 @@ def sync_shopify_items(warehouse):
         #     make_item(warehouse, item)
 
 def make_item(warehouse, item):
-    existing_erp_item = frappe.db.sql("""select * from `tabItem Attribute`""", as_dict=1)
+    existing_erp_item = frappe.get_doc("Item", cstr(item.get("item_code")) or cstr(item.get("id")))
     raise ValueError(existing_erp_item)
-    if item:
+    if existing_erp_item:
         # Need to proceed the update at this point
-        print "fuck"
+        existing_erp_item[0]["item_name"] = item.get("title")
+        existing_erp_item[0]["description"] = item.get("title") or u"Please refer to the product pics."
+        existing_erp_item[0]["item_group"] = get_item_group(item.get("product_type"))
+        existing_erp_item
     else:
         # Need to proceed the creation at this point
         if has_variants(item):
