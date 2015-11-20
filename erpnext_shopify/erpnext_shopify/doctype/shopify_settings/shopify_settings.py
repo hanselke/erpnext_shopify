@@ -60,6 +60,7 @@ def make_item(warehouse, item):
     raise ValueError(item)
     if item:
         # Need to proceed the update at this point
+        print "fuck"
     else:
         # Need to proceed the creation at this point
         if has_variants(item):
