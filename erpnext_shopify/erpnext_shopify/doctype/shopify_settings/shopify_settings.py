@@ -59,7 +59,7 @@ def make_item(warehouse, item):
     existing_erp_item = frappe.db.sql("""select item_code, item_name, item_group, description from tabItem where shopify_id=%(shopify_id)s""", {"shopify_id": item.get("id")}, as_dict=1)[0]
     if existing_erp_item:
         erp_item = frappe.get_doc("Item", existing_erp_item)
-        erp_item["item_name"] = u"hhhhhhhhhhhhh"
+        erp_item.item_name = u"hhhhhhhhhhhhh"
         erp_item.save()
         # Need to proceed the update at this point
         # frappe.db.set_value("Item", existing_erp_item["item_code"], "item_name", u"I want to update_taxes_with_shipping_rule")
