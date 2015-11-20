@@ -56,8 +56,6 @@ def sync_shopify_items(warehouse):
 def make_item(warehouse, item):
     existing_erp_item = frappe.db.sql("""select item_code, item_name, item_group, description from tabItem where shopify_id = %(shopify_id)s""", {"shopify_id": item.get("id")}, as_dict = 1)
     if existing_erp_item:
-        if existing_erp_item[0]["item_name"] == u"Hair Spa Package":
-            raise ValueError(item)
         #
         ## Need to proceed the update at this point
         #
@@ -80,7 +78,7 @@ def make_item(warehouse, item):
         if has_variants(item):
             original_attributes = frappe.db.sql("""select distinct attribute from `tabItem Variant Attribute` where parent in (select item_code from `tabItem` where variant_of = %(item_code)s)""", {"item_code": cstr(item.get("item_code")) or cstr(item.get("id"))}, as_dict = 1)
             attributes = create_attribute(item)
-            if item.get("item_name") == u"Hair Spa Package":
+            if existing_erp_item[0]["item_name"] == u"Hair Spa Package":
                 raise ValueError(original_attributes)
             for index, attribute_item in enumerate(attributes):
                 for original_attribute_item in original_attributes:
