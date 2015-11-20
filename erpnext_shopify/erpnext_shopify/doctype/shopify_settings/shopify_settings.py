@@ -56,7 +56,7 @@ def sync_shopify_items(warehouse):
         #     make_item(warehouse, item)
 
 def make_item(warehouse, item):
-    existing_erp_item = frappe.db.sql("""select item_code, item_name, item_group, description from tabItem where shopify_id=%(shopify_id)s""", {"shopify_id": item.get("id")}, as_dict=1)[0]
+    existing_erp_item = frappe.db.sql("""select item_code, item_name, item_group, description from tabItem where shopify_id=%(shopify_id)s""", {"shopify_id": item.get("id")}, as_dict=1)
     if existing_erp_item:
         #
         ## Need to proceed the update at this point
@@ -67,9 +67,9 @@ def make_item(warehouse, item):
         ##     erp_item.save()
         ## should work, but it doesn't, so use the stupid way to update single field one by one.
         #
-        frappe.db.set_value("Item", existing_erp_item["item_code"], "item_name", item.get("title"))
-        frappe.db.set_value("Item", existing_erp_item["item_code"], "description", item.get("title") or u"Please refer to the product pics.")
-        frappe.db.set_value("Item", existing_erp_item["item_code"], "item_group", get_item_group(item.get("product_type")))
+        frappe.db.set_value("Item", existing_erp_item[0]["item_code"], "item_name", item.get("title"))
+        frappe.db.set_value("Item", existing_erp_item[0]["item_code"], "description", item.get("title") or u"Please refer to the product pics.")
+        frappe.db.set_value("Item", existing_erp_item[0]["item_code"], "item_group", get_item_group(item.get("product_type")))
     else:
         # Need to proceed the creation at this point
         if has_variants(item):
