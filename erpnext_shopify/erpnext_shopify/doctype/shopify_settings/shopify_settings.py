@@ -56,7 +56,8 @@ def sync_shopify_items(warehouse):
         #     make_item(warehouse, item)
 
 def make_item(warehouse, item):
-    existing_erp_item = frappe.db.sql("""select item_code, item_name, description, item_group from tabItem where shopify_id=%(shopify_id)s""", {"shopify_id": item.get("id")}, as_dict=1)
+    existing_erp_item = frappe.db.sql("""select item_code, item_name, description, item_group from tabItem where shopify_id=%(shopify_id)s""", {"shopify_id": item.get("id")}, as_dict=1)[0]
+    raise ValueError(existing_erp_item)
     if len(existing_erp_item):
         # Need to proceed the update at this point
         existing_erp_item[0]["item_name"] = u"I want to update_taxes_with_shipping_rule"
