@@ -56,6 +56,7 @@ def sync_shopify_items(warehouse):
         #     make_item(warehouse, item)
 
 def make_item(warehouse, item):
+    raise ValueError(cstr(item.get("item_code")) or cstr(item.get("id")))
     existing_erp_item = frappe.get_doc("Item", cstr(item.get("item_code")) or cstr(item.get("id")))
     raise ValueError(existing_erp_item)
     if existing_erp_item:
