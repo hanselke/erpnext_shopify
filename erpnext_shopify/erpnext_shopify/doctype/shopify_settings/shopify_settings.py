@@ -81,6 +81,7 @@ def make_item(warehouse, item):
             attributes = create_attribute
             for attribute in frappe.db.sql("""select attribute_name from `tabItem Attribute`""", as_dict = 1):
                 for attribute_value in frappe.db.sql("""select attribute_value from `tabItem Variant Attribute` where attribute = %(attribute)""", {"attribute": attribute}, as_dict = 1):
+                    print attribute_value
                     raise ValueError(attributes)
     else:
         # Need to proceed the creation at this point
