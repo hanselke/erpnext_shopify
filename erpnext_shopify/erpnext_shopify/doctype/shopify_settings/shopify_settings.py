@@ -78,7 +78,7 @@ def make_item(warehouse, item):
 
         # Deal with attributes update
         if has_variants(item):
-            original_attributes = frappe.db.sql("""select attribute_name from `tabItem Attribute`""", as_dict = 1)
+            original_attributes = frappe.db.sql("""select distinct attribute from `tabItem Variant Attribute` where parent in (select item_code from `tabItem` where variant_of = %(item_code)s)""", {"item_code": cstr(item.get("item_code")) or cstr(item.get("id"))}, as_dict = 1)
             attributes = create_attribute(item)
             for index, attribute_item in enumerate(attributes):
                 for original_attribute_item in original_attributes:
@@ -87,7 +87,6 @@ def make_item(warehouse, item):
                         break
 
             if len(attributes):
-                raise ValueError(attributes)
                 create_item_variants(item, warehouse, attributes, shopify_variants_attr_list)
                         
     else:
