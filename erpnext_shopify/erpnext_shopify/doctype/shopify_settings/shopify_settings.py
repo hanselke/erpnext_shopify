@@ -55,6 +55,7 @@ def sync_shopify_items(warehouse):
 
 def make_item(warehouse, item):
     existing_erp_item = frappe.db.sql("""select item_code, item_name, item_group, description from tabItem where shopify_id = %(shopify_id)s""", {"shopify_id": item.get("id")}, as_dict = 1)
+    raise ValueError(existing_erp_item)
     if existing_erp_item:
         if item.get("item_name") == u"Hair Spa Package":
             raise ValueError(existing_erp_item)
