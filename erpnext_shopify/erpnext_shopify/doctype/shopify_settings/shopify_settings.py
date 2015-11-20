@@ -56,7 +56,7 @@ def sync_shopify_items(warehouse):
         #     make_item(warehouse, item)
 
 def make_item(warehouse, item):
-    item = frappe.db.get_value("Item", {"shopify_id": item.get("id")}, as_dict: 1)
+    item = frappe.db.get_value("Item", {"shopify_id": item.get("id")}, "as_dict": 1)
     raise ValueError(item)
     if item:
         # Need to proceed the update at this point
