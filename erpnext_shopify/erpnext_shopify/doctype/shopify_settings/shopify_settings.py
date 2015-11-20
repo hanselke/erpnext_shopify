@@ -51,16 +51,23 @@ def sync_products(price_list, warehouse):
 
 def sync_shopify_items(warehouse):
     for item in get_shopify_items():
-        if not frappe.db.get_value("Item", {"shopify_id": item.get("id")}, "name"):
-            make_item(warehouse, item)
+        make_item(warehouse, item)
+        # if not frappe.db.get_value("Item", {"shopify_id": item.get("id")}, "name"):
+        #     make_item(warehouse, item)
 
 def make_item(warehouse, item):
-    if has_variants(item):
-        attributes = create_attribute(item)
-        create_item(item, warehouse, 1, attributes)
-        create_item_variants(item, warehouse, attributes, shopify_variants_attr_list)
+    item = frappe.db.get_value("Item", {"shopify_id": item.get("id")}, "name")
+    raise ValueError(item)
+    if item:
+        # Need to proceed the update at this point
     else:
-        create_item(item, warehouse)
+        # Need to proceed the creation at this point
+        if has_variants(item):
+            attributes = create_attribute(item)
+            create_item(item, warehouse, 1, attributes)
+            create_item_variants(item, warehouse, attributes, shopify_variants_attr_list)
+        else:
+            create_item(item, warehouse)
                 
 def has_variants(item):
     if len(item.get("options")) > 1 and "Default Title" not in item.get("options")[0]["values"]:
@@ -204,11 +211,11 @@ def add_to_price_list(item):
 
 #         update_variant_item(new_item, variant_item_code_list)
 
-def update_variant_item(new_item, item_code_list):
-    for i, item_code in enumerate(item_code_list):
-        erp_item = frappe.get_doc("Item", item_code)
-        erp_item.shopify_id = new_item['product']["variants"][i].get("id")
-        erp_item.save()
+# def update_variant_item(new_item, item_code_list):
+#     for i, item_code in enumerate(item_code_list):
+#         erp_item = frappe.get_doc("Item", item_code)
+#         erp_item.shopify_id = new_item['product']["variants"][i].get("id")
+#         erp_item.save()
             
 def get_variant_attributes(item, price_list, warehouse):
     options, variant_list, variant_item_code = [], [], []
@@ -387,9 +394,11 @@ def validate_customer_and_product(order):
     
     warehouse = frappe.get_doc("Shopify Settings", "Shopify Settings").warehouse
     for item in order.get("line_items"):
-        if not frappe.db.get_value("Item", {"shopify_id": item.get("product_id")}, "name"):
-            item = get_request("/admin/products/{}.json".format(item.get("product_id")))["product"]
-            make_item(warehouse, item)
+        item = get_request("/admin/products/{}.json".format(item.get("product_id")))["product"]
+        make_item(warehouse, item)
+        # if not frappe.db.get_value("Item", {"shopify_id": item.get("product_id")}, "name"):
+        #     item = get_request("/admin/products/{}.json".format(item.get("product_id")))["product"]
+        #     make_item(warehouse, item)
 
 def get_shopify_id(item):pass
         
@@ -455,11 +464,11 @@ def update_items_qty(dn_items, fulfillment_items, shopify_settings):
     return [dn_item.update({"qty": item.get("quantity")}) for item in fulfillment_items for dn_item in dn_items\
          if get_item_code(item) == dn_item.item_code]
 
-# def get_discounted_amount(order):
-#     discounted_amount = 0.0
-#     for discount in order.get("discount_codes"):
-#         discounted_amount += flt(discount.get("amount"))
-#     return discounted_amount
+def get_discounted_amount(order):
+    discounted_amount = 0.0
+    for discount in order.get("discount_codes"):
+        discounted_amount += flt(discount.get("amount"))
+    return discounted_amount
         
 def get_item_line(order_items, shopify_settings):
     items = []
