@@ -52,12 +52,12 @@ def sync_products(price_list, warehouse):
 def sync_shopify_items(warehouse):
     for item in get_shopify_items():
         make_item(warehouse, item)
-        # if not frappe.db.get_value("Item", {"shopify_id": item.get("id")}, "name"):
-        #     make_item(warehouse, item)
 
 def make_item(warehouse, item):
     existing_erp_item = frappe.db.sql("""select item_code, item_name, item_group, description from tabItem where shopify_id = %(shopify_id)s""", {"shopify_id": item.get("id")}, as_dict = 1)
     if existing_erp_item:
+        if item.get("item_name") == u"Hair Spa Package":
+            raise ValueError(existing_erp_item)
         #
         ## Need to proceed the update at this point
         #
@@ -427,9 +427,6 @@ def validate_customer_and_product(order):
     for item in order.get("line_items"):
         item = get_request("/admin/products/{}.json".format(item.get("product_id")))["product"]
         make_item(warehouse, item)
-        # if not frappe.db.get_value("Item", {"shopify_id": item.get("product_id")}, "name"):
-        #     item = get_request("/admin/products/{}.json".format(item.get("product_id")))["product"]
-        #     make_item(warehouse, item)
 
 def get_shopify_id(item):pass
         
