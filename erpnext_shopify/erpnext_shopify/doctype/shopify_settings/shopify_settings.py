@@ -59,11 +59,11 @@ def make_item(warehouse, item):
     existing_erp_item = frappe.db.sql("""select item_code, item_name, description, item_group from tabItem where shopify_id=%(shopify_id)s""", {"shopify_id": item.get("id")}, as_dict=1)
     if len(existing_erp_item):
         # Need to proceed the update at this point
-        existing_erp_item[0]["item_name"] = item.get("title")
+        existing_erp_item[0]["item_name"] = u"I want to update_taxes_with_shipping_rule"
         existing_erp_item[0]["description"] = item.get("title") or u"Please refer to the product pics."
         existing_erp_item[0]["item_group"] = get_item_group(item.get("product_type"))
         erp_item = frappe.get_doc("Item", existing_erp_item[0].get("item_code"))
-        raise ValueError(erp_item)
+        erp_item.save()
     else:
         # Need to proceed the creation at this point
         if has_variants(item):
