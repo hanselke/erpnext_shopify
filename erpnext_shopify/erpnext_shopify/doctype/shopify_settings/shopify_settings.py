@@ -80,7 +80,7 @@ def make_item(warehouse, item):
         if has_variants(item):
             original_attributes = frappe.db.sql("""select distinct attribute from `tabItem Variant Attribute` where parent in (select item_code from `tabItem` where variant_of = %(item_code)s)""", {"item_code": cstr(item.get("item_code")) or cstr(item.get("id"))}, as_dict = 1)
             attributes = create_attribute(item)
-            if item.get("item_code") == u"11018252804":
+            if item.get("item_name") == u"Hair Spa Package":
                 raise ValueError(original_attributes)
             for index, attribute_item in enumerate(attributes):
                 for original_attribute_item in original_attributes:
