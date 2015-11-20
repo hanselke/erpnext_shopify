@@ -87,6 +87,7 @@ def make_item(warehouse, item):
                         break
 
             if len(attributes):
+                raise ValueError(attributes)
                 create_item_variants(item, warehouse, attributes, shopify_variants_attr_list)
                         
     else:
