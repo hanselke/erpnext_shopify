@@ -11,7 +11,7 @@ from erpnext.selling.doctype.sales_order.sales_order import make_delivery_note, 
 from erpnext_shopify.utils import get_request, get_shopify_customers, get_address_type, post_request,\
  get_shopify_items, get_shopify_orders
 
-import datetime, uuid
+import datetime, uuid, copy
 
 shopify_variants_attr_list = ["option1", "option2", "option3"] 
 
@@ -152,19 +152,24 @@ def create_item_variants(item, warehouse, attributes, shopify_variants_attr_list
                 attributes[i].update({"attribute_value": get_attribute_value(variant.get(variant_attr), attributes[i])})
 
         if existing_erp_item_code:
+            temp_attributes_copy = copy.deepcopy(attributes)
             original_variants = frappe.db.sql("""select attribute, attribute_value from `tabItem Variant Attribute` where parent in (select item_code from `tabItem` where variant_of = %(item_code)s) group by attribute, attribute_value""", {"item_code": existing_erp_item_code}, as_dict = 1)
 
             # Find out which variant need to be created
-            temp = len(attributes) - 1
+            temp = len(temp_attributes_copy) - 1
             while temp >= 0:
                 for original_variant_item in original_variants:
-                    if attributes[temp]["attribute"] == original_variant_item.get("attribute") and attributes[temp]["attribute_value"] == original_variant_item.get("attribute_value"):
-                        del attributes[temp]
+                    if temp_attributes_copy[temp]["attribute"] == original_variant_item.get("attribute") and temp_attributes_copy[temp]["attribute_value"] == original_variant_item.get("attribute_value"):
+                        del temp_attributes_copy[temp]
                         break
                 temp = temp - 1
-        
-        if len(attributes):
-            create_item(variant_item, warehouse, 0, attributes, cstr(item.get("id")))
+
+            if len(temp_attributes_copy):
+                create_item(variant_item, warehouse, 0, temp_attributes_copy, cstr(item.get("id")))
+
+            continue
+
+        create_item(variant_item, warehouse, 0, attributes, cstr(item.get("id")))
         
 def get_attribute_value(variant_attr_val, attribute):
     return frappe.db.sql("""select attribute_value from `tabItem Attribute Value` 
