@@ -148,7 +148,7 @@ def create_item_variants(item, warehouse, attributes, shopify_variants_attr_list
         }
 
         if len(attributes) < 3:
-            raise ValueError(item)
+            raise ValueError(attributes)
         
         for i, variant_attr in enumerate(shopify_variants_attr_list):
             if variant.get(variant_attr):
