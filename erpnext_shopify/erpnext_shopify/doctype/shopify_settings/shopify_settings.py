@@ -153,9 +153,18 @@ def create_item_variants(item, warehouse, attributes, shopify_variants_attr_list
 
         if existing_erp_item_code:
             original_variants = frappe.db.sql("""select attribute, attribute_value from `tabItem Variant Attribute` where parent in (select item_code from `tabItem` where variant_of = %(item_code)s) group by attribute, attribute_value""", {"item_code": existing_erp_item_code}, as_dict = 1)
-            raise ValueError(original_variants)
+
+            # Find out which variant need to be created
+            temp = len(attributes) - 1
+            while temp >= 0:
+                for original_variant_item in original_variants:
+                    if attributes[temp]["attribute"] == original_variant_item.get(attribute) and attributes[temp]["attribute_value"] == original_variant_item.get("attribute_value"):
+                        del attributes[temp]
+                        break
+                temp = temp - 1
         
-        create_item(variant_item, warehouse, 0, attributes, cstr(item.get("id")))
+        if len(attributes):
+            create_item(variant_item, warehouse, 0, attributes, cstr(item.get("id")))
         
 def get_attribute_value(variant_attr_val, attribute):
     return frappe.db.sql("""select attribute_value from `tabItem Attribute Value` 
