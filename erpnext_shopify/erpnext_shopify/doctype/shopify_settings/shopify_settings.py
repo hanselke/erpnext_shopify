@@ -74,21 +74,10 @@ def make_item(warehouse, item):
         frappe.db.set_value("Item", existing_erp_item[0]["item_code"], "description", item.get("title") or u"Please refer to the product pics.")
         frappe.db.set_value("Item", existing_erp_item[0]["item_code"], "item_group", get_item_group(item.get("product_type")))
 
-        # Deal with attributes update
+        # Deal with "attributes(variants)" update
         if has_variants(item):
-            original_attributes = frappe.db.sql("""select distinct attribute from `tabItem Variant Attribute` where parent in (select item_code from `tabItem` where variant_of = %(item_code)s)""", {"item_code": cstr(item.get("item_code")) or cstr(item.get("id"))}, as_dict = 1)
             attributes = create_attribute(item)
-            temp = len(attributes) - 1
-            while temp >= 0:
-                for original_attribute_item in original_attributes:
-                    if attributes[temp]["attribute"] == original_attribute_item.get("attribute"):
-                        del attributes[temp]
-                        break
-                temp = temp -1
-
-            if len(attributes):
-                create_item_variants(item, warehouse, attributes, shopify_variants_attr_list)
-                        
+            create_item_variants(item, warehouse, attributes, shopify_variants_attr_list, existing_erp_item[0]["item_code"])
     else:
         # Need to proceed the creation at this point
         if has_variants(item):
@@ -147,13 +136,7 @@ def create_item(item, warehouse, has_variant=0, attributes=[],variant_of=None):
     if not has_variant:
         add_to_price_list(item)
 
-def create_item_variants(item, warehouse, attributes, shopify_variants_attr_list):
-
-    # HACKS: in MASSIMO they both use 'Length' and 'length'
-    for attribute in attributes:
-        if attribute.get("attribute") == u"length":
-            attribute["attribute"] = attribute.get("attribute").title()
-
+def create_item_variants(item, warehouse, attributes, shopify_variants_attr_list, existing_erp_item_code = None):
     for variant in item.get("variants"):
         variant_item = {
             "id" : variant.get("id"),
@@ -167,6 +150,10 @@ def create_item_variants(item, warehouse, attributes, shopify_variants_attr_list
         for i, variant_attr in enumerate(shopify_variants_attr_list):
             if variant.get(variant_attr):
                 attributes[i].update({"attribute_value": get_attribute_value(variant.get(variant_attr), attributes[i])})
+
+        if existing_erp_item_code:
+            original_variants = frappe.db.sql("""select attribute, attribute_value from `tabItem Variant Attribute` where parent in (select item_code from `tabItem` where variant_of = %(item_code)s) group by attribute, attribute_value""", {"item_code": existing_erp_item_code}, as_dict = 1)
+            raise ValueError(attributes)
         
         create_item(variant_item, warehouse, 0, attributes, cstr(item.get("id")))
         
