@@ -158,7 +158,7 @@ def create_item_variants(item, warehouse, attributes, shopify_variants_attr_list
             temp = len(attributes) - 1
             while temp >= 0:
                 for original_variant_item in original_variants:
-                    if attributes[temp]["attribute"] == original_variant_item.get(attribute) and attributes[temp]["attribute_value"] == original_variant_item.get("attribute_value"):
+                    if attributes[temp]["attribute"] == original_variant_item.get("attribute") and attributes[temp]["attribute_value"] == original_variant_item.get("attribute_value"):
                         del attributes[temp]
                         break
                 temp = temp - 1
