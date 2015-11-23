@@ -467,8 +467,10 @@ def create_salse_order(order, shopify_settings):
     
     else:
         so = frappe.get_doc("Sales Order", so)
-        if order.get("financial_status") == "refunded":
-            raise ValueError(so)
+        raise ValueError(order)
+        # if order.get("financial_status") == "refunded":
+        #     so.items = get_item_line(order.get("refunds"), shopify_settings, 1)
+        #     so.taxes = get_tax_line(order, order.get())
 
     return so
 
