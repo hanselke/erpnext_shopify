@@ -523,13 +523,12 @@ def get_discounted_amount(order):
         
 def get_item_line(order_items, shopify_settings, is_refunded_order = 0):
     items = []
-    raise ValueError(order_items)
     for item in order_items:
         item_code = get_item_code(item)
         qty = -cint(item.get("quantity")) if is_refunded_order else item.get("quantity")
         items.append({
             "item_code": item_code,
-            "item_name": item.get("name"),
+            "item_name": item.get("name") or item.get("line_item").get("name"),
             "description": item.get("title") or u"Please refer to the product pics.",
             "rate": item.get("price"),
             "qty": qty,
@@ -542,6 +541,8 @@ def get_item_code(item):
     item_code = frappe.db.get_value("Item", {"shopify_id": item.get("variant_id")}, "item_code")
     if not item_code:
         item_code = frappe.db.get_value("Item", {"shopify_id": item.get("product_id")}, "item_code")
+    if not item_code:
+        item_code = frappe.db.get_value("Item", {"shopify_id": item.get("line_item").get("product_id")}, "item_code")
     
     return item_code
     
