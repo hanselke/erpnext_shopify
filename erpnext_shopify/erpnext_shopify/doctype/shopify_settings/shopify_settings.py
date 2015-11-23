@@ -299,30 +299,36 @@ def sync_shopify_customers():
     for customer in get_shopify_customers():
         # Add the 'membership_number' field
         customer["membership_number"] = customer.get("first_name") + u"-" + str(uuid.uuid4())
-        if not frappe.db.get_value("Customer", {"shopify_id": customer.get('id')}, "name"):
-            create_customer(customer)
+        create_customer(customer)
 
 def create_customer(customer):
     erp_cust = None
     cust_name = (customer.get("first_name") + " " + (customer.get("last_name") and  customer.get("last_name") or ""))\
         if customer.get("first_name") else customer.get("email")
+
+    erp_customer = frappe.db.sql("""select name, customer_name, membership_number from tabCustomer where shopify_id = %(shopify_id)s""", {"shopify_id": customer.get("id")}, as_dict = 1)
     
-    try:
-        erp_cust = frappe.get_doc({
-            "doctype": "Customer",
-            "name": customer.get("id"),
-            "customer_name" : cust_name,
-            "membership_number": customer.get("membership_number"),
-            "shopify_id": customer.get("id"),
-            "customer_group": "Individual",
-            "territory": "All Territories",
-            "customer_type": "Company"
-        }).insert()
-    except:
-        pass
-    
-    if erp_cust:
-        create_customer_address(erp_cust, customer)
+    if erp_customer:
+        # Proceed the customer update here
+        db.frappe.set_value("Customer", erp_customer[0]["name"], "customer_name", cust_name)
+        db.frappe.set_value("Customer", erp_customer[0]["name"], "membership_number", customer.get("membership_number"))
+    else:
+        try:
+            erp_cust = frappe.get_doc({
+                "doctype": "Customer",
+                "name": customer.get("id"),
+                "customer_name" : cust_name,
+                "membership_number": customer.get("membership_number"),
+                "shopify_id": customer.get("id"),
+                "customer_group": "Individual",
+                "territory": "All Territories",
+                "customer_type": "Company"
+            }).insert()
+        except:
+            pass
+        
+        if erp_cust:
+            create_customer_address(erp_cust, customer)
 
 def create_customer_address(erp_cust, customer):
     if customer.get("addresses"):
@@ -367,6 +373,7 @@ def sync_orders():
     sync_shopify_orders()
 
 def sync_shopify_orders():
+    raise ValueError(get_shopify_orders())
     orders = sorted(get_shopify_orders(), key=lambda x: datetime.datetime.strptime(x["processed_at"][:-6], "%Y-%m-%dT%H:%M:%S"))
     for order in orders:
         # We will only sync orders from "2015-11-17T00:00:00"
@@ -419,8 +426,7 @@ def sync_shopify_orders():
             create_order(order)
 
 def validate_customer_and_product(order):
-    if not frappe.db.get_value("Customer", {"shopify_id": order.get("customer").get("id")}, "name"):
-        create_customer(order.get("customer"))
+    create_customer(order.get("customer"))
     
     warehouse = frappe.get_doc("Shopify Settings", "Shopify Settings").warehouse
     for item in order.get("line_items"):
