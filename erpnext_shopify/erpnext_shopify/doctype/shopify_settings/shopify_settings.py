@@ -310,8 +310,8 @@ def create_customer(customer):
     
     if erp_customer:
         # Proceed the customer update here
-        db.frappe.set_value("Customer", erp_customer[0]["name"], "customer_name", cust_name)
-        db.frappe.set_value("Customer", erp_customer[0]["name"], "membership_number", customer.get("membership_number"))
+        frappe.db.set_value("Customer", erp_customer[0]["name"], "customer_name", cust_name)
+        frappe.db.set_value("Customer", erp_customer[0]["name"], "membership_number", customer.get("membership_number"))
     else:
         try:
             erp_cust = frappe.get_doc({
