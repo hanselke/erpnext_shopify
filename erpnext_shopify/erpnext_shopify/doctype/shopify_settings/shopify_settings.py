@@ -468,25 +468,26 @@ def create_salse_order(order, shopify_settings):
     else:
         so = frappe.get_doc("Sales Order", so)
         if order.get("financial_status") == "refunded":
+            raise ValueError(order.get("refunds")[0].get("refund_line_items"))
             test = get_tax_line(order, order.get("refunds")[0].get("refund_line_items"), shopify_settings, 1)
-            # so = frappe.get_doc({
-            #     "doctype": "Sales Order",
-            #     "naming_series": shopify_settings.sales_order_series or "SO-Shopify-",
-            #     "shopify_id": order.get("id"),
-            #     "customer": frappe.db.get_value("Customer", {"shopify_id": order.get("customer").get("id")}, "name"),
-            #     "membership_number": order["customer"]["membership_number"],
-            #     "transaction_date": order.get("processed_at"),
-            #     "delivery_date": order.get("processed_at"),
-            #     "selling_price_list": shopify_settings.price_list,
-            #     "ignore_pricing_rule": 1,
-            #     "apply_discount_on": "Net Total",
-            #     "discount_amount": flt(order.get("total_discounts")),
-            #     "items": get_item_line(order.get("refunds"), shopify_settings, 1),
-            #     "taxes": get_tax_line(order, order.get("refunds")[0].get("refund_line_items"), shopify_settings, 1),
-            #     "status": "Refunded"
-            # }).insert()
+            so = frappe.get_doc({
+                "doctype": "Sales Order",
+                "naming_series": shopify_settings.sales_order_series or "SO-Shopify-",
+                "shopify_id": order.get("id"),
+                "customer": frappe.db.get_value("Customer", {"shopify_id": order.get("customer").get("id")}, "name"),
+                "membership_number": order["customer"]["membership_number"],
+                "transaction_date": order.get("processed_at"),
+                "delivery_date": order.get("processed_at"),
+                "selling_price_list": shopify_settings.price_list,
+                "ignore_pricing_rule": 1,
+                "apply_discount_on": "Net Total",
+                "discount_amount": flt(order.get("total_discounts")),
+                "items": get_item_line(order.get("refunds"), shopify_settings, 1),
+                "taxes": get_tax_line(order, order.get("refunds")[0].get("refund_line_items"), shopify_settings, 1),
+                "status": "Refunded"
+            }).insert()
 
-            # so.submit()
+            so.submit()
 
     return so
 
