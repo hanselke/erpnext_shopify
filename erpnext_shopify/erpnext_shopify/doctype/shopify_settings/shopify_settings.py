@@ -480,8 +480,8 @@ def create_salse_order(order, shopify_settings):
                 "ignore_pricing_rule": 1,
                 "apply_discount_on": "Net Total",
                 "discount_amount": flt(order.get("total_discounts")),
-                "items": get_item_line(order.get("refunds"), shopify_settings, 1),
-                "taxes": get_tax_line(order, order.get("refunds")[0].get("refund_line_items"), shopify_settings, 1),
+                "items": get_item_line(order.get("refunds")[0].get("refund_line_items"), shopify_settings, 1),
+                "taxes": get_tax_line(order, order.get("shipping_lines"), shopify_settings, 1),
                 "status": "Refunded"
             }).insert()
 
@@ -546,7 +546,6 @@ def get_item_code(item):
     
 def get_tax_line(order, shipping_lines, shopify_settings, is_refunded_order = 0):
     taxes = []
-    raise ValueError(order.get("tax_lines"))
     for tax in order.get("tax_lines"):
         rate = -flt(tax.get("rate") * 100.00) if is_refunded_order else tax.get("rate") * 100.00
         taxes.append({
