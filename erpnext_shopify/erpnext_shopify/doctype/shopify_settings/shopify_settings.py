@@ -512,7 +512,7 @@ def get_item_line(order_items, shopify_settings, is_refunded_order = 0):
     items = []
     for item in order_items:
         item_code = get_item_code(item)
-        qty = -item.get("quantity") if is_refunded_order else item.get("quantity")
+        qty = -cint(item.get("quantity")) if is_refunded_order else item.get("quantity")
         items.append({
             "item_code": item_code,
             "item_name": item.get("name"),
@@ -534,7 +534,7 @@ def get_item_code(item):
 def get_tax_line(order, shipping_lines, shopify_settings, is_refunded_order = 0):
     taxes = []
     for tax in order.get("tax_lines"):
-        rate = -tax.get("rate") * 100.00 if is_refunded_order else tax.get("rate") * 100.00
+        rate = -flt(tax.get("rate") * 100.00) if is_refunded_order else tax.get("rate") * 100.00
         taxes.append({
             "charge_type": _("On Net Total"),
             "account_head": get_tax_account_head(tax),
