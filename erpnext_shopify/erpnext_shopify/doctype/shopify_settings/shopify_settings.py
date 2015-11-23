@@ -534,6 +534,7 @@ def get_item_code(item):
 def get_tax_line(order, shipping_lines, shopify_settings, is_refunded_order = 0):
     taxes = []
     for tax in order.get("tax_lines"):
+        raise ValueError(tax)
         rate = -flt(tax.get("rate") * 100.00) if is_refunded_order else tax.get("rate") * 100.00
         taxes.append({
             "charge_type": _("On Net Total"),
