@@ -523,6 +523,7 @@ def get_discounted_amount(order):
         
 def get_item_line(order_items, shopify_settings, is_refunded_order = 0):
     items = []
+    raise ValueError(order_items)
     for item in order_items:
         item_code = get_item_code(item)
         qty = -cint(item.get("quantity")) if is_refunded_order else item.get("quantity")
