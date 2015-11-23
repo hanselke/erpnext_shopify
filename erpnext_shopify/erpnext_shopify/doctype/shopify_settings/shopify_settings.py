@@ -557,6 +557,8 @@ def get_tax_line(order, shipping_lines, shopify_settings, is_refunded_order = 0)
         })
     
     taxes = update_taxes_with_shipping_rule(taxes, shipping_lines)
+
+    raise ValueError(taxes)
     
     return taxes
 
