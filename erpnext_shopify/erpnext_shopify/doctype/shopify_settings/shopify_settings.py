@@ -373,7 +373,6 @@ def sync_orders():
     sync_shopify_orders()
 
 def sync_shopify_orders():
-    raise ValueError(get_shopify_orders())
     orders = sorted(get_shopify_orders(), key=lambda x: datetime.datetime.strptime(x["processed_at"][:-6], "%Y-%m-%dT%H:%M:%S"))
     for order in orders:
         # We will only sync orders from "2015-11-17T00:00:00"
@@ -468,6 +467,8 @@ def create_salse_order(order, shopify_settings):
     
     else:
         so = frappe.get_doc("Sales Order", so)
+        if order.get("financial_status") == "refunded":
+            raise ValueError(so)
 
     return so
 
