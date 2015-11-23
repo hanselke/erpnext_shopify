@@ -468,8 +468,6 @@ def create_salse_order(order, shopify_settings):
     else:
         so = frappe.get_doc("Sales Order", so)
         if order.get("financial_status") == "refunded":
-            raise ValueError(order.get("refunds")[0].get("refund_line_items"))
-            test = get_tax_line(order, order.get("refunds")[0].get("refund_line_items"), shopify_settings, 1)
             so = frappe.get_doc({
                 "doctype": "Sales Order",
                 "naming_series": shopify_settings.sales_order_series or "SO-Shopify-",
@@ -548,6 +546,7 @@ def get_item_code(item):
     
 def get_tax_line(order, shipping_lines, shopify_settings, is_refunded_order = 0):
     taxes = []
+    raise ValueError(order.get("tax_lines"))
     for tax in order.get("tax_lines"):
         rate = -flt(tax.get("rate") * 100.00) if is_refunded_order else tax.get("rate") * 100.00
         taxes.append({
@@ -559,8 +558,6 @@ def get_tax_line(order, shipping_lines, shopify_settings, is_refunded_order = 0)
         })
     
     taxes = update_taxes_with_shipping_rule(taxes, shipping_lines)
-
-    raise ValueError(taxes)
     
     return taxes
 
