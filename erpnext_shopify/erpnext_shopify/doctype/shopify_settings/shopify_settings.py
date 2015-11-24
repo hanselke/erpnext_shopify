@@ -469,8 +469,7 @@ def create_salse_order(order, shopify_settings):
         so = frappe.get_doc("Sales Order", so)
 
         if order.get("financial_status") == "refunded":
-            raise ValueError(order.get("id"))
-            if not frappe.db.sql("""select name from `tabSales Order` where shopify_id = %(shopify_id)s and status = 2""", {"shopify_id": order.get("id")}):
+            if not frappe.db.sql("""select name from `tabSales Order` where shopify_id = %(shopify_id)s and docstatus = 2""", {"shopify_id": order.get("id")}):
                 #
                 ## Cancel the corresponding "Delivery Note" first
                 ## We didn't submit the "Delivery Note" for now, so don't need to cancel it for canceling a "Sales Invoice"
@@ -490,7 +489,6 @@ def create_salse_order(order, shopify_settings):
                 ## frappe.db.set_value("Sales Invoice", cstr(corre_sales_invoice), "docstatus", 2)
                 #
                 corre_sales_invoice = frappe.db.get_value("Sales Invoice", {"shopify_id": order.get("id")}, "name")
-                raise ValueError(corre_sales_invoice)
                 corre_sales_invoice_doc = frappe.get_doc("Sales Invoice", corre_sales_invoice)
                 corre_sales_invoice_doc.cancel()
                 corre_sales_invoice_doc.submit()
