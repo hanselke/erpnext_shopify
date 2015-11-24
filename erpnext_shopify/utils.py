@@ -35,7 +35,7 @@ def get_shopify_customers():
 
 def get_shopify_accounts():
 	accounts = []
-	for x in range(1, get_collection_pages_number('accounts') + 1):
+	for x in range(1, get_collection_pages_number('account') + 1):
 		accounts.extend(get_request('/admin/accounts.json?limit=250&page=' + str(x))['accounts'])
 	raise ValueError(accounts)
 	return accounts
