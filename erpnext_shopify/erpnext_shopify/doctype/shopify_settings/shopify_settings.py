@@ -470,7 +470,7 @@ def create_salse_order(order, shopify_settings):
 
         if order.get("financial_status") == "refunded":
             # Cancel the corresponding "Sales Invoice" first
-            corre_sales_invoice = frappe.db.get_value("Sales Invoice", {"shopify_id": order.get("id")}, name)
+            corre_sales_invoice = frappe.db.get_value("Sales Invoice", {"shopify_id": order.get("id")}, "name")
             corre_sales_invoice_doc = frappe.get_doc("Sales Invoice", corre_sales_invoice)
             corre_sales_invoice_doc.cancel()
             corre_sales_invoice_doc.submit()
