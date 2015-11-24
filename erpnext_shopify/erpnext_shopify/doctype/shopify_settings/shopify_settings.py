@@ -470,16 +470,26 @@ def create_salse_order(order, shopify_settings):
 
         if order.get("financial_status") == "refunded":
             if not frappe.db.sql("""select name from `tabSales Order` where shopify_id = %(shopify_id)s and status = 2""", {"shopify_id": order.get("id")}):
-                # Cancel the corresponding "Delivery Note" first
-                core_delivery_note = frappe.db.get_value("Delivery Note", {"shopify_id": order.get("id")}, "name")
-                core_delivery_note_doc = frappe.get_doc("Delivery Note", core_delivery_note)
-                core_delivery_note_doc.cancel()
-                core_delivery_note_doc.submit()
+                #
+                ## Cancel the corresponding "Delivery Note" first
+                ## We didn't submit the "Delivery Note" for now, so don't need to cancel it for canceling a "Sales Invoice"
+                #
+                # core_delivery_note = frappe.db.get_value("Delivery Note", {"shopify_id": order.get("id")}, "name")
+                # core_delivery_note_doc = frappe.get_doc("Delivery Note", core_delivery_note)
+                # core_delivery_note_doc.cancel()
+                # core_delivery_note_doc.submit()
 
                 # Cancel the corresponding "Sales Invoice" first
                 corre_sales_invoice = frappe.db.get_value("Sales Invoice", {"shopify_id": order.get("id")}, "name")
+                #
+                ## Don't know why the "cancel and submit" doesn't work here, according to the document, what the "cancel" does is:
+                ##   Sets the docstatus = 2, then saves
+                ## https://docs.frappe.io/current/api/model/frappe.model.document
+                ## So here just achieve this through the set_value api
+                #
+                frappe.db.set_value("Sales Invoice", corre_sales_invoice, "docstatus", 2)
                 corre_sales_invoice_doc = frappe.get_doc("Sales Invoice", corre_sales_invoice)
-                corre_sales_invoice_doc.cancel()
+                corre_sales_invoice_doc.save()
                 corre_sales_invoice_doc.submit()
 
                 # Then cancel this order
@@ -509,7 +519,6 @@ def create_delivery_note(order, shopify_settings, so):
             dn.naming_series = shopify_settings.delivery_note_series or "DN-Shopify-"
             dn.items = update_items_qty(dn.items, fulfillment.get("line_items"), shopify_settings)
             dn.save()
-            dn.submit()
 
 def update_items_qty(dn_items, fulfillment_items, shopify_settings):
     return [dn_item.update({"qty": item.get("quantity")}) for item in fulfillment_items for dn_item in dn_items\
