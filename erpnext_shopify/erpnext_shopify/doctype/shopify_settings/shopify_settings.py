@@ -374,6 +374,7 @@ def sync_orders():
 
 def sync_shopify_orders():
     orders = sorted(get_shopify_orders(), key=lambda x: datetime.datetime.strptime(x["processed_at"][:-6], "%Y-%m-%dT%H:%M:%S"))
+    raise ValueError(orders)
     for order in orders:
         # We will only sync orders from "2015-11-17T00:00:00"
         if datetime.datetime.strptime(order.get("processed_at")[:-6], "%Y-%m-%dT%H:%M:%S") > datetime.datetime.strptime('2015-11-17T00:00:00' ,'%Y-%m-%dT%H:%M:%S'):
@@ -446,7 +447,6 @@ def create_order(order):
 
 def create_salse_order(order, shopify_settings):
     so = frappe.db.get_value("Sales Order", {"shopify_id": order.get("id")}, "name")
-    raise ValueError(order)
     if not so:
         so = frappe.get_doc({
             "doctype": "Sales Order",
@@ -469,7 +469,6 @@ def create_salse_order(order, shopify_settings):
     else:
         so = frappe.get_doc("Sales Order", so)
 
-        raise ValueError(order)
         if order.get("financial_status") == "refunded":
             if not frappe.db.sql("""select name from `tabSales Order` where shopify_id = %(shopify_id)s and status = 2""", {"shopify_id": order.get("id")}):
                 #
@@ -491,7 +490,6 @@ def create_salse_order(order, shopify_settings):
                 ## frappe.db.set_value("Sales Invoice", cstr(corre_sales_invoice), "docstatus", 2)
                 #
                 corre_sales_invoice = frappe.db.get_value("Sales Invoice", {"shopify_id": order.get("id")}, "name")
-                raise ValueError(corre_sales_invoice)
                 corre_sales_invoice_doc = frappe.get_doc("Sales Invoice", corre_sales_invoice)
                 corre_sales_invoice_doc.cancel()
                 corre_sales_invoice_doc.submit()
