@@ -373,6 +373,7 @@ def sync_orders():
     sync_shopify_orders()
 
 def sync_shopify_orders():
+    raise ValueError(get_shopify_orders())
     orders = sorted(get_shopify_orders(), key=lambda x: datetime.datetime.strptime(x["processed_at"][:-6], "%Y-%m-%dT%H:%M:%S"))
     for order in orders:
         # We will only sync orders from "2015-11-17T00:00:00"
@@ -466,27 +467,11 @@ def create_salse_order(order, shopify_settings):
         so.submit()
     
     else:
-        so = frappe.get_doc("Sales Order", so)
         if order.get("financial_status") == "refunded":
-            so = frappe.get_doc({
-                "doctype": "Sales Order",
-                "naming_series": shopify_settings.sales_order_series or "SO-Shopify-",
-                "shopify_id": order.get("id"),
-                "customer": frappe.db.get_value("Customer", {"shopify_id": order.get("customer").get("id")}, "name"),
-                "membership_number": order["customer"]["membership_number"],
-                "transaction_date": order.get("processed_at"),
-                "delivery_date": order.get("processed_at"),
-                "selling_price_list": shopify_settings.price_list,
-                "ignore_pricing_rule": 1,
-                "apply_discount_on": "Net Total",
-                "discount_amount": flt(order.get("total_discounts")),
-                "items": get_item_line(order.get("refunds")[0].get("refund_line_items"), shopify_settings, 1),
-                "taxes": get_tax_line(order, order.get("shipping_lines"), shopify_settings, 1),
-                "status": "Refunded"
-            }).insert()
-
-            so.submit()
-
+            frappe.delete_doc_if_exists("Sales Order", so)
+        else:
+            so = frappe.get_doc("Sales Order", so)
+            
     return so
 
 def create_sales_invoice(order, shopify_settings, so):
@@ -521,17 +506,16 @@ def get_discounted_amount(order):
         discounted_amount += flt(discount.get("amount"))
     return discounted_amount
         
-def get_item_line(order_items, shopify_settings, is_refunded_order = 0):
+def get_item_line(order_items, shopify_settings):
     items = []
     for item in order_items:
         item_code = get_item_code(item)
-        qty = -cint(item.get("quantity")) if is_refunded_order else item.get("quantity")
         items.append({
             "item_code": item_code,
-            "item_name": item.get("name") or item.get("line_item").get("name"),
+            "item_name": item.get("name"),
             "description": item.get("title") or u"Please refer to the product pics.",
             "rate": item.get("price"),
-            "qty": qty,
+            "qty": item.get("quantity"),
             "stock_uom": item.get("sku"),
             "warehouse": shopify_settings.warehouse
         })
@@ -541,15 +525,12 @@ def get_item_code(item):
     item_code = frappe.db.get_value("Item", {"shopify_id": item.get("variant_id")}, "item_code")
     if not item_code:
         item_code = frappe.db.get_value("Item", {"shopify_id": item.get("product_id")}, "item_code")
-    if not item_code:
-        item_code = frappe.db.get_value("Item", {"shopify_id": item.get("line_item").get("product_id")}, "item_code")
     
     return item_code
     
-def get_tax_line(order, shipping_lines, shopify_settings, is_refunded_order = 0):
+def get_tax_line(order, shipping_lines, shopify_settings):
     taxes = []
     for tax in order.get("tax_lines"):
-        rate = -flt(tax.get("rate") * 100.00) if is_refunded_order else tax.get("rate") * 100.00
         taxes.append({
             "charge_type": _("On Net Total"),
             "account_head": get_tax_account_head(tax),
