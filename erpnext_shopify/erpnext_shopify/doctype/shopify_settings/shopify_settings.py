@@ -472,10 +472,10 @@ def create_salse_order(order, shopify_settings):
             if not frappe.db.sql("""select name from `tabSales Order` where shopify_id = %(shopify_id)s and status = 2""", {"shopify_id": order.get("id")}):
                 # Cancel the corresponding "Delivery Note" first
                 core_delivery_note = frappe.db.get_doc("Delivery Note", {"shopify_id": order.get("id")}, "name")
-                core_delivery_note_doc = frappe.db.get_doc("Delivery Note", core_delivery_note)
+                core_delivery_note_doc = frappe.get_doc("Delivery Note", core_delivery_note)
                 core_delivery_note_doc.cancel()
                 core_delivery_note_doc.submit()
-                
+
                 # Cancel the corresponding "Sales Invoice" first
                 corre_sales_invoice = frappe.db.get_value("Sales Invoice", {"shopify_id": order.get("id")}, "name")
                 corre_sales_invoice_doc = frappe.get_doc("Sales Invoice", corre_sales_invoice)
