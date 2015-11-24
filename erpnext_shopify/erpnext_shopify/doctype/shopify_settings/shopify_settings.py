@@ -446,6 +446,7 @@ def create_order(order):
 
 def create_salse_order(order, shopify_settings):
     so = frappe.db.get_value("Sales Order", {"shopify_id": order.get("id")}, "name")
+    raise ValueError(order)
     if not so:
         so = frappe.get_doc({
             "doctype": "Sales Order",
