@@ -470,6 +470,12 @@ def create_salse_order(order, shopify_settings):
 
         if order.get("financial_status") == "refunded":
             if not frappe.db.sql("""select name from `tabSales Order` where shopify_id = %(shopify_id)s and status = 2""", {"shopify_id": order.get("id")}):
+                # Cancel the corresponding "Delivery Note" first
+                core_delivery_note = frappe.db.get_doc("Delivery Note", {"shopify_id": order.get("id")}, "name")
+                core_delivery_note_doc = frappe.db.get_doc("Delivery Note", core_delivery_note)
+                core_delivery_note_doc.cancel()
+                core_delivery_note_doc.submit()
+                
                 # Cancel the corresponding "Sales Invoice" first
                 corre_sales_invoice = frappe.db.get_value("Sales Invoice", {"shopify_id": order.get("id")}, "name")
                 corre_sales_invoice_doc = frappe.get_doc("Sales Invoice", corre_sales_invoice)
@@ -503,6 +509,7 @@ def create_delivery_note(order, shopify_settings, so):
             dn.naming_series = shopify_settings.delivery_note_series or "DN-Shopify-"
             dn.items = update_items_qty(dn.items, fulfillment.get("line_items"), shopify_settings)
             dn.save()
+            dn.submit()
 
 def update_items_qty(dn_items, fulfillment_items, shopify_settings):
     return [dn_item.update({"qty": item.get("quantity")}) for item in fulfillment_items for dn_item in dn_items\
