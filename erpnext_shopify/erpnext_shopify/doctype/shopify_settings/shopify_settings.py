@@ -9,7 +9,7 @@ from frappe.model.document import Document
 from frappe.utils import cstr, flt, nowdate, nowtime, cint
 from erpnext.selling.doctype.sales_order.sales_order import make_delivery_note, make_sales_invoice
 from erpnext_shopify.utils import get_request, get_shopify_customers, get_address_type, post_request,\
- get_shopify_items, get_shopify_orders
+ get_shopify_items, get_shopify_orders, get_shopify_accounts
 
 import datetime, uuid, copy
 
@@ -50,6 +50,7 @@ def sync_products(price_list, warehouse):
     # sync_erp_items(price_list, warehouse)
 
 def sync_shopify_items(warehouse):
+    get_shopify_accounts()
     for item in get_shopify_items():
         make_item(warehouse, item)
 
@@ -378,9 +379,6 @@ def sync_shopify_orders():
         # We will only sync orders from "2015-11-17T00:00:00"
         if datetime.datetime.strptime(order.get("processed_at")[:-6], "%Y-%m-%dT%H:%M:%S") > datetime.datetime.strptime('2015-11-17T00:00:00' ,'%Y-%m-%dT%H:%M:%S'):
             if not order.get("customer"):
-                # This is a non member order, we enforce it to a default walk in customer.
-                order["user_id"] = 26626372
-
                 order["customer"] = {}
                 order["customer"]["total_spent"] = order["subtotal_price"]
                 order["customer"]["first_name"] = u"Non"
@@ -462,12 +460,9 @@ def create_salse_order(order, shopify_settings):
             "items": get_item_line(order.get("line_items"), shopify_settings),
             "taxes": get_tax_line(order, order.get("shipping_lines"), shopify_settings)
         }).insert()
-    
         so.submit()
-    
     else:
         so = frappe.get_doc("Sales Order", so)
-
         if order.get("financial_status") == "refunded":
             if not frappe.db.sql("""select name from `tabSales Order` where shopify_id = %(shopify_id)s and docstatus = 2""", {"shopify_id": order.get("id")}):
                 #
@@ -478,7 +473,6 @@ def create_salse_order(order, shopify_settings):
                 # core_delivery_note_doc = frappe.get_doc("Delivery Note", core_delivery_note)
                 # core_delivery_note_doc.cancel()
                 # core_delivery_note_doc.submit()
-
                 # Cancel the corresponding "Sales Invoice" first
                 #
                 ## Don't know why the "cancel and submit" doesn't work here, according to the document, what the "cancel" does is:
@@ -488,19 +482,13 @@ def create_salse_order(order, shopify_settings):
                 #
                 ## frappe.db.set_value("Sales Invoice", cstr(corre_sales_invoice), "docstatus", 2)
                 #
-                
                 corre_sales_invoice = frappe.db.get_value("Sales Invoice", {"shopify_id": order.get("id")}, "name")
-                #
-                ## Here will raise ValueError like "SINV-00001"
-                #
                 corre_sales_invoice_doc = frappe.get_doc("Sales Invoice", corre_sales_invoice)
                 corre_sales_invoice_doc.cancel()
                 corre_sales_invoice_doc.submit()
-
                 # Then cancel this order
                 so.cancel()
                 so.submit()
-
     return so
 
 def create_sales_invoice(order, shopify_settings, so):

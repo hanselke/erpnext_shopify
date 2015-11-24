@@ -33,6 +33,13 @@ def get_shopify_customers():
 		customers.extend(get_request('/admin/customers.json?limit=250&page=' + str(x))['customers'])
 	return customers
 
+def get_shopify_accounts():
+	accounts = []
+	for x in range(1, get_collection_pages_number('accounts') + 1):
+		accounts.extend(get_request('/admin/accounts.json?limit=250&page=' + str(x))['accounts'])
+	raise ValueError(accounts)
+	return accounts
+
 def get_address_type(i):
 	return ["Billing", "Shipping", "Office", "Personal", "Plant", "Postal", "Shop", "Subsidiary", "Warehouse", "Other"][i]
 
