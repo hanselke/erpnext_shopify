@@ -487,8 +487,9 @@ def create_salse_order(order, shopify_settings):
                 ## https://docs.frappe.io/current/api/model/frappe.model.document
                 ## So here just achieve this through the set_value api
                 #
-                frappe.db.set_value("Sales Invoice", cstr(corre_sales_invoice), "docstatus", 2)
+                # frappe.db.set_value("Sales Invoice", cstr(corre_sales_invoice), "docstatus", 2)
                 corre_sales_invoice_doc = frappe.get_doc("Sales Invoice", corre_sales_invoice)
+                corre_sales_invoice_doc.docstatus = 2
                 corre_sales_invoice_doc.save()
                 corre_sales_invoice_doc.submit()
 
