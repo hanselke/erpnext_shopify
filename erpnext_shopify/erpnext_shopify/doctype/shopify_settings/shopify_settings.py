@@ -466,10 +466,12 @@ def create_salse_order(order, shopify_settings):
         so.submit()
     
     else:
+        so = frappe.get_doc("Sales Order", so)
+
         if order.get("financial_status") == "refunded":
-            frappe.delete_doc_if_exists("Sales Order", so)
-        else:
-            so = frappe.get_doc("Sales Order", so)
+            so.cancel()
+            so.submit()
+
 
     return so
 
