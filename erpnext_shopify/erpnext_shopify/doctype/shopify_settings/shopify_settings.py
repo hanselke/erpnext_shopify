@@ -469,15 +469,16 @@ def create_salse_order(order, shopify_settings):
         so = frappe.get_doc("Sales Order", so)
 
         if order.get("financial_status") == "refunded":
-            # Cancel the corresponding "Sales Invoice" first
-            corre_sales_invoice = frappe.db.get_value("Sales Invoice", {"shopify_id": order.get("id")}, "name")
-            corre_sales_invoice_doc = frappe.get_doc("Sales Invoice", corre_sales_invoice)
-            corre_sales_invoice_doc.cancel()
-            corre_sales_invoice_doc.submit()
+            if frappe.db.sql("""select name from `tabSales Order` where shopify_id = %(shopify_id)s and status = 2""", {"shopify_id": order.get("id")}):
+                # Cancel the corresponding "Sales Invoice" first
+                corre_sales_invoice = frappe.db.get_value("Sales Invoice", {"shopify_id": order.get("id")}, "name")
+                corre_sales_invoice_doc = frappe.get_doc("Sales Invoice", corre_sales_invoice)
+                corre_sales_invoice_doc.cancel()
+                corre_sales_invoice_doc.submit()
 
-            # Then cancel this order
-            so.cancel()
-            so.submit()
+                # Then cancel this order
+                so.cancel()
+                so.submit()
 
     return so
 
