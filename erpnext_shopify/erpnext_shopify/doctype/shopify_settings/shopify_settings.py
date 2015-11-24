@@ -488,8 +488,11 @@ def create_salse_order(order, shopify_settings):
                 #
                 ## frappe.db.set_value("Sales Invoice", cstr(corre_sales_invoice), "docstatus", 2)
                 #
+                
                 corre_sales_invoice = frappe.db.get_value("Sales Invoice", {"shopify_id": order.get("id")}, "name")
-                raise ValueError(corre_sales_invoice)
+                #
+                ## Here will raise ValueError like "SINV-00001"
+                #
                 corre_sales_invoice_doc = frappe.get_doc("Sales Invoice", corre_sales_invoice)
                 corre_sales_invoice_doc.cancel()
                 corre_sales_invoice_doc.submit()
