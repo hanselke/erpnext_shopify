@@ -474,6 +474,7 @@ def create_salse_order(order, shopify_settings):
                 # core_delivery_note_doc.cancel()
                 # core_delivery_note_doc.submit()
 
+                #
                 ## Cancel the corresponding "Sales Invoice" first
                 #
                 ## Don't know why the "cancel and submit" doesn't work here, according to the document, what the "cancel" does is:
@@ -483,14 +484,19 @@ def create_salse_order(order, shopify_settings):
                 #
                 # frappe.db.set_value("Sales Invoice", cstr(corre_sales_invoice), "docstatus", 2)
                 #
-                corre_sales_invoice = frappe.db.get_value("Sales Invoice", {"shopify_id": order.get("id")}, "name")
-                corre_sales_invoice_doc = frappe.get_doc("Sales Invoice", corre_sales_invoice)
-                corre_sales_invoice_doc.cancel()
-                corre_sales_invoice_doc.submit()
 
-                # Then cancel this order
-                so.cancel()
-                so.submit()
+                #
+                ## Don't know why the "calcel" api doesn't work for "Sales Invoice", so for now need to go through the manually cancellation way.
+                ## Just comment all of these out temporarily
+                #
+                # corre_sales_invoice = frappe.db.get_value("Sales Invoice", {"shopify_id": order.get("id")}, "name")
+                # corre_sales_invoice_doc = frappe.get_doc("Sales Invoice", corre_sales_invoice)
+                # corre_sales_invoice_doc.cancel()
+                # corre_sales_invoice_doc.submit()
+
+                # # Then cancel this order
+                # so.cancel()
+                # so.submit()
     return so
 
 def create_sales_invoice(order, shopify_settings, so):
