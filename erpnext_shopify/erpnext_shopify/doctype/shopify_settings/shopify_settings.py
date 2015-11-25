@@ -497,6 +497,8 @@ def create_salse_order(order, shopify_settings):
                 # # Then cancel this order
                 # so.cancel()
                 # so.submit()
+
+                print "For now can't do anything here."
     return so
 
 def create_sales_invoice(order, shopify_settings, so):
