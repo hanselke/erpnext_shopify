@@ -375,10 +375,10 @@ def sync_orders():
 
 def sync_shopify_orders():
     # We will only sync orders from "2015-11-17T00:00:00"
-    orders = filter(lambda x: datetime.datetime.strptime(x.get("processed_at")[:-6], "%Y-%m-%dT%H:%M:%S") > datetime.datetime.strptime('2015-11-17T00:00:00' ,'%Y-%m-%dT%H:%M:%S'), get_shopify_orders())
+    orders = filter(lambda x: datetime.datetime.strptime(x["processed_at"][:-6], "%Y-%m-%dT%H:%M:%S") > datetime.datetime.strptime('2015-11-17T00:00:00' ,'%Y-%m-%dT%H:%M:%S'), get_shopify_orders())
 
     orders = sorted(orders, key=lambda x: datetime.datetime.strptime(x["processed_at"][:-6], "%Y-%m-%dT%H:%M:%S"))
-    
+
     for order in orders:
         if not order.get("customer"):
             order["customer"] = {}
