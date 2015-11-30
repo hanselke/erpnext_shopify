@@ -490,16 +490,17 @@ def create_salse_order(order, shopify_settings):
                 ## Don't know why the "calcel" api doesn't work for "Sales Invoice", so for now need to go through the manually cancellation way.
                 ## Just comment all of these out temporarily
                 #
-                corre_sales_invoice = frappe.db.get_value("Sales Invoice", {"shopify_id": order.get("id")}, "name")
-                corre_sales_invoice_doc = frappe.get_doc("Sales Invoice", corre_sales_invoice)
-                corre_sales_invoice_doc.cancel()
-                corre_sales_invoice_doc.submit()
-                frappe.db.commit()
+                # corre_sales_invoice = frappe.db.get_value("Sales Invoice", {"shopify_id": order.get("id")}, "name")
+                # corre_sales_invoice_doc = frappe.get_doc("Sales Invoice", corre_sales_invoice)
+                # corre_sales_invoice_doc.cancel()
+                # corre_sales_invoice_doc.submit()
+                # frappe.db.commit()
 
-                # # Then cancel this order
-                so.cancel()
-                so.submit()
-                frappe.db.commit()
+                # # # Then cancel this order
+                # so.cancel()
+                # so.submit()
+                # frappe.db.commit()
+                print "Nothing can do here now"
     return so
 
 def create_sales_invoice(order, shopify_settings, so):
