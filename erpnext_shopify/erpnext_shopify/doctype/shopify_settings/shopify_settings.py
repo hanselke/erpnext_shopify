@@ -417,7 +417,7 @@ def sync_shopify_orders():
                 order["customer"]["last_order_id"] = 1777711300
                 order["customer"]["verified_email"] = False
 
-            order["customer"]["membership_number"] = customer.get("first_name") if customer.get("first_name").isdigit() else customer.get("first_name") + u"-" + str(uuid.uuid4())
+            order["customer"]["membership_number"] = order["customer"]["first_name"] + u"-" + str(uuid.uuid4())
 
             validate_customer_and_product(order)
             create_order(order)
