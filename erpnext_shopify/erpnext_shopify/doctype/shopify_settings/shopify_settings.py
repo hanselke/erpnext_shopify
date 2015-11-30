@@ -417,7 +417,7 @@ def sync_shopify_orders():
                 order["customer"]["last_order_id"] = 1777711300
                 order["customer"]["verified_email"] = False
 
-            order["customer"]["membership_number"] = order["customer"]["first_name"] + u"-" + str(uuid.uuid4())
+            order["customer"]["membership_number"] = order["customer"]["first_name"] if order["customer"]["first_name"].isdigit() else order["customer"]["first_name"] + u"-" + str(uuid.uuid4())
 
             validate_customer_and_product(order)
             create_order(order)
@@ -490,16 +490,16 @@ def create_salse_order(order, shopify_settings):
                 ## Don't know why the "calcel" api doesn't work for "Sales Invoice", so for now need to go through the manually cancellation way.
                 ## Just comment all of these out temporarily
                 #
-                # corre_sales_invoice = frappe.db.get_value("Sales Invoice", {"shopify_id": order.get("id")}, "name")
-                # corre_sales_invoice_doc = frappe.get_doc("Sales Invoice", corre_sales_invoice)
-                # corre_sales_invoice_doc.cancel()
-                # corre_sales_invoice_doc.submit()
+                corre_sales_invoice = frappe.db.get_value("Sales Invoice", {"shopify_id": order.get("id")}, "name")
+                corre_sales_invoice_doc = frappe.get_doc("Sales Invoice", corre_sales_invoice)
+                corre_sales_invoice_doc.cancel()
+                corre_sales_invoice_doc.submit()
+                frappe.db.commit()
 
                 # # Then cancel this order
-                # so.cancel()
-                # so.submit()
-
-                print "For now can't do anything here."
+                so.cancel()
+                so.submit()
+                frappe.db.commit()
     return so
 
 def create_sales_invoice(order, shopify_settings, so):
