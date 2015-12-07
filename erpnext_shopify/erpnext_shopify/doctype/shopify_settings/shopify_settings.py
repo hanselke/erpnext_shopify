@@ -437,9 +437,9 @@ def validate_customer_and_product(order):
 def get_shopify_id(item):pass
         
 def create_order(order):
+    raise ValueError(order)
     shopify_settings = frappe.get_doc("Shopify Settings", "Shopify Settings")
     so = create_sales_order(order, shopify_settings)
-    raise ValueError(so)
     if so:
         if order.get("financial_status") == "paid":
             create_sales_invoice(order, shopify_settings, so)
