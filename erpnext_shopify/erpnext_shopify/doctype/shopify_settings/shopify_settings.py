@@ -300,7 +300,7 @@ def sync_customers():
 def sync_shopify_customers():
     for customer in get_shopify_customers():
         # Add the 'membership_number' field
-        customer["membership_number"] = customer["first_name"] + u"-" + str(uuid.uuid4()) if int(customer["first_name"]) == 0 else customer["first_name"]
+        customer["membership_number"] = customer["first_name"] + u"-" + str(uuid.uuid4()) if customer["first_name"].isdigit() and int(customer["first_name"]) == 0 else customer["first_name"]
         create_customer(customer)
 
 def create_customer(customer):
@@ -421,7 +421,7 @@ def sync_shopify_orders():
             order["customer"]["last_order_id"] = 1777711300
             order["customer"]["verified_email"] = False
 
-        order["customer"]["membership_number"] = order["customer"]["first_name"] + u"-" + str(uuid.uuid4()) if int(order["customer"]["first_name"]) == 0 else order["customer"]["first_name"]
+        order["customer"]["membership_number"] = order["customer"]["first_name"] + u"-" + str(uuid.uuid4()) if order["customer"]["first_name"].isdigit() and int(order["customer"]["first_name"]) == 0 else order["customer"]["first_name"]
 
         validate_customer_and_product(order)
         create_order(order)
