@@ -455,15 +455,15 @@ def create_salse_order(order, shopify_settings):
         # Deal with 'user_id in order entry' and 'employee accounts' mapping
         if order.get("user_id") == 26626308:
             shopify_employee_name = u"Joyce Teoh"
-        else if order.get("user_id") == 26626372:
+        elif order.get("user_id") == 26626372:
             shopify_employee_name = u"Lucus Tan"
-        else if order.get("user_id") == 29492868:
+        elif order.get("user_id") == 29492868:
             shopify_employee_name = u"Vong Guat Theng"
-        else if order.get("user_id") == 29527236:
+        elif order.get("user_id") == 29527236:
             shopify_employee_name = u"Sam Chong"
-        else if order.get("user_id") == 47503940:
+        elif order.get("user_id") == 47503940:
             shopify_employee_name = u"Too Shen Chew"
-        else if order.get("user_id") == 26202436:
+        elif order.get("user_id") == 26202436:
             shopify_employee_name = u"Massimo Hair Lb"
 
         so = frappe.get_doc({
