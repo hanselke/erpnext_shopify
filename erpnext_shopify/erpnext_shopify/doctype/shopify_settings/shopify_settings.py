@@ -438,7 +438,7 @@ def get_shopify_id(item):pass
         
 def create_order(order):
     shopify_settings = frappe.get_doc("Shopify Settings", "Shopify Settings")
-    so = create_salse_order(order, shopify_settings)
+    so = create_sales_order(order, shopify_settings)
     if so:
         if order.get("financial_status") == "paid":
             create_sales_invoice(order, shopify_settings, so)
@@ -446,7 +446,7 @@ def create_order(order):
         if order.get("fulfillments"):
             create_delivery_note(order, shopify_settings, so)
 
-def create_salse_order(order, shopify_settings):
+def create_sales_order(order, shopify_settings):
     so = frappe.db.get_value("Sales Order", {"shopify_id": order.get("id")}, "name")
     if not so:
 
@@ -465,6 +465,8 @@ def create_salse_order(order, shopify_settings):
             shopify_employee_name = u"Too Shen Chew"
         elif order.get("user_id") == 26202436:
             shopify_employee_name = u"Massimo Hair Lb"
+
+        raise ValueError(shopify_employee_name)
 
         so = frappe.get_doc({
             "doctype": "Sales Order",
