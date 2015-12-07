@@ -430,6 +430,7 @@ def validate_customer_and_product(order):
     create_customer(order.get("customer"))
     
     warehouse = frappe.get_doc("Shopify Settings", "Shopify Settings").warehouse
+
     for item in order.get("line_items"):
         item = get_request("/admin/products/{}.json".format(item.get("product_id")))["product"]
         make_item(warehouse, item)
@@ -438,6 +439,7 @@ def get_shopify_id(item):pass
         
 def create_order(order):
     shopify_settings = frappe.get_doc("Shopify Settings", "Shopify Settings")
+    raise ValueError(shopify_settings)
     so = create_sales_order(order, shopify_settings)
     if so:
         if order.get("financial_status") == "paid":
