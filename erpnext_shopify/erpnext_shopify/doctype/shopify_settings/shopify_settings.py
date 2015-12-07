@@ -307,7 +307,7 @@ def create_customer(customer):
     erp_cust = None
     # cust_name = (customer.get("first_name") + " " + (customer.get("last_name") and  customer.get("last_name") or ""))\
     #     if customer.get("first_name") else customer.get("email")
-    cust_name = customer.get("last_name")
+    cust_name = customer.get("last_name") if customer.get("last_name") else str(uuid.uuid4())
 
     erp_customer = frappe.db.sql("""select name, customer_name, membership_number from tabCustomer where shopify_id = %(shopify_id)s""", {"shopify_id": customer.get("id")}, as_dict = 1)
     
