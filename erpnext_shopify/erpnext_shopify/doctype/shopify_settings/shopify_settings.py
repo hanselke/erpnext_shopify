@@ -439,7 +439,6 @@ def get_shopify_id(item):pass
         
 def create_order(order):
     shopify_settings = frappe.get_doc("Shopify Settings", "Shopify Settings")
-    raise ValueError(shopify_settings)
     so = create_sales_order(order, shopify_settings)
     if so:
         if order.get("financial_status") == "paid":
