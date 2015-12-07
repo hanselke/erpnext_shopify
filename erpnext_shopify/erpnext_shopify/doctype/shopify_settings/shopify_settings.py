@@ -376,6 +376,7 @@ def sync_orders():
     sync_shopify_orders()
 
 def sync_shopify_orders():
+    raise ValueError(get_shopify_orders())
     # We will only sync orders from "2015-11-17T00:00:00"
     orders = filter(lambda x: datetime.datetime.strptime(x["processed_at"][:-6], "%Y-%m-%dT%H:%M:%S") > datetime.datetime.strptime('2015-11-17T00:00:00' ,'%Y-%m-%dT%H:%M:%S'), get_shopify_orders())
 
@@ -449,12 +450,15 @@ def create_order(order):
 def create_salse_order(order, shopify_settings):
     so = frappe.db.get_value("Sales Order", {"shopify_id": order.get("id")}, "name")
     if not so:
+        shopify_employee_id = None
+
         so = frappe.get_doc({
             "doctype": "Sales Order",
             "naming_series": shopify_settings.sales_order_series or "SO-Shopify-",
             "shopify_id": order.get("id"),
             "customer": frappe.db.get_value("Customer", {"shopify_id": order.get("customer").get("id")}, "name"),
             "membership_number": order["customer"]["membership_number"],
+            "shopify_employee_id": shopify_employee_id,
             "transaction_date": order.get("processed_at"),
             "delivery_date": order.get("processed_at"),
             "selling_price_list": shopify_settings.price_list,
