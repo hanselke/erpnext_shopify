@@ -424,7 +424,7 @@ def sync_shopify_orders():
         order["customer"]["membership_number"] = order["customer"]["first_name"] + u"-" + str(uuid.uuid4()) if re.match("00000{1}$", order["customer"]["first_name"]) else order["customer"]["first_name"]
 
         validate_customer_and_product(order)
-        create_order(order)
+        # create_order(order)
 
 def validate_customer_and_product(order):
     create_customer(order.get("customer"))
@@ -437,7 +437,6 @@ def validate_customer_and_product(order):
 def get_shopify_id(item):pass
         
 def create_order(order):
-    raise ValueError(order)
     shopify_settings = frappe.get_doc("Shopify Settings", "Shopify Settings")
     so = create_sales_order(order, shopify_settings)
     if so:
