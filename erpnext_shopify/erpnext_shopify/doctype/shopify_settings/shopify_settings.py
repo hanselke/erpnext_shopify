@@ -472,8 +472,6 @@ def create_sales_order(order, shopify_settings):
             "shopify_id": order.get("id"),
             "customer": frappe.db.get_value("Customer", {"shopify_id": order.get("customer").get("id")}, "name"),
             "membership_number": order["customer"]["membership_number"],
-            "shopify_employee_id": order.get("user_id"),
-            "shopify_employee_name": shopify_employee_name,
             "transaction_date": order.get("processed_at"),
             "delivery_date": order.get("processed_at"),
             "selling_price_list": shopify_settings.price_list,
