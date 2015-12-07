@@ -300,7 +300,7 @@ def sync_customers():
 def sync_shopify_customers():
     for customer in get_shopify_customers():
         # Add the 'membership_number' field
-        customer["membership_number"] = order["customer"]["first_name"] + u"-" + str(uuid.uuid4()) if re.match("00000{1}$", order["customer"]["first_name"]) else order["customer"]["first_name"]
+        customer["membership_number"] = customer["first_name"] + u"-" + str(uuid.uuid4()) if re.match("00000{1}$", customer["first_name"]) else customer["first_name"]
         create_customer(customer)
 
 def create_customer(customer):
