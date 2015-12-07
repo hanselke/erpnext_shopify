@@ -13,7 +13,7 @@ from erpnext_shopify.utils import get_request, get_shopify_customers, get_addres
 
 import datetime, uuid, copy, re
 
-from datetime import datetime, timedelta
+from datetime import timedelta
 
 shopify_variants_attr_list = ["option1", "option2", "option3"] 
 
