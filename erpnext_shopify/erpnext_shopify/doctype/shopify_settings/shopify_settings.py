@@ -466,8 +466,6 @@ def create_sales_order(order, shopify_settings):
         elif order.get("user_id") == 26202436:
             shopify_employee_name = u"Massimo Hair Lb"
 
-        raise ValueError(shopify_employee_name)
-
         so = frappe.get_doc({
             "doctype": "Sales Order",
             "naming_series": shopify_settings.sales_order_series or "SO-Shopify-",
@@ -486,6 +484,8 @@ def create_sales_order(order, shopify_settings):
             "taxes": get_tax_line(order, order.get("shipping_lines"), shopify_settings)
         }).insert()
         so.submit()
+
+        raise ValueError(so)
     else:
         so = frappe.get_doc("Sales Order", so)
 
