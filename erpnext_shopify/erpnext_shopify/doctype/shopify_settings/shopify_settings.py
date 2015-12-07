@@ -439,6 +439,7 @@ def get_shopify_id(item):pass
 def create_order(order):
     shopify_settings = frappe.get_doc("Shopify Settings", "Shopify Settings")
     so = create_sales_order(order, shopify_settings)
+    raise ValueError(so)
     if so:
         if order.get("financial_status") == "paid":
             create_sales_invoice(order, shopify_settings, so)
@@ -472,6 +473,8 @@ def create_sales_order(order, shopify_settings):
             "shopify_id": order.get("id"),
             "customer": frappe.db.get_value("Customer", {"shopify_id": order.get("customer").get("id")}, "name"),
             "membership_number": order["customer"]["membership_number"],
+            "shopify_employee_id": order.get("user_id"),
+            "shopify_employee_name": shopify_employee_name,
             "transaction_date": order.get("processed_at"),
             "delivery_date": order.get("processed_at"),
             "selling_price_list": shopify_settings.price_list,
@@ -482,8 +485,6 @@ def create_sales_order(order, shopify_settings):
             "taxes": get_tax_line(order, order.get("shipping_lines"), shopify_settings)
         }).insert()
         so.submit()
-
-        raise ValueError(so)
     else:
         so = frappe.get_doc("Sales Order", so)
 
