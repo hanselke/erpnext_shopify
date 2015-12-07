@@ -11,7 +11,9 @@ from erpnext.selling.doctype.sales_order.sales_order import make_delivery_note, 
 from erpnext_shopify.utils import get_request, get_shopify_customers, get_address_type, post_request,\
  get_shopify_items, get_shopify_orders
 
-import datetime, uuid, copy
+import datetime, uuid, copy, re
+
+from datetime import datetime, timedelta
 
 shopify_variants_attr_list = ["option1", "option2", "option3"] 
 
@@ -298,14 +300,14 @@ def sync_customers():
 def sync_shopify_customers():
     for customer in get_shopify_customers():
         # Add the 'membership_number' field
-        customer["membership_number"] = customer.get("first_name") if customer.get("first_name").isdigit() else customer.get("first_name") + u"-" + str(uuid.uuid4())
+        customer["membership_number"] = order["customer"]["first_name"] + u"-" + str(uuid.uuid4()) if re.match("00000{1}$", order["customer"]["first_name"]) else order["customer"]["first_name"]
         create_customer(customer)
 
 def create_customer(customer):
     erp_cust = None
-    cust_name = (customer.get("first_name") + " " + (customer.get("last_name") and  customer.get("last_name") or ""))\
-        if customer.get("first_name") else customer.get("email")
-    # cust_name = customer.get("first_name")
+    # cust_name = (customer.get("first_name") + " " + (customer.get("last_name") and  customer.get("last_name") or ""))\
+    #     if customer.get("first_name") else customer.get("email")
+    cust_name = customer.get("last_name")
 
     erp_customer = frappe.db.sql("""select name, customer_name, membership_number from tabCustomer where shopify_id = %(shopify_id)s""", {"shopify_id": customer.get("id")}, as_dict = 1)
     
@@ -419,7 +421,7 @@ def sync_shopify_orders():
             order["customer"]["last_order_id"] = 1777711300
             order["customer"]["verified_email"] = False
 
-        order["customer"]["membership_number"] = order["customer"]["first_name"] if order["customer"]["first_name"].isdigit() else order["customer"]["first_name"] + u"-" + str(uuid.uuid4())
+        order["customer"]["membership_number"] = order["customer"]["first_name"] + u"-" + str(uuid.uuid4()) if re.match("00000{1}$", order["customer"]["first_name"]) else order["customer"]["first_name"]
 
         validate_customer_and_product(order)
         create_order(order)
