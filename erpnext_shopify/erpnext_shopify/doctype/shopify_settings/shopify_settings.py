@@ -376,7 +376,6 @@ def sync_orders():
     sync_shopify_orders()
 
 def sync_shopify_orders():
-    raise ValueError(get_shopify_orders())
     # We will only sync orders from "2015-11-17T00:00:00"
     orders = filter(lambda x: datetime.datetime.strptime(x["processed_at"][:-6], "%Y-%m-%dT%H:%M:%S") > datetime.datetime.strptime('2015-11-17T00:00:00' ,'%Y-%m-%dT%H:%M:%S'), get_shopify_orders())
 
@@ -450,7 +449,22 @@ def create_order(order):
 def create_salse_order(order, shopify_settings):
     so = frappe.db.get_value("Sales Order", {"shopify_id": order.get("id")}, "name")
     if not so:
-        shopify_employee_id = None
+
+        shopify_employee_name = None
+
+        # Deal with 'user_id in order entry' and 'employee accounts' mapping
+        if order.get("user_id") == 26626308:
+            shopify_employee_name = u"Joyce Teoh"
+        else if order.get("user_id") == 26626372:
+            shopify_employee_name = u"Lucus Tan"
+        else if order.get("user_id") == 29492868:
+            shopify_employee_name = u"Vong Guat Theng"
+        else if order.get("user_id") == 29527236:
+            shopify_employee_name = u"Sam Chong"
+        else if order.get("user_id") == 47503940:
+            shopify_employee_name = u"Too Shen Chew"
+        else if order.get("user_id") == 26202436:
+            shopify_employee_name = u"Massimo Hair Lb"
 
         so = frappe.get_doc({
             "doctype": "Sales Order",
@@ -458,7 +472,8 @@ def create_salse_order(order, shopify_settings):
             "shopify_id": order.get("id"),
             "customer": frappe.db.get_value("Customer", {"shopify_id": order.get("customer").get("id")}, "name"),
             "membership_number": order["customer"]["membership_number"],
-            "shopify_employee_id": shopify_employee_id,
+            "shopify_employee_id": order.get("user_id"),
+            "shopify_employee_name": shopify_employee_name,
             "transaction_date": order.get("processed_at"),
             "delivery_date": order.get("processed_at"),
             "selling_price_list": shopify_settings.price_list,
