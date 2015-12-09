@@ -120,17 +120,24 @@ def set_new_attribute_values(item_attr, values):
                 "attribute_value": attr_value,
                 "abbr": cstr(attr_value)
             })
+
+def get_attributes_string(attributes):
+    temp = ""
+    for attr_item in attributes:
+        temp += attr_item["attribute_value"]
+        temp += u"-"
+    return temp[:-1]
     
 def create_item(item, warehouse, has_variant=0, attributes=[], variant_of=None):
-    if variant_of:
-        raise ValueError(attributes)
+    base_item_name = cstr(item.get("item_code")) or cstr(item.get("id"))
+    temp_item_name_with_attributes = base_item_name + get_attributes_string(attributes) if variant_of else base_item_name
 
     item_name = frappe.get_doc({
         "doctype": "Item",
         "shopify_id": item.get("id"),
         "variant_of": variant_of,
         "item_code": cstr(item.get("item_code")) or cstr(item.get("id")),
-        "item_name": item.get("title"),
+        "item_name": temp_item_name_with_attributes,
         "description": item.get("title") or u"Please refer to the product pics.",
         "item_group": get_item_group(item.get("product_type")),
         "has_variants": has_variant,
