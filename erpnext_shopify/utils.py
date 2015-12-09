@@ -33,6 +33,10 @@ def get_shopify_customers():
 		customers.extend(get_request('/admin/customers.json?limit=250&page=' + str(x))['customers'])
 	return customers
 
+# Just in case later using
+def get_shopify_customer_by_id(customerId):
+	return get_request('/admin/customers/' + customerId + '.json')['customer']
+
 def get_address_type(i):
 	return ["Billing", "Shipping", "Office", "Personal", "Plant", "Postal", "Shop", "Subsidiary", "Warehouse", "Other"][i]
 
