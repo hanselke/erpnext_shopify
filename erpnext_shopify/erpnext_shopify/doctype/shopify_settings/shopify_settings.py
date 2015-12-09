@@ -308,7 +308,7 @@ def create_customer(customer):
     # cust_name = (customer.get("first_name") + " " + (customer.get("last_name") and  customer.get("last_name") or ""))\
     #     if customer.get("first_name") else customer.get("email")
     # cust_name = customer.get("first_name") + customer.get("last_name") if customer.get("last_name") else str(uuid.uuid4())
-    cust_name = str(customer.get("first_name")) + str(customer.get("last_name"))
+    cust_name = str(customer.get("first_name")) + str(customer.get("last_name")) if customer.get("last_name") else customer.get("first_name")
 
     erp_customer = frappe.db.sql("""select name, customer_name, membership_number from tabCustomer where shopify_id = %(shopify_id)s""", {"shopify_id": customer.get("id")}, as_dict = 1)
     
@@ -386,8 +386,8 @@ def sync_shopify_orders():
         if not order.get("customer"):
             order["customer"] = {}
             order["customer"]["total_spent"] = order["subtotal_price"]
-            order["customer"]["first_name"] = u"Non"
-            order["customer"]["last_name"] = u"Member"
+            order["customer"]["first_name"] = u"-00200"
+            order["customer"]["last_name"] = u"Non Member"
             order["customer"]["last_order_name"] = u"#3-1473"
             order["customer"]["orders_count"] = 1
             order["customer"]["created_at"] = u"2015-11-06T15:20:53+08:00"
