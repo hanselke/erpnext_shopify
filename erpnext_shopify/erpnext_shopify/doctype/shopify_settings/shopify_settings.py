@@ -129,8 +129,7 @@ def get_attributes_string(attributes):
     return temp[:-1]
     
 def create_item(item, warehouse, has_variant=0, attributes=[], variant_of=None):
-    base_item_name = cstr(item.get("item_code")) or cstr(item.get("id"))
-    temp_item_name_with_attributes = base_item_name + get_attributes_string(attributes) if variant_of else base_item_name
+    temp_item_name_with_attributes = item.get("title") + get_attributes_string(attributes) if variant_of else item.get("title")
 
     item_name = frappe.get_doc({
         "doctype": "Item",
