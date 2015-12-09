@@ -121,10 +121,10 @@ def set_new_attribute_values(item_attr, values):
                 "abbr": cstr(attr_value)
             })
     
-def create_item(item, warehouse, has_variant=0, attributes=[],variant_of=None):
-    if len(attributes):
+def create_item(item, warehouse, has_variant=0, attributes=[], variant_of=None):
+    if variant_of:
         raise ValueError(attributes)
-        
+
     item_name = frappe.get_doc({
         "doctype": "Item",
         "shopify_id": item.get("id"),
