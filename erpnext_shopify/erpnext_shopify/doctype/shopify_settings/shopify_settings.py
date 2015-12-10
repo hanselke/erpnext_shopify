@@ -132,7 +132,7 @@ def create_item(item, warehouse, has_variant=0, attributes=[], variant_of=None):
     temp_item_name_with_attributes = item.get("title") + u"--" + get_attributes_string(attributes) if variant_of else item.get("title")
 
     if item.get("title") == "Repair Solution":
-        raise ValueError(item)
+        raise ValueError(attributes)
 
     item_name = frappe.get_doc({
         "doctype": "Item",
