@@ -82,9 +82,6 @@ def make_item(warehouse, item):
             create_item_variants(item, warehouse, attributes, shopify_variants_attr_list, existing_erp_item[0]["item_code"])
     else:
         # Need to proceed the creation at this point
-        if item.get("title") == "Repair Solution":
-            raise ValueError(has_variants(item))
-
         if has_variants(item):
             attributes = create_attribute(item)
             create_item(item, warehouse, 1, attributes)
@@ -93,7 +90,7 @@ def make_item(warehouse, item):
             create_item(item, warehouse)
                 
 def has_variants(item):
-    if len(item.get("options")) > 1 and "Default Title" not in item.get("options")[0]["values"]:
+    if len(item.get("options")) > 0 and "Default Title" not in item.get("options")[0]["values"]:
         return True
     return False
     
