@@ -131,6 +131,9 @@ def get_attributes_string(attributes):
 def create_item(item, warehouse, has_variant=0, attributes=[], variant_of=None):
     temp_item_name_with_attributes = item.get("title") + u"--" + get_attributes_string(attributes) if variant_of else item.get("title")
 
+    if item.get("title") == "Repair Solution":
+        raise ValueError(item)
+
     item_name = frappe.get_doc({
         "doctype": "Item",
         "shopify_id": item.get("id"),
@@ -258,35 +261,35 @@ def add_to_price_list(item):
 #         erp_item.shopify_id = new_item['product']["variants"][i].get("id")
 #         erp_item.save()
             
-def get_variant_attributes(item, price_list, warehouse):
-    options, variant_list, variant_item_code = [], [], []
-    attr_dict = {}
+# def get_variant_attributes(item, price_list, warehouse):
+#     options, variant_list, variant_item_code = [], [], []
+#     attr_dict = {}
     
-    for i, variant in enumerate(frappe.get_all("Item", filters={"variant_of": item.get("item_code")}, fields=['name'])):
+#     for i, variant in enumerate(frappe.get_all("Item", filters={"variant_of": item.get("item_code")}, fields=['name'])):
         
-        item_variant = frappe.get_doc("Item", variant.get("name"))
+#         item_variant = frappe.get_doc("Item", variant.get("name"))
 
-        variant_list.append(get_price_and_stock_details(item, item_variant.stock_uom, warehouse, price_list))
+#         variant_list.append(get_price_and_stock_details(item, item_variant.stock_uom, warehouse, price_list))
         
-        for attr in item_variant.get('attributes'):
-            if not attr_dict.get(attr.attribute):
-                attr_dict.setdefault(attr.attribute, [])
+#         for attr in item_variant.get('attributes'):
+#             if not attr_dict.get(attr.attribute):
+#                 attr_dict.setdefault(attr.attribute, [])
             
-            attr_dict[attr.attribute].append(attr.attribute_value)
+#             attr_dict[attr.attribute].append(attr.attribute_value)
             
-            if attr.idx <= 3:
-                variant_list[i]["option"+cstr(attr.idx)] = attr.attribute_value
+#             if attr.idx <= 3:
+#                 variant_list[i]["option"+cstr(attr.idx)] = attr.attribute_value
                 
-        variant_item_code.append(item_variant.item_code)
+#         variant_item_code.append(item_variant.item_code)
         
-    for i, attr in enumerate(attr_dict):
-        options.append({
-            "name": attr,
-            "position": i+1,
-            "values": list(set(attr_dict[attr]))
-        })
+#     for i, attr in enumerate(attr_dict):
+#         options.append({
+#             "name": attr,
+#             "position": i+1,
+#             "values": list(set(attr_dict[attr]))
+#         })
     
-    return variant_list, options, variant_item_code
+#     return variant_list, options, variant_item_code
 
 def get_price_and_stock_details(item, uom, warehouse, price_list):
     qty = frappe.db.get_value("Bin", {"item_code":item.get("item_code"), "warehouse": warehouse}, "actual_qty") 
@@ -309,7 +312,8 @@ def sync_customers():
 def sync_shopify_customers():
     for customer in get_shopify_customers():
         # Add the 'membership_number' field
-        customer["membership_number"] = customer["first_name"] + u"-" + str(uuid.uuid4()) if customer["first_name"].isdigit() and int(customer["first_name"]) == 0 else customer["first_name"]
+        # customer["membership_number"] = customer["first_name"] + u"-" + str(uuid.uuid4()) if customer["first_name"].isdigit() and int(customer["first_name"]) == 0 else customer["first_name"]
+        customer["membership_number"] = customer["first_name"]
         create_customer(customer)
 
 def create_customer(customer):
@@ -317,7 +321,8 @@ def create_customer(customer):
     # cust_name = (customer.get("first_name") + " " + (customer.get("last_name") and  customer.get("last_name") or ""))\
     #     if customer.get("first_name") else customer.get("email")
     # cust_name = customer.get("first_name") + customer.get("last_name") if customer.get("last_name") else str(uuid.uuid4())
-    cust_name = str(customer.get("first_name")) + u"-" + str(customer.get("last_name")) if customer.get("last_name") else customer.get("first_name")
+    # cust_name = str(customer.get("first_name")) + u"-" + str(customer.get("last_name")) if customer.get("last_name") else customer.get("first_name")
+    cust_name = customer.get("first_name")
 
     erp_customer = frappe.db.sql("""select name, customer_name, membership_number from tabCustomer where shopify_id = %(shopify_id)s""", {"shopify_id": customer.get("id")}, as_dict = 1)
     
@@ -431,13 +436,15 @@ def sync_shopify_orders():
             order["customer"]["last_order_id"] = 1777711300
             order["customer"]["verified_email"] = False
 
-        order["customer"]["membership_number"] = order["customer"]["first_name"] + u"-" + str(uuid.uuid4()) if order["customer"]["first_name"].isdigit() and int(order["customer"]["first_name"]) == 0 else order["customer"]["first_name"]
+        # order["customer"]["membership_number"] = order["customer"]["first_name"] + u"-" + str(uuid.uuid4()) if order["customer"]["first_name"].isdigit() and int(order["customer"]["first_name"]) == 0 else order["customer"]["first_name"]
+        order["customer"]["membership_number"] = order["customer"]["first_name"]
 
         validate_customer_and_product(order)
         create_order(order)
 
 def validate_customer_and_product(order):
     create_customer(order.get("customer"))
+    # create_customer(get_shopify_customer_by_id(order.get("customer").get("id")))
     
     warehouse = frappe.get_doc("Shopify Settings", "Shopify Settings").warehouse
 
