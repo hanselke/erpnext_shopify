@@ -82,6 +82,9 @@ def make_item(warehouse, item):
             create_item_variants(item, warehouse, attributes, shopify_variants_attr_list, existing_erp_item[0]["item_code"])
     else:
         # Need to proceed the creation at this point
+        if item.get("title") == "Repair Solution":
+            raise ValueError(has_variants(item))
+
         if has_variants(item):
             attributes = create_attribute(item)
             create_item(item, warehouse, 1, attributes)
@@ -130,9 +133,6 @@ def get_attributes_string(attributes):
     
 def create_item(item, warehouse, has_variant=0, attributes=[], variant_of=None):
     temp_item_name_with_attributes = item.get("title") + u"--" + get_attributes_string(attributes) if variant_of else item.get("title")
-
-    if item.get("title") == "Repair Solution":
-        raise ValueError(attributes)
 
     item_name = frappe.get_doc({
         "doctype": "Item",
