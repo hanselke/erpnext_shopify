@@ -440,8 +440,8 @@ def sync_shopify_orders():
         create_order(order)
 
 def validate_customer_and_product(order):
-    create_customer(order.get("customer"))
-    # create_customer(get_shopify_customer_by_id(order.get("customer").get("id")))
+    # create_customer(order.get("customer"))
+    create_customer(get_shopify_customer_by_id(order.get("customer").get("id")))
     
     warehouse = frappe.get_doc("Shopify Settings", "Shopify Settings").warehouse
 
