@@ -37,6 +37,9 @@ def get_shopify_customers():
 def get_shopify_customer_by_id(customerId):
 	return get_request('/admin/customers/' + customerId + '.json')['customer']
 
+def get_collection_by_product_id(product_id):
+	return get_request('/admin/custom_collections.json?product_id=' + product_id)['custom_collections']
+
 def get_address_type(i):
 	return ["Billing", "Shipping", "Office", "Personal", "Plant", "Postal", "Shop", "Subsidiary", "Warehouse", "Other"][i]
 

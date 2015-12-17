@@ -9,7 +9,7 @@ from frappe.model.document import Document
 from frappe.utils import cstr, flt, nowdate, nowtime, cint
 from erpnext.selling.doctype.sales_order.sales_order import make_delivery_note, make_sales_invoice
 from erpnext_shopify.utils import get_request, get_shopify_customers, get_address_type, post_request,\
- get_shopify_items, get_shopify_orders, get_shopify_customer_by_id
+ get_shopify_items, get_shopify_orders, get_shopify_customer_by_id, get_collection_by_product_id
 
 import datetime, uuid, copy, re
 
@@ -74,7 +74,7 @@ def make_item(warehouse, item):
         # Deal with "item_name", "description", "item_group" update
         frappe.db.set_value("Item", existing_erp_item[0]["item_code"], "item_name", item.get("title"))
         frappe.db.set_value("Item", existing_erp_item[0]["item_code"], "description", item.get("title") or u"Please refer to the product pics.")
-        frappe.db.set_value("Item", existing_erp_item[0]["item_code"], "item_group", get_item_group(item.get("product_type")))
+        frappe.db.set_value("Item", existing_erp_item[0]["item_code"], "item_group", get_item_group(item.get("product_type"), item.get("id")))
 
         # Deal with "attributes(variants)" update
         if has_variants(item):
@@ -138,7 +138,7 @@ def create_item(item, warehouse, has_variant=0, attributes=[], variant_of=None):
         "item_code": cstr(item.get("item_code")) or cstr(item.get("id")),
         "item_name": temp_item_name_with_attributes,
         "description": item.get("title") or u"Please refer to the product pics.",
-        "item_group": get_item_group(item.get("product_type")),
+        "item_group": get_item_group(item.get("product_type"), item.get("id")),
         "has_variants": has_variant,
         "attributes": attributes,
         "stock_uom": item.get("uom") or get_stock_uom(item), 
@@ -186,7 +186,10 @@ def get_attribute_value(variant_attr_val, attribute):
     return frappe.db.sql("""select attribute_value from `tabItem Attribute Value` 
         where parent = '{0}' and (abbr = '{1}' or attribute_value = '{2}')""".format(attribute["attribute"], variant_attr_val, variant_attr_val))[0][0]
 
-def get_item_group(product_type=None):
+def get_item_group(product_type=None, product_id):
+    collection = get_collection_by_product_id(product_id)
+    if collection:
+        raise ValueError(collection)
     if product_type:
         if not frappe.db.get_value("Item Group", product_type, "name"):
             return frappe.get_doc({
