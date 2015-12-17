@@ -191,8 +191,8 @@ def get_item_group(product_id, product_type=None):
 
     collections = get_collection_by_product_id(product_id)
 
-    if not collections:
-        raise ValueError('fucking hell')
+    if collections:
+        raise ValueError(collections[0]["handle"])
     
     actual_item_group = collections[0]["handle"] if collections else product_type
 
