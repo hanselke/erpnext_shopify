@@ -35,7 +35,17 @@ def get_shopify_customers():
 
 # Just in case later using
 def get_shopify_customer_by_id(customerId):
-	return get_request('/admin/customers/' + str(customerId) + '.json')['customer']
+	customer = None
+	try:
+		customer = get_request('/admin/customers/' + str(customerId) + '.json')['customer']
+	except Exception, e:
+		pass
+	else:
+		pass
+	finally:
+		pass
+
+	return customer
 
 def get_collection_by_product_id(product_id):
 	collections = None
@@ -47,6 +57,7 @@ def get_collection_by_product_id(product_id):
 		pass
 	finally:
 		pass
+		
 	return collections
 
 def get_address_type(i):
