@@ -487,6 +487,8 @@ def create_sales_order(order, shopify_settings):
         elif order.get("user_id") == 26202436:
             shopify_employee_name = u"Massimo Hair Lb"
 
+        shopify_employee_name = shopify_employee_name or order.get("user_id")
+
         so = frappe.get_doc({
             "doctype": "Sales Order",
             "naming_series": shopify_settings.sales_order_series or "SO-Shopify-",
