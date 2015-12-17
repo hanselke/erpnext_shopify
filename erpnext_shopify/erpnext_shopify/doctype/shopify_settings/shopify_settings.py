@@ -187,19 +187,22 @@ def get_attribute_value(variant_attr_val, attribute):
         where parent = '{0}' and (abbr = '{1}' or attribute_value = '{2}')""".format(attribute["attribute"], variant_attr_val, variant_attr_val))[0][0]
 
 def get_item_group(product_id, product_type=None):
-    collection = get_collection_by_product_id(product_id)
-    if collection:
-        raise ValueError(collection)
-    if product_type:
-        if not frappe.db.get_value("Item Group", product_type, "name"):
+    actual_item_group = None
+
+    collections = get_collection_by_product_id(product_id)
+    
+    actual_item_group = collections[0]["handle"] if collections else product_type
+
+    if actual_item_group:
+        if not frappe.db.get_value("Item Group", actual_item_group, "name"):
             return frappe.get_doc({
                 "doctype": "Item Group",
-                "item_group_name": product_type,
+                "item_group_name": actual_item_group,
                 "parent_item_group": _("All Item Groups"),
                 "is_group": "No"
             }).insert().name
         else:
-            return product_type
+            return actual_item_group
     else:
         return _("All Item Groups")
 
