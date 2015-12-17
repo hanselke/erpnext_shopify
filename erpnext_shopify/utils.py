@@ -35,7 +35,7 @@ def get_shopify_customers():
 
 # Just in case later using
 def get_shopify_customer_by_id(customerId):
-	return get_request('/admin/customers/' + customerId + '.json')['customer']
+	return get_request('/admin/customers/' + str(customerId) + '.json')['customer']
 
 def get_collection_by_product_id(product_id):
 	collections = None
