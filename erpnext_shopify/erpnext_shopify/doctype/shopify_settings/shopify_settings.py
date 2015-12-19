@@ -9,7 +9,7 @@ from frappe.model.document import Document
 from frappe.utils import cstr, flt, nowdate, nowtime, cint
 from erpnext.selling.doctype.sales_order.sales_order import make_delivery_note, make_sales_invoice
 from erpnext_shopify.utils import get_request, get_shopify_customers, get_address_type, post_request,\
- get_shopify_items, get_shopify_orders, get_shopify_customer_by_id
+ get_shopify_items, get_shopify_orders, get_shopify_customer_by_id, get_collection_by_product_id
 
 import datetime, uuid, copy, re
 
@@ -74,7 +74,7 @@ def make_item(warehouse, item):
         # Deal with "item_name", "description", "item_group" update
         frappe.db.set_value("Item", existing_erp_item[0]["item_code"], "item_name", item.get("title"))
         frappe.db.set_value("Item", existing_erp_item[0]["item_code"], "description", item.get("title") or u"Please refer to the product pics.")
-        frappe.db.set_value("Item", existing_erp_item[0]["item_code"], "item_group", get_item_group(item.get("product_type")))
+        frappe.db.set_value("Item", existing_erp_item[0]["item_code"], "item_group", get_item_group(item.get("id"), item.get("product_type")))
 
         # Deal with "attributes(variants)" update
         if has_variants(item):
@@ -138,7 +138,7 @@ def create_item(item, warehouse, has_variant=0, attributes=[], variant_of=None):
         "item_code": cstr(item.get("item_code")) or cstr(item.get("id")),
         "item_name": temp_item_name_with_attributes,
         "description": item.get("title") or u"Please refer to the product pics.",
-        "item_group": get_item_group(item.get("product_type")),
+        "item_group": get_item_group(item.get("id"), item.get("product_type")),
         "has_variants": has_variant,
         "attributes": attributes,
         "stock_uom": item.get("uom") or get_stock_uom(item), 
@@ -186,17 +186,23 @@ def get_attribute_value(variant_attr_val, attribute):
     return frappe.db.sql("""select attribute_value from `tabItem Attribute Value` 
         where parent = '{0}' and (abbr = '{1}' or attribute_value = '{2}')""".format(attribute["attribute"], variant_attr_val, variant_attr_val))[0][0]
 
-def get_item_group(product_type=None):
-    if product_type:
-        if not frappe.db.get_value("Item Group", product_type, "name"):
+def get_item_group(product_id, product_type=None):
+    actual_item_group = None
+
+    collections = get_collection_by_product_id(product_id)
+    
+    actual_item_group = collections[0]["title"] if collections else product_type
+
+    if actual_item_group:
+        if not frappe.db.get_value("Item Group", actual_item_group, "name"):
             return frappe.get_doc({
                 "doctype": "Item Group",
-                "item_group_name": product_type,
+                "item_group_name": actual_item_group,
                 "parent_item_group": _("All Item Groups"),
                 "is_group": "No"
             }).insert().name
         else:
-            return product_type
+            return actual_item_group
     else:
         return _("All Item Groups")
 
@@ -481,6 +487,8 @@ def create_sales_order(order, shopify_settings):
             shopify_employee_name = u"Too Shen Chew"
         elif order.get("user_id") == 26202436:
             shopify_employee_name = u"Massimo Hair Lb"
+
+        shopify_employee_name = shopify_employee_name or order.get("user_id")
 
         so = frappe.get_doc({
             "doctype": "Sales Order",
