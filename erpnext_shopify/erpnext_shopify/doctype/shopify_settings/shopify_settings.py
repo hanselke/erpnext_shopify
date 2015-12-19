@@ -436,7 +436,7 @@ def sync_shopify_orders():
             order["customer"]["multipass_identifier"] = None
             order["customer"]["tax_exempt"] = False
             order["customer"]["accepts_marketing"] = False
-            order["customer"]["id"] = 1828210884
+            order["customer"]["id"] = 2178774981
             order["customer"]["last_order_id"] = 1777711300
             order["customer"]["verified_email"] = False
 
