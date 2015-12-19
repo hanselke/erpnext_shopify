@@ -313,7 +313,6 @@ def sync_customers():
     # sync_erp_customers()
 
 def sync_shopify_customers():
-    raise ValueError(get_shopify_customers())
     for customer in get_shopify_customers():
         # Add the 'membership_number' field
         # customer["membership_number"] = customer["first_name"] + u"-" + str(uuid.uuid4()) if customer["first_name"].isdigit() and int(customer["first_name"]) == 0 else customer["first_name"]
