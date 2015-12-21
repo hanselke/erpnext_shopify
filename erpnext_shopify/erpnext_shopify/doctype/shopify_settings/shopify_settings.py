@@ -482,7 +482,7 @@ def create_sales_order(order, shopify_settings):
         elif order.get("user_id") == 47503940:
             shopify_employee_name = u"Too Shen Chew"
         elif order.get("user_id") == 26202436:
-            shopify_employee_name = u"Massimo Hair Lb"
+            shopify_employee_name = u"Massimo Hair Lib"
 
         shopify_employee_name = shopify_employee_name or order.get("user_id")
 
