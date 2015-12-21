@@ -465,29 +465,29 @@ def create_order(order):
             create_delivery_note(order, shopify_settings, so)
 
 def create_sales_order(order, shopify_settings):
+
+    shopify_employee_name = None
+
+    # Deal with 'user_id in order entry' and 'employee accounts' mapping
+    if order.get("user_id") == 26626308:
+        shopify_employee_name = u"Joyce Teoh"
+    elif order.get("user_id") == 26626372:
+        shopify_employee_name = u"Lucus Tan"
+    elif order.get("user_id") == 29492868:
+        shopify_employee_name = u"Vong Guat Theng"
+    elif order.get("user_id") == 29527236:
+        shopify_employee_name = u"Sam Chong"
+    elif order.get("user_id") == 47503940:
+        shopify_employee_name = u"Too Shen Chew"
+    elif order.get("user_id") == 26202436:
+        shopify_employee_name = u"Massimo Hair Lib"
+
+    shopify_employee_name = shopify_employee_name or order.get("user_id")
+
+    create_employee(order.get("user_id"), shopify_employee_name)
+    
     so = frappe.db.get_value("Sales Order", {"shopify_id": order.get("id")}, "name")
     if not so:
-
-        shopify_employee_name = None
-
-        # Deal with 'user_id in order entry' and 'employee accounts' mapping
-        if order.get("user_id") == 26626308:
-            shopify_employee_name = u"Joyce Teoh"
-        elif order.get("user_id") == 26626372:
-            shopify_employee_name = u"Lucus Tan"
-        elif order.get("user_id") == 29492868:
-            shopify_employee_name = u"Vong Guat Theng"
-        elif order.get("user_id") == 29527236:
-            shopify_employee_name = u"Sam Chong"
-        elif order.get("user_id") == 47503940:
-            shopify_employee_name = u"Too Shen Chew"
-        elif order.get("user_id") == 26202436:
-            shopify_employee_name = u"Massimo Hair Lib"
-
-        shopify_employee_name = shopify_employee_name or order.get("user_id")
-
-        create_employee(order.get("user_id"), shopify_employee_name)
-
         so = frappe.get_doc({
             "doctype": "Sales Order",
             "naming_series": shopify_settings.sales_order_series or "SO-Shopify-",
