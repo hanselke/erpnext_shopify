@@ -444,12 +444,12 @@ def validate_customer_and_product(order):
         make_item(warehouse, item)
 
 def create_employee(employee_id, employee_name):
-    if not frappe.db.sql("""select user_id from tabEmployee where user_id = %(user_id)s""", {"user_id": employee_id}, as_dict = 1):
+    if not frappe.db.sql("""select employee_id from tabEmployee where employee_id = %(employee_id)s""", {"employee_id": employee_id}, as_dict = 1):
         try:
-            frappe.get_doc({
+            employee = frappe.get_doc({
                 "doctype": "Employee",
                 "employee_name": employee_name,
-                "user_id": employee_id
+                "employee_id": employee_id
             }).insert()
         except Exception, e:
             pass
