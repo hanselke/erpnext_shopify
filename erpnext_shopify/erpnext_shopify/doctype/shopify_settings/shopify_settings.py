@@ -314,32 +314,24 @@ def sync_customers():
 
 def sync_shopify_customers():
     for customer in get_shopify_customers():
-        # Add the 'membership_number' field
-        # customer["membership_number"] = customer["first_name"] + u"-" + str(uuid.uuid4()) if customer["first_name"].isdigit() and int(customer["first_name"]) == 0 else customer["first_name"]
-        customer["membership_number"] = customer["first_name"]
         create_customer(customer)
 
 def create_customer(customer):
     erp_cust = None
-    # cust_name = (customer.get("first_name") + " " + (customer.get("last_name") and  customer.get("last_name") or ""))\
-    #     if customer.get("first_name") else customer.get("email")
-    # cust_name = customer.get("first_name") + customer.get("last_name") if customer.get("last_name") else str(uuid.uuid4())
-    # cust_name = str(customer.get("first_name")) + u"-" + str(customer.get("last_name")) if customer.get("last_name") else customer.get("first_name")
     cust_name = customer.get("first_name")
 
-    erp_customer = frappe.db.sql("""select name, customer_name, membership_number from tabCustomer where shopify_id = %(shopify_id)s""", {"shopify_id": customer.get("id")}, as_dict = 1)
+    erp_customer = frappe.db.sql("""select name, customer_name from tabCustomer where shopify_id = %(shopify_id)s""", {"shopify_id": customer.get("id")}, as_dict = 1)
     
     if erp_customer:
         # Proceed the customer update here
         frappe.db.set_value("Customer", erp_customer[0]["name"], "customer_name", cust_name)
-        frappe.db.set_value("Customer", erp_customer[0]["name"], "membership_number", customer.get("membership_number"))
     else:
         try:
             erp_cust = frappe.get_doc({
                 "doctype": "Customer",
                 "name": customer.get("id"),
                 "customer_name" : cust_name,
-                "membership_number": customer.get("membership_number"),
+                "full_name": customer.get("last_name") or u"",
                 "shopify_id": customer.get("id"),
                 "customer_group": "Individual",
                 "territory": "All Territories",
@@ -439,14 +431,10 @@ def sync_shopify_orders():
             order["customer"]["last_order_id"] = 1777711300
             order["customer"]["verified_email"] = False
 
-        # order["customer"]["membership_number"] = order["customer"]["first_name"] + u"-" + str(uuid.uuid4()) if order["customer"]["first_name"].isdigit() and int(order["customer"]["first_name"]) == 0 else order["customer"]["first_name"]
-        order["customer"]["membership_number"] = order["customer"]["first_name"]
-
         validate_customer_and_product(order)
         create_order(order)
 
 def validate_customer_and_product(order):
-    # create_customer(order.get("customer"))
     create_customer(get_shopify_customer_by_id(order.get("customer").get("id")))
     
     warehouse = frappe.get_doc("Shopify Settings", "Shopify Settings").warehouse
@@ -455,8 +443,17 @@ def validate_customer_and_product(order):
         item = get_request("/admin/products/{}.json".format(item.get("product_id")))["product"]
         make_item(warehouse, item)
 
-def get_shopify_id(item):pass
-        
+def create_employee(employee_id, employee_name):
+    if not frappe.db.sql("""select user_id from tabEmployee where user_id = %(user_id)s""", {"user_id": employee_id}, as_dict = 1):
+        try:
+            frappe.get_doc({
+                "doctype": "Employee",
+                "employee_name": employee_name,
+                "user_id": employee_id
+            }).insert()
+        except Exception, e:
+            pass
+
 def create_order(order):
     shopify_settings = frappe.get_doc("Shopify Settings", "Shopify Settings")
     so = create_sales_order(order, shopify_settings)
@@ -489,12 +486,13 @@ def create_sales_order(order, shopify_settings):
 
         shopify_employee_name = shopify_employee_name or order.get("user_id")
 
+        create_employee(order.get("user_id"), shopify_employee_name)
+
         so = frappe.get_doc({
             "doctype": "Sales Order",
             "naming_series": shopify_settings.sales_order_series or "SO-Shopify-",
             "shopify_id": order.get("id"),
             "customer": frappe.db.get_value("Customer", {"shopify_id": order.get("customer").get("id")}, "name"),
-            "membership_number": order["customer"]["membership_number"],
             "shopify_employee_id": order.get("user_id"),
             "shopify_employee_name": shopify_employee_name,
             "transaction_date": order.get("processed_at"),
