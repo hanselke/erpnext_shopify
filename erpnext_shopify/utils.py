@@ -29,7 +29,6 @@ def get_country():
 	
 def get_shopify_customers():
 	customers = []
-	raise ValueError(get_request('admin/users.json'))
 	for x in range(1, get_collection_pages_number('customers') + 1):
 		customers.extend(get_request('/admin/customers.json?limit=250&page=' + str(x))['customers'])
 	return customers
