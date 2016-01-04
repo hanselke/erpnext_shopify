@@ -41,19 +41,19 @@ def sync_shopify():
     if shopify_settings.enable_shopify:
         try :
             sync_customers()
-            # sync_products(shopify_settings.price_list, shopify_settings.warehouse)
-            # sync_orders()
+            sync_products(shopify_settings.price_list, shopify_settings.warehouse)
+            sync_orders()
             
         except ShopifyError:
             raise ValueError(ShopifyError)
 
 def sync_products(price_list, warehouse):
     sync_shopify_items(warehouse)
-    # sync_erp_items(price_list, warehouse)
 
 def sync_shopify_items(warehouse):
     shopify_items = get_shopify_items()
-    # Workaround for this too long operation, 261
+
+    # 261
     for item in shopify_items:
         make_item(warehouse, item)
 
@@ -61,18 +61,8 @@ def make_item(warehouse, item):
     existing_erp_item = frappe.db.sql("""select item_code, item_name, item_group, description from tabItem where shopify_id = %(shopify_id)s""", {"shopify_id": item.get("id")}, as_dict = 1)
     if existing_erp_item:
         #
-        ## Need to proceed the update at this point
-        #
-        ## The way:
-        ##     erp_item = frappe.get_doc()
-        ##     erp_item.field = val
-        ##     erp_item.save()
-        ## should work, but it doesn't, so use the stupid way to update single field one by one.
-        #
-        #
         ## For now, we support "item_name", "description", "item_group", "attributes", "price" update
         #
-
         # Deal with "item_name", "description", "item_group" update
         frappe.db.set_value("Item", existing_erp_item[0]["item_code"], "item_name", item.get("title"))
         frappe.db.set_value("Item", existing_erp_item[0]["item_code"], "description", item.get("title") or u"Please refer to the product pics.")
@@ -229,73 +219,6 @@ def add_to_price_list(item):
         "price_list_rate": item.get("item_price") or item.get("variants")[0].get("price")
     }).insert()
 
-# def sync_erp_items(price_list, warehouse):
-#     for item in frappe.db.sql("""select item_code, item_name, item_group, description, has_variants, stock_uom from tabItem 
-#         where ifnull(sync_with_shopify, 0)=1 and variant_of is null and shopify_id is null""", as_dict=1):
-#         variant_item_code_list = []
-        
-#         item_data = {
-#             "product": {
-#                 "title": item.get("item_code"),
-#                 "body_html": item.get("description"),
-#                 "product_type": item.get("item_group")
-#             }
-#         }
-                
-#         if item.get("has_variants"):
-#             variant_list, options, variant_item_code = get_variant_attributes(item, price_list, warehouse)
-            
-#             item_data["product"]["variants"] = variant_list
-#             item_data["product"]["options"] = options
-            
-#             variant_item_code_list.extend(variant_item_code)
-            
-#         else:
-#             item_data["product"]["variants"] = [get_price_and_stock_details(item, item.get("stock_uom"), warehouse, price_list)]
-
-#         new_item = post_request("/admin/products.json", item_data)
-#         erp_item = frappe.get_doc("Item", item.get("item_code"))
-#         erp_item.shopify_id = new_item['product'].get("id")
-#         erp_item.save()
-
-#         update_variant_item(new_item, variant_item_code_list)
-
-# def update_variant_item(new_item, item_code_list):
-#     for i, item_code in enumerate(item_code_list):
-#         erp_item = frappe.get_doc("Item", item_code)
-#         erp_item.shopify_id = new_item['product']["variants"][i].get("id")
-#         erp_item.save()
-            
-# def get_variant_attributes(item, price_list, warehouse):
-#     options, variant_list, variant_item_code = [], [], []
-#     attr_dict = {}
-    
-#     for i, variant in enumerate(frappe.get_all("Item", filters={"variant_of": item.get("item_code")}, fields=['name'])):
-        
-#         item_variant = frappe.get_doc("Item", variant.get("name"))
-
-#         variant_list.append(get_price_and_stock_details(item, item_variant.stock_uom, warehouse, price_list))
-        
-#         for attr in item_variant.get('attributes'):
-#             if not attr_dict.get(attr.attribute):
-#                 attr_dict.setdefault(attr.attribute, [])
-            
-#             attr_dict[attr.attribute].append(attr.attribute_value)
-            
-#             if attr.idx <= 3:
-#                 variant_list[i]["option"+cstr(attr.idx)] = attr.attribute_value
-                
-#         variant_item_code.append(item_variant.item_code)
-        
-#     for i, attr in enumerate(attr_dict):
-#         options.append({
-#             "name": attr,
-#             "position": i+1,
-#             "values": list(set(attr_dict[attr]))
-#         })
-    
-#     return variant_list, options, variant_item_code
-
 def get_price_and_stock_details(item, uom, warehouse, price_list):
     qty = frappe.db.get_value("Bin", {"item_code":item.get("item_code"), "warehouse": warehouse}, "actual_qty") 
     price = frappe.db.get_value("Item Price", \
@@ -312,7 +235,6 @@ def get_price_and_stock_details(item, uom, warehouse, price_list):
     
 def sync_customers():
     sync_shopify_customers()
-    # sync_erp_customers()
 
 def sync_shopify_customers():
     for customer in get_shopify_customers():
@@ -364,32 +286,11 @@ def create_customer_address(erp_cust, customer):
                 "customer_name":  erp_cust.customer_name
             }).insert()
 
-# def sync_erp_customers():
-#     for customer in frappe.db.sql("""select name, customer_name from tabCustomer where ifnull(shopify_id, '') = '' 
-#         and ifnull(sync_with_shopify, 0) = 1 """, as_dict=1):
-#         cust = {
-#             "first_name": customer['customer_name']
-#         }
-        
-#         addresses = frappe.db.sql("""select addr.address_line1 as address1, addr.address_line2 as address2, 
-#                         addr.city as city, addr.state as province, addr.country as country, addr.pincode as zip from 
-#                         tabAddress addr where addr.customer ='%s' """%(customer['customer_name']), as_dict=1)
-        
-#         if addresses:
-#             cust["addresses"] = addresses
-                        
-#         cust = post_request("/admin/customers.json", { "customer": cust})
-
-#         customer = frappe.get_doc("Customer", customer['name'])
-#         customer.shopify_id = cust['customer'].get("id")
-#         customer.save()
-
 def sync_orders():
     sync_shopify_orders()
 
 def sync_shopify_orders():
-    # We will only sync orders from "2015-11-17T00:00:00"
-    orders = filter(lambda x: datetime.datetime.strptime(x["processed_at"][:-6], "%Y-%m-%dT%H:%M:%S") > datetime.datetime.strptime('2015-11-17T00:00:00' ,'%Y-%m-%dT%H:%M:%S'), get_shopify_orders())
+    orders = filter(lambda x: datetime.datetime.strptime(x["processed_at"][:-6], "%Y-%m-%dT%H:%M:%S") > datetime.datetime.strptime('2016-01-01T00:00:00' ,'%Y-%m-%dT%H:%M:%S'), get_shopify_orders())
 
     orders = sorted(orders, key=lambda x: datetime.datetime.strptime(x["processed_at"][:-6], "%Y-%m-%dT%H:%M:%S"))
 
@@ -513,40 +414,6 @@ def create_sales_order(order, shopify_settings):
 
         if order.get("financial_status") == "refunded":
             if not frappe.db.sql("""select name from `tabSales Order` where shopify_id = %(shopify_id)s and docstatus = 2""", {"shopify_id": order.get("id")}):
-                #
-                ## Cancel the corresponding "Delivery Note" first
-                ## We didn't submit the "Delivery Note" for now, so don't need to cancel it for canceling a "Sales Invoice"
-                #
-                # core_delivery_note = frappe.db.get_value("Delivery Note", {"shopify_id": order.get("id")}, "name")
-                # core_delivery_note_doc = frappe.get_doc("Delivery Note", core_delivery_note)
-                # core_delivery_note_doc.cancel()
-                # core_delivery_note_doc.submit()
-
-                #
-                ## Cancel the corresponding "Sales Invoice" first
-                #
-                ## Don't know why the "cancel and submit" doesn't work here, according to the document, what the "cancel" does is:
-                ##   Sets the docstatus = 2, then saves
-                ## https://docs.frappe.io/current/api/model/frappe.model.document
-                ## So here just achieve this through the set_value api
-                #
-                # frappe.db.set_value("Sales Invoice", cstr(corre_sales_invoice), "docstatus", 2)
-                #
-
-                #
-                ## Don't know why the "calcel" api doesn't work for "Sales Invoice", so for now need to go through the manually cancellation way.
-                ## Just comment all of these out temporarily
-                #
-                # corre_sales_invoice = frappe.db.get_value("Sales Invoice", {"shopify_id": order.get("id")}, "name")
-                # corre_sales_invoice_doc = frappe.get_doc("Sales Invoice", corre_sales_invoice)
-                # corre_sales_invoice_doc.cancel()
-                # corre_sales_invoice_doc.submit()
-                # frappe.db.commit()
-
-                # # # Then cancel this order
-                # so.cancel()
-                # so.submit()
-                # frappe.db.commit()
                 print "Nothing can do here now"
     return so
 
