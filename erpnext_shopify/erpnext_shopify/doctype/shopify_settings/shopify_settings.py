@@ -54,7 +54,6 @@ def sync_products(price_list, warehouse):
 def sync_shopify_items(warehouse):
     shopify_items = get_shopify_items()
     # Workaround for this too long operation, 259
-    raise ValueError(len(shopify_items))
     for item in shopify_items[0:25]:
         make_item(warehouse, item)
 
