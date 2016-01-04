@@ -397,7 +397,7 @@ def sync_shopify_orders():
         if not order.get("customer"):
             order["customer"] = {}
             order["customer"]["total_spent"] = order["subtotal_price"]
-            order["customer"]["first_name"] = u"-00200"
+            order["customer"]["first_name"] = u"-00243"
             order["customer"]["last_name"] = u"Non Member"
             order["customer"]["last_order_name"] = u"#3-1473"
             order["customer"]["orders_count"] = 1
