@@ -52,7 +52,10 @@ def sync_products(price_list, warehouse):
     # sync_erp_items(price_list, warehouse)
 
 def sync_shopify_items(warehouse):
-    for item in get_shopify_items():
+    shopify_items = get_shopify_items()
+    # Workaround for this too long operation
+    raise ValueError(len(shopify_items))
+    for item in shopify_items[0:50]:
         make_item(warehouse, item)
 
 def make_item(warehouse, item):
