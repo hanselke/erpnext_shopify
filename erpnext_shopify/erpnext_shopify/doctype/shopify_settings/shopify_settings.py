@@ -393,6 +393,8 @@ def sync_shopify_orders():
 
     orders = sorted(orders, key=lambda x: datetime.datetime.strptime(x["processed_at"][:-6], "%Y-%m-%dT%H:%M:%S"))
 
+    raise ValueError(orders)
+
     for order in orders:
         if not order.get("customer"):
             order["customer"] = {}
