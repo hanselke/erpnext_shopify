@@ -41,8 +41,8 @@ def sync_shopify():
     if shopify_settings.enable_shopify:
         try :
             sync_customers()
-            sync_products(shopify_settings.price_list, shopify_settings.warehouse)
-            sync_orders()
+            # sync_products(shopify_settings.price_list, shopify_settings.warehouse)
+            # sync_orders()
             
         except ShopifyError:
             raise ValueError(ShopifyError)
@@ -315,7 +315,6 @@ def sync_customers():
     # sync_erp_customers()
 
 def sync_shopify_customers():
-    raise ValueError(get_shopify_customers())
     for customer in get_shopify_customers():
         create_customer(customer)
 
@@ -414,7 +413,7 @@ def sync_shopify_orders():
             order["customer"]["default_address"]["first_name"] = u"Non"
             order["customer"]["default_address"]["last_name"] = u"Member"
             order["customer"]["default_address"]["name"] = u"Non Member"
-            order["customer"]["default_address"]["zip"] = u""
+            order["customer"]["default_address"]["zip"] = u"10300"
             order["customer"]["default_address"]["province_code"] = u"PNG"
             order["customer"]["default_address"]["default"] = True
             order["customer"]["default_address"]["address1"] = u""
@@ -430,7 +429,7 @@ def sync_shopify_orders():
             order["customer"]["multipass_identifier"] = None
             order["customer"]["tax_exempt"] = False
             order["customer"]["accepts_marketing"] = False
-            order["customer"]["id"] = 2178774981
+            order["customer"]["id"] = 1828210884
             order["customer"]["last_order_id"] = 1777711300
             order["customer"]["verified_email"] = False
 
