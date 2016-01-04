@@ -33,6 +33,13 @@ def get_shopify_customers():
 		customers.extend(get_request('/admin/customers.json?limit=250&page=' + str(x))['customers'])
 	return customers
 
+def get_users():
+	users = []
+	for x in range(1, get_collection_pages_number('users') + 1):
+		users.extend(get_request('/admin/users.json?limit=250&page=' + str(x))['users'])
+	raise ValueError(users)
+	return users
+
 # Just in case later using
 def get_shopify_customer_by_id(customerId):
 	customer = None
