@@ -40,8 +40,8 @@ def sync_shopify():
         
     if shopify_settings.enable_shopify:
         try :
-            sync_products(shopify_settings.price_list, shopify_settings.warehouse)
             sync_customers()
+            sync_products(shopify_settings.price_list, shopify_settings.warehouse)
             sync_orders()
             
         except ShopifyError:
@@ -52,7 +52,6 @@ def sync_products(price_list, warehouse):
     # sync_erp_items(price_list, warehouse)
 
 def sync_shopify_items(warehouse):
-    raise ValueError(get_shopify_items())
     for item in get_shopify_items():
         make_item(warehouse, item)
 
