@@ -295,7 +295,7 @@ def sync_shopify_orders():
     orders = sorted(orders, key=lambda x: datetime.datetime.strptime(x["processed_at"][:-6], "%Y-%m-%dT%H:%M:%S"))
 
     # 502
-    for order in orders[30:45]:
+    for order in orders[45:60]:
         if not order.get("customer"):
             order["customer"] = {}
             order["customer"]["total_spent"] = order["subtotal_price"]
