@@ -41,8 +41,8 @@ def sync_shopify():
     if shopify_settings.enable_shopify:
         try :
             sync_customers()
-            sync_products(shopify_settings.price_list, shopify_settings.warehouse)
-            sync_orders()
+            # sync_products(shopify_settings.price_list, shopify_settings.warehouse)
+            # sync_orders()
             
         except ShopifyError:
             raise ValueError(ShopifyError)
@@ -290,7 +290,7 @@ def sync_orders():
     sync_shopify_orders()
 
 def sync_shopify_orders():
-    orders = filter(lambda x: datetime.datetime.strptime(x["processed_at"][:-6], "%Y-%m-%dT%H:%M:%S") > datetime.datetime.strptime('2016-01-01T00:00:00' ,'%Y-%m-%dT%H:%M:%S'), get_shopify_orders())
+    orders = filter(lambda x: datetime.datetime.strptime(x["processed_at"][:-6], "%Y-%m-%dT%H:%M:%S") > datetime.datetime.strptime('2015-11-17T00:00:00' ,'%Y-%m-%dT%H:%M:%S'), get_shopify_orders())
 
     orders = sorted(orders, key=lambda x: datetime.datetime.strptime(x["processed_at"][:-6], "%Y-%m-%dT%H:%M:%S"))
 
