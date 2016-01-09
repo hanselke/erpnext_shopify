@@ -238,7 +238,7 @@ def sync_customers():
     sync_shopify_customers()
 
 def sync_shopify_customers():
-    for customer in get_shopify_customers()[0:100]:
+    for customer in get_shopify_customers():
         create_customer(customer)
 
 def create_customer(customer):
