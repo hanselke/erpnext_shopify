@@ -245,9 +245,6 @@ def create_customer(customer):
     cust_name = customer.get("first_name")
 
     erp_customer = frappe.db.sql("""select name, customer_name from tabCustomer where shopify_id = %(shopify_id)s""", {"shopify_id": customer.get("id")}, as_dict = 1)
-
-    if cust_name == '00000':
-        raise ValueError(erp_customer)
     
     if erp_customer:
         # Proceed the customer update here
