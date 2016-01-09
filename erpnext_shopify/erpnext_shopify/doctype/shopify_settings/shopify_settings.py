@@ -243,14 +243,16 @@ def sync_shopify_customers():
 
 def create_customer(customer):
     erp_cust = None
-    cust_name = customer.get("first_name")
 
     erp_customer = frappe.db.sql("""select name, customer_name from tabCustomer where shopify_id = %(shopify_id)s""", {"shopify_id": customer.get("id")}, as_dict = 1)
     
     if erp_customer:
-        # Proceed the customer update here
-        frappe.db.set_value("Customer", erp_customer[0]["name"], "customer_name", cust_name)
+        if customer.get("first_name").index('00000') == -1:
+            # Proceed the customer update here
+            frappe.db.set_value("Customer", erp_customer[0]["name"], "customer_name", customer.get("first_name"))
+        frappe.db.set_value("Customer", erp_customer[0]["name"], "full_name", customer.get("last_name") or u"")
     else:
+        cust_name = customer.get("first_name") if customer.get("first_name").index('00000') == -1 else customer.get("first_name") + u'-' + str(uuid.uuid4())
         try:
             erp_cust = frappe.get_doc({
                 "doctype": "Customer",
