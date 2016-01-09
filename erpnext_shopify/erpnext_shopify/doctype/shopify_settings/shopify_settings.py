@@ -245,6 +245,9 @@ def create_customer(customer):
     cust_name = customer.get("first_name")
 
     erp_customer = frappe.db.sql("""select name, customer_name from tabCustomer where shopify_id = %(shopify_id)s""", {"shopify_id": customer.get("id")}, as_dict = 1)
+
+    if cust_name == '00000':
+        raise ValueError(erp_customer)
     
     if erp_customer:
         # Proceed the customer update here
@@ -263,28 +266,6 @@ def create_customer(customer):
             }).insert()
         except:
             pass
-        
-        # if erp_cust:
-        #     create_customer_address(erp_cust, customer)
-
-# def create_customer_address(erp_cust, customer):
-#     if customer.get("addresses"):
-#         for i, address in enumerate(customer.get("addresses")):
-#             addr = frappe.get_doc({
-#                 "doctype": "Address",
-#                 "address_title": erp_cust.customer_name,
-#                 "address_type": get_address_type(i),
-#                 "address_line1": address.get("address1") or "Address 1",
-#                 "address_line2": address.get("address2"),
-#                 "city": address.get("city") or "City",
-#                 "state": address.get("province"),
-#                 "pincode": address.get("zip"),
-#                 "country": address.get("country"),
-#                 "phone": address.get("phone"),
-#                 "email_id": customer.get("email"),
-#                 "customer": erp_cust.name,
-#                 "customer_name":  erp_cust.customer_name
-#             }).insert()
 
 def sync_orders():
     sync_shopify_orders()
