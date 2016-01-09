@@ -247,7 +247,7 @@ def create_customer(customer):
     erp_customer = frappe.db.sql("""select name, customer_name from tabCustomer where shopify_id = %(shopify_id)s""", {"shopify_id": customer.get("id")}, as_dict = 1)
     
     if erp_customer:
-        if customer.get("first_name").index('00000') == -1:
+        if not customer.get("first_name").strip().startswith('00000'):
             # Proceed the customer update here
             frappe.db.set_value("Customer", erp_customer[0]["name"], "customer_name", customer.get("first_name"))
         frappe.db.set_value("Customer", erp_customer[0]["name"], "full_name", customer.get("last_name") or u"")
@@ -256,7 +256,8 @@ def create_customer(customer):
         try:
             erp_cust = frappe.get_doc({
                 "doctype": "Customer",
-                "customer_name" : cust_name,
+                "name": customer.get("id"),
+                "customer_name": cust_name,
                 "full_name": customer.get("last_name") or u"",
                 "shopify_id": customer.get("id"),
                 "customer_group": "Individual",
