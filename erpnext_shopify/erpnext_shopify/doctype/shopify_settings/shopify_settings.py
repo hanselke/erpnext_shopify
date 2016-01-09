@@ -53,6 +53,8 @@ def sync_products(price_list, warehouse):
 def sync_shopify_items(warehouse):
     shopify_items = get_shopify_items()
 
+    raise ValueError(len(shopify_items))
+
     # 261
     for item in shopify_items[0:50]:
         make_item(warehouse, item)
