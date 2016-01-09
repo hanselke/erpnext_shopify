@@ -59,6 +59,7 @@ def sync_shopify_items(warehouse):
 
 def make_item(warehouse, item):
     existing_erp_item = frappe.db.sql("""select item_code, item_name, item_group, description from tabItem where shopify_id = %(shopify_id)s""", {"shopify_id": item.get("id")}, as_dict = 1)
+    actual_item_group = get_item_group(item.get("id"), item.get("product_type"))
     if existing_erp_item:
         #
         ## For now, we support "item_name", "description", "item_group", "attributes", "price" update
@@ -66,20 +67,20 @@ def make_item(warehouse, item):
         # Deal with "item_name", "description", "item_group" update
         frappe.db.set_value("Item", existing_erp_item[0]["item_code"], "item_name", item.get("title"))
         frappe.db.set_value("Item", existing_erp_item[0]["item_code"], "description", item.get("title") or u"Please refer to the product pics.")
-        frappe.db.set_value("Item", existing_erp_item[0]["item_code"], "item_group", get_item_group(item.get("id"), item.get("product_type")))
+        frappe.db.set_value("Item", existing_erp_item[0]["item_code"], "item_group", actual_item_group)
 
         # Deal with "attributes(variants)" update
         if has_variants(item):
             attributes = create_attribute(item)
-            create_item_variants(item, warehouse, attributes, shopify_variants_attr_list, existing_erp_item[0]["item_code"])
+            create_item_variants(item, warehouse, attributes, shopify_variants_attr_list, actual_item_group, existing_erp_item[0]["item_code"])
     else:
         # Need to proceed the creation at this point
         if has_variants(item):
             attributes = create_attribute(item)
-            create_item(item, warehouse, 1, attributes)
-            create_item_variants(item, warehouse, attributes, shopify_variants_attr_list)
+            create_item(item, warehouse, actual_item_group, 1, attributes)
+            create_item_variants(item, warehouse, attributes, shopify_variants_attr_list, actual_item_group)
         else:
-            create_item(item, warehouse)
+            create_item(item, warehouse, actual_item_group)
                 
 def has_variants(item):
     if len(item.get("options")) > 0 and "Default Title" not in item.get("options")[0]["values"]:
@@ -120,7 +121,7 @@ def get_attributes_string(attributes):
         temp += u"-"
     return temp[:-1]
     
-def create_item(item, warehouse, has_variant=0, attributes=[], variant_of=None):
+def create_item(item, warehouse, actual_item_group, has_variant=0, attributes=[], variant_of=None):
     temp_item_name_with_attributes = item.get("title") + u"--" + get_attributes_string(attributes) if variant_of else item.get("title")
 
     item_name = frappe.get_doc({
@@ -130,7 +131,7 @@ def create_item(item, warehouse, has_variant=0, attributes=[], variant_of=None):
         "item_code": cstr(item.get("item_code")) or cstr(item.get("id")),
         "item_name": temp_item_name_with_attributes,
         "description": item.get("title") or u"Please refer to the product pics.",
-        "item_group": get_item_group(item.get("id"), item.get("product_type")),
+        "item_group": actual_item_group,
         "has_variants": has_variant,
         "attributes": attributes,
         "stock_uom": item.get("uom") or get_stock_uom(item), 
@@ -139,13 +140,13 @@ def create_item(item, warehouse, has_variant=0, attributes=[], variant_of=None):
     if not has_variant:
         add_to_price_list(item)
 
-def create_item_variants(item, warehouse, attributes, shopify_variants_attr_list, existing_erp_item_code = None):
+def create_item_variants(item, warehouse, attributes, shopify_variants_attr_list, actual_item_group, existing_erp_item_code = None):
     for variant in item.get("variants"):
         variant_item = {
             "id" : variant.get("id"),
             "item_code": variant.get("id"),
             "title": item.get("title"),
-            "product_type": get_item_group(item.get("id"), item.get("product_type")),
+            "product_type": actual_item_group,
             "uom": get_stock_uom(item),
             "item_price": variant.get("price")
         }
@@ -168,11 +169,11 @@ def create_item_variants(item, warehouse, attributes, shopify_variants_attr_list
                 temp = temp - 1
 
             if len(temp_attributes_copy):
-                create_item(variant_item, warehouse, 0, temp_attributes_copy, cstr(item.get("id")))
+                create_item(variant_item, warehouse, actual_item_group, 0, temp_attributes_copy, cstr(item.get("id")))
 
             continue
 
-        create_item(variant_item, warehouse, 0, attributes, cstr(item.get("id")))
+        create_item(variant_item, warehouse, actual_item_group, 0, attributes, cstr(item.get("id")))
         
 def get_attribute_value(variant_attr_val, attribute):
     return frappe.db.sql("""select attribute_value from `tabItem Attribute Value` 
