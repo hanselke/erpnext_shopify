@@ -238,7 +238,7 @@ def sync_customers():
     sync_shopify_customers()
 
 def sync_shopify_customers():
-    for customer in get_shopify_customers():
+    for customer in get_shopify_customers()[0:100]:
         create_customer(customer)
 
 def create_customer(customer):
@@ -256,7 +256,6 @@ def create_customer(customer):
         try:
             erp_cust = frappe.get_doc({
                 "doctype": "Customer",
-                "name": customer.get("id"),
                 "customer_name" : cust_name,
                 "full_name": customer.get("last_name") or u"",
                 "shopify_id": customer.get("id"),
