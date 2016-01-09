@@ -252,7 +252,7 @@ def create_customer(customer):
             frappe.db.set_value("Customer", erp_customer[0]["name"], "customer_name", customer.get("first_name"))
         frappe.db.set_value("Customer", erp_customer[0]["name"], "full_name", customer.get("last_name") or u"")
     else:
-        cust_name = customer.get("first_name") if customer.get("first_name").index('00000') == -1 else customer.get("first_name") + u'-' + str(uuid.uuid4())
+        cust_name = customer.get("first_name") if str(customer.get("first_name")).index('00000') == -1 else str(customer.get("first_name")) + u'-' + str(uuid.uuid4())
         try:
             erp_cust = frappe.get_doc({
                 "doctype": "Customer",
