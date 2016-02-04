@@ -250,7 +250,7 @@ def create_customer(customer):
         if not customer.get("first_name").strip().startswith('00000'):
             # Proceed the customer update here
             frappe.db.set_value("Customer", erp_customer[0]["name"], "customer_name", customer.get("first_name"))
-        frappe.db.set_value("Customer", erp_customer[0]["name"], "full_name", customer.get("last_name") or u"")
+        # frappe.db.set_value("Customer", erp_customer[0]["name"], "full_name", customer.get("last_name") or u"")
     else:
         cust_name = customer.get("first_name") if not customer.get("first_name").strip().startswith('00000') else customer.get("first_name").strip() + u'-' + str(uuid.uuid4())
         try:
