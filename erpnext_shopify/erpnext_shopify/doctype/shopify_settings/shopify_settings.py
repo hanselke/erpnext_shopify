@@ -497,6 +497,3 @@ def get_tax_account_head(tax):
     return tax_account
 
 
-
-
-
