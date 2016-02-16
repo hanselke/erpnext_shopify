@@ -32,23 +32,23 @@ def get_series():
 @frappe.whitelist() 
 def sync_shopify():
 
-    # if datetime.datetime.now().hour in (2, 3, 4, 5, 6, 21):
+    if datetime.datetime.now().hour in (2, 4, 6, 21):
 
-    shopify_settings = frappe.get_doc("Shopify Settings", "Shopify Settings")
-    
-    if not frappe.session.user:
-        user = frappe.db.sql("""select parent from tabUserRole 
-            where role = "System Manager" and parent not in ('administrator', "Administrator") limit 1""", as_list=1)[0][0]
-        frappe.set_user(user)
+        shopify_settings = frappe.get_doc("Shopify Settings", "Shopify Settings")
         
-    if shopify_settings.enable_shopify:
-        try :
-            sync_customers()
-            sync_products(shopify_settings.price_list, shopify_settings.warehouse)
-            sync_orders()
+        if not frappe.session.user:
+            user = frappe.db.sql("""select parent from tabUserRole 
+                where role = "System Manager" and parent not in ('administrator', "Administrator") limit 1""", as_list=1)[0][0]
+            frappe.set_user(user)
             
-        except ShopifyError:
-            raise ValueError(ShopifyError)
+        if shopify_settings.enable_shopify:
+            try :
+                sync_customers()
+                sync_products(shopify_settings.price_list, shopify_settings.warehouse)
+                sync_orders()
+                
+            except ShopifyError:
+                raise ValueError(ShopifyError)
 
 def sync_products(price_list, warehouse):
     sync_shopify_items(warehouse)
