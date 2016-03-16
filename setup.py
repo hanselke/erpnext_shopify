@@ -5,7 +5,7 @@ import os
 version = '0.0.1'
 
 setup(
-    name='openb_erpnext_shopify',
+    name='erpnext_shopify',
     version=version,
     description='Shopify connector for ERPNext',
     author='Frappe Technologies Pvt. Ltd.',
