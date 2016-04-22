@@ -11,7 +11,7 @@ from erpnext.selling.doctype.sales_order.sales_order import make_delivery_note, 
 from erpnext_shopify.utils import get_request, get_shopify_customers, get_address_type, post_request,\
  get_shopify_items, get_shopify_orders, get_shopify_customer_by_id, get_collection_by_product_id
 
-import datetime, uuid, copy, re, threading, time
+import datetime, uuid, copy, re
 
 from datetime import timedelta
 
@@ -276,22 +276,10 @@ def sync_orders():
 def sync_shopify_orders():
     orders = filter(lambda x: datetime.datetime.strptime(x["processed_at"][:-6], "%Y-%m-%dT%H:%M:%S") > datetime.datetime.strptime('2015-11-17T00:00:00' ,'%Y-%m-%dT%H:%M:%S'), get_shopify_orders())
 
-    # 1582
     orders = sorted(orders, key=lambda x: datetime.datetime.strptime(x["processed_at"][:-6], "%Y-%m-%dT%H:%M:%S"))
 
-    tmp = 180
-    while True:
-        threading.Thread(target = create_order_in_batch, args = (orders[tmp : tmp + 5], )).start()
-
-        if tmp > 1582:
-            break
-        else:
-            tmp += 5
-            time.sleep(300)
-
-def create_order_in_batch(orders):
-
-    for order in orders[172:180]:
+    # 1582
+    for order in orders[180:188]:
         if not order.get("customer"):
             order["customer"] = {}
             order["customer"]["total_spent"] = order["subtotal_price"]
