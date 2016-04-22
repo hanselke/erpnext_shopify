@@ -284,7 +284,7 @@ def sync_shopify_orders():
     # base = 340 + h * 150 + 5 * m
 
     # 1582
-    for order in orders[355 : 361]:
+    for order in orders[361 : 368]:
         if not order.get("customer"):
             order["customer"] = {}
             order["customer"]["total_spent"] = order["subtotal_price"]
