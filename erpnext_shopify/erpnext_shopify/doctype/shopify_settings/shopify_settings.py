@@ -274,9 +274,11 @@ def sync_orders():
     sync_shopify_orders()
 
 def sync_shopify_orders():
-    orders = filter(lambda x: datetime.datetime.strptime(x["processed_at"][:-6], "%Y-%m-%dT%H:%M:%S") > datetime.datetime.strptime('2015-11-01T00:00:00' ,'%Y-%m-%dT%H:%M:%S'), get_shopify_orders())
+    orders = filter(lambda x: datetime.datetime.strptime(x["processed_at"][:-6], "%Y-%m-%dT%H:%M:%S") > datetime.datetime.strptime('2015-11-17T00:00:00' ,'%Y-%m-%dT%H:%M:%S'), get_shopify_orders())
 
     orders = sorted(orders, key=lambda x: datetime.datetime.strptime(x["processed_at"][:-6], "%Y-%m-%dT%H:%M:%S"))
+
+    raise ValueError(len(orders))
 
     # 1735
     for order in orders[0:15]:
