@@ -43,8 +43,8 @@ def sync_shopify():
         
     if shopify_settings.enable_shopify:
         try :
-            sync_customers()
-            # sync_products(shopify_settings.price_list, shopify_settings.warehouse)
+            # sync_customers()
+            sync_products(shopify_settings.price_list, shopify_settings.warehouse)
             # sync_orders()
             
         except ShopifyError:
