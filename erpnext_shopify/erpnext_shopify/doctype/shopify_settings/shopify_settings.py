@@ -43,8 +43,8 @@ def sync_shopify():
         
     if shopify_settings.enable_shopify:
         try :
-            # sync_customers()
-            # sync_products(shopify_settings.price_list, shopify_settings.warehouse)
+            sync_customers()
+            sync_products(shopify_settings.price_list, shopify_settings.warehouse)
             sync_orders()
             
         except ShopifyError:
@@ -278,13 +278,8 @@ def sync_shopify_orders():
 
     orders = sorted(orders, key=lambda x: datetime.datetime.strptime(x["processed_at"][:-6], "%Y-%m-%dT%H:%M:%S"))
 
-    now = datetime.datetime.now()
-    h = now.hour - 20
-    m = now.minute / 2
-    base = 368 + h * 210 + 7 * m
-
     # 1582
-    for order in orders[base : base + 7]:
+    for order in orders:
         if not order.get("customer"):
             order["customer"] = {}
             order["customer"]["total_spent"] = order["subtotal_price"]
