@@ -32,25 +32,23 @@ def get_series():
 @frappe.whitelist() 
 def sync_shopify():
 
-    return
-
     # if datetime.datetime.now().hour in (2, 4, 6, 21):
 
-    # shopify_settings = frappe.get_doc("Shopify Settings", "Shopify Settings")
+    shopify_settings = frappe.get_doc("Shopify Settings", "Shopify Settings")
     
-    # if not frappe.session.user:
-    #     user = frappe.db.sql("""select parent from tabUserRole 
-    #         where role = "System Manager" and parent not in ('administrator', "Administrator") limit 1""", as_list=1)[0][0]
-    #     frappe.set_user(user)
+    if not frappe.session.user:
+        user = frappe.db.sql("""select parent from tabUserRole 
+            where role = "System Manager" and parent not in ('administrator', "Administrator") limit 1""", as_list=1)[0][0]
+        frappe.set_user(user)
         
-    # if shopify_settings.enable_shopify:
-    #     try :
-    #         # sync_customers()
-    #         # sync_products(shopify_settings.price_list, shopify_settings.warehouse)
-    #         sync_orders()
+    if shopify_settings.enable_shopify:
+        try :
+            # sync_customers()
+            # sync_products(shopify_settings.price_list, shopify_settings.warehouse)
+            sync_orders()
             
-    #     except ShopifyError:
-    #         raise ValueError(ShopifyError)
+        except ShopifyError:
+            raise ValueError(ShopifyError)
 
 def sync_products(price_list, warehouse):
     sync_shopify_items(warehouse)
@@ -280,13 +278,13 @@ def sync_shopify_orders():
 
     orders = sorted(orders, key=lambda x: datetime.datetime.strptime(x["processed_at"][:-6], "%Y-%m-%dT%H:%M:%S"))
 
-    now = datetime.datetime.now()
-    h = now.hour - 15
-    m = now.minute / 2
-    base = 340 + h * 150 + 5 * m
+    # now = datetime.datetime.now()
+    # h = now.hour - 15
+    # m = now.minute / 2
+    # base = 340 + h * 150 + 5 * m
 
     # 1582
-    for order in orders[base : base + 5]:
+    for order in orders[355 : 361]:
         if not order.get("customer"):
             order["customer"] = {}
             order["customer"]["total_spent"] = order["subtotal_price"]
