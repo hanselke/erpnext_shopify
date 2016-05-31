@@ -57,7 +57,7 @@ def sync_shopify_items(warehouse):
     shopify_items = get_shopify_items()
 
     # 268
-    for item in shopify_items[150:200]:
+    for item in shopify_items[200:250]:
         make_item(warehouse, item)
 
 def make_item(warehouse, item):
