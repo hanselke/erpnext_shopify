@@ -278,12 +278,11 @@ def sync_shopify_orders():
 
     orders = sorted(orders, key=lambda x: datetime.datetime.strptime(x["processed_at"][:-6], "%Y-%m-%dT%H:%M:%S"))
 
-    synced_amt = frappe.db.sql("""select count(*) from `tabSales Order`""")
+    synced_amt = frappe.db.sql("""select count(*) from `tabSales Order`""")[0][0]
 
-    raise ValueError(synced_amt)
+    tmp_end = synced_amt + 8
 
-    # 1582
-    for order in orders:
+    for order in orders[synced_amt : tmp_end]:
         if not order.get("customer"):
             order["customer"] = {}
             order["customer"]["total_spent"] = order["subtotal_price"]
