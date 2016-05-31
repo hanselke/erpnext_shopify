@@ -43,8 +43,8 @@ def sync_shopify():
         
     if shopify_settings.enable_shopify:
         try :
-            # sync_customers()
-            # sync_products(shopify_settings.price_list, shopify_settings.warehouse)
+            sync_customers()
+            sync_products(shopify_settings.price_list, shopify_settings.warehouse)
             sync_orders()
             
         except ShopifyError:
@@ -253,14 +253,13 @@ def create_customer(customer):
         if not customer.get("first_name").strip().startswith('00000'):
             # Proceed the customer update here
             frappe.db.set_value("Customer", erp_customer[0]["name"], "customer_name", customer.get("first_name"))
-        # frappe.db.set_value("Customer", erp_customer[0]["name"], "full_name", customer.get("last_name") or u"")
     else:
         cust_name = customer.get("first_name") if not customer.get("first_name").strip().startswith('00000') else customer.get("first_name").strip() + u'-' + str(uuid.uuid4())
         try:
             erp_cust = frappe.get_doc({
                 "doctype": "Customer",
                 "name": customer.get("id"),
-                "customer_name": cust_name,
+                "customer_name": cust_name[:140],
                 "full_name": customer.get("last_name") or u"",
                 "shopify_id": customer.get("id"),
                 "customer_group": "Individual",
@@ -403,7 +402,6 @@ def create_sales_order(order, shopify_settings):
             "apply_discount_on": "Net Total",
             "discount_amount": flt(order.get("total_discounts")),
             "items": get_item_line(order.get("line_items"), shopify_settings)
-            # "taxes": get_tax_line(order, order.get("shipping_lines"), shopify_settings)
         }).insert()
         so.submit()
     else:
@@ -467,21 +465,6 @@ def get_item_code(item):
         item_code = frappe.db.get_value("Item", {"shopify_id": item.get("product_id")}, "item_code")
     
     return item_code
-    
-# def get_tax_line(order, shipping_lines, shopify_settings):
-#     taxes = []
-#     for tax in order.get("tax_lines"):
-#         taxes.append({
-#             "charge_type": _("On Net Total"),
-#             "account_head": get_tax_account_head(tax),
-#             "description": tax.get("title") + "-" + cstr(tax.get("rate") * 100.00),
-#             "rate": tax.get("rate") * 100.00,
-#             "included_in_print_rate": set_included_in_print_rate(order) 
-#         })
-    
-#     taxes = update_taxes_with_shipping_rule(taxes, shipping_lines)
-    
-#     return taxes
 
 def set_included_in_print_rate(order):
     if order.get("total_tax"): 
