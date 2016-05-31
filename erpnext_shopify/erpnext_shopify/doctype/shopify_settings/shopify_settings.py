@@ -379,8 +379,15 @@ def create_sales_order(order, shopify_settings):
     shopify_employee_name = shopify_employee_name or order.get("user_id")
 
     create_employee(order.get("user_id"), shopify_employee_name)
+
+    for item in order.get("line_items"):
+        try:
+            get_request("/admin/products/{}.json".format(item.get("product_id")))["product"]
+        except Exception, e:
+            return None
     
     so = frappe.db.get_value("Sales Order", {"shopify_id": order.get("id")}, "name")
+
     if not so:
         so = frappe.get_doc({
             "doctype": "Sales Order",
