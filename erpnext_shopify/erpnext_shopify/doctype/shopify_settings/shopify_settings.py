@@ -331,8 +331,11 @@ def validate_customer_and_product(order):
     warehouse = frappe.get_doc("Shopify Settings", "Shopify Settings").warehouse
 
     for item in order.get("line_items"):
-        item = get_request("/admin/products/{}.json".format(item.get("product_id")))["product"]
-        make_item(warehouse, item)
+        try:
+            item = get_request("/admin/products/{}.json".format(item.get("product_id")))["product"]
+            make_item(warehouse, item)
+        except Exception, e:
+            continue
 
 def create_employee(employee_id, employee_name):
     if not frappe.db.sql("""select employee_id from tabEmployee where employee_id = %(employee_id)s""", {"employee_id": employee_id}, as_dict = 1):
