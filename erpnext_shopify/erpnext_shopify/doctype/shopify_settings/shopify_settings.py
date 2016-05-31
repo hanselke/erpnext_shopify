@@ -45,7 +45,7 @@ def sync_shopify():
         try :
             sync_customers()
             sync_products(shopify_settings.price_list, shopify_settings.warehouse)
-            sync_orders()
+            # sync_orders()
             
         except ShopifyError:
             raise ValueError(ShopifyError)
@@ -277,6 +277,10 @@ def sync_shopify_orders():
     orders = filter(lambda x: datetime.datetime.strptime(x["processed_at"][:-6], "%Y-%m-%dT%H:%M:%S") > datetime.datetime.strptime('2015-11-17T00:00:00' ,'%Y-%m-%dT%H:%M:%S'), get_shopify_orders())
 
     orders = sorted(orders, key=lambda x: datetime.datetime.strptime(x["processed_at"][:-6], "%Y-%m-%dT%H:%M:%S"))
+
+    synced_amt = frappe.db.sql("""select count(*) from `tabSales Order`""")
+
+    raise ValueError(synced_amt)
 
     # 1582
     for order in orders:
