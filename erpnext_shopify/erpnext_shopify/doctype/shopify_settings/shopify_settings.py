@@ -395,8 +395,8 @@ def create_sales_order(order, shopify_settings):
             "ignore_pricing_rule": 1,
             "apply_discount_on": "Net Total",
             "discount_amount": flt(order.get("total_discounts")),
-            "items": get_item_line(order.get("line_items"), shopify_settings),
-            "taxes": get_tax_line(order, order.get("shipping_lines"), shopify_settings)
+            "items": get_item_line(order.get("line_items"), shopify_settings)
+            # "taxes": get_tax_line(order, order.get("shipping_lines"), shopify_settings)
         }).insert()
         so.submit()
     else:
@@ -461,20 +461,20 @@ def get_item_code(item):
     
     return item_code
     
-def get_tax_line(order, shipping_lines, shopify_settings):
-    taxes = []
-    for tax in order.get("tax_lines"):
-        taxes.append({
-            "charge_type": _("On Net Total"),
-            "account_head": get_tax_account_head(tax),
-            "description": tax.get("title") + "-" + cstr(tax.get("rate") * 100.00),
-            "rate": tax.get("rate") * 100.00,
-            "included_in_print_rate": set_included_in_print_rate(order) 
-        })
+# def get_tax_line(order, shipping_lines, shopify_settings):
+#     taxes = []
+#     for tax in order.get("tax_lines"):
+#         taxes.append({
+#             "charge_type": _("On Net Total"),
+#             "account_head": get_tax_account_head(tax),
+#             "description": tax.get("title") + "-" + cstr(tax.get("rate") * 100.00),
+#             "rate": tax.get("rate") * 100.00,
+#             "included_in_print_rate": set_included_in_print_rate(order) 
+#         })
     
-    taxes = update_taxes_with_shipping_rule(taxes, shipping_lines)
+#     taxes = update_taxes_with_shipping_rule(taxes, shipping_lines)
     
-    return taxes
+#     return taxes
 
 def set_included_in_print_rate(order):
     if order.get("total_tax"): 
