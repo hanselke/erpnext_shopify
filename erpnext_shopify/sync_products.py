@@ -27,11 +27,12 @@ def sync_shopify_items(warehouse, shopify_item_list):
 				request_data=shopify_item, exception=True)
 
 		except Exception, e:
-			if e.args[0] and e.args[0].startswith("402"):
-				raise e
-			else:
-				make_shopify_log(title=e.message, status="Error", method="sync_shopify_items", message=frappe.get_traceback(),
-					request_data=shopify_item, exception=True)
+			if hasattr(e.args[0], "startswith"):
+				if e.args[0] and e.args[0].startswith("402"):
+					raise e
+				else:
+					make_shopify_log(title=e.message, status="Error", method="sync_shopify_items", message=frappe.get_traceback(),
+						request_data=shopify_item, exception=True)
 
 def make_item(warehouse, shopify_item, shopify_item_list):
 	add_item_weight(shopify_item)
