@@ -11,7 +11,7 @@ from erpnext_shopify.shopify_requests import get_request
 from erpnext_shopify.exceptions import ShopifySetupError
 from frappe.utils import cstr, flt, nowdate, nowtime, cint
 from erpnext.selling.doctype.sales_order.sales_order import make_delivery_note, make_sales_invoice
-from erpnext_shopify.utils import get_request, get_shopify_customers, get_address_type, post_request,\
+from erpnext_shopify.utils import get_shopify_customers,\
  get_shopify_items, get_shopify_orders, get_shopify_customer_by_id, get_collection_by_product_id
 
 import datetime, uuid, copy, re

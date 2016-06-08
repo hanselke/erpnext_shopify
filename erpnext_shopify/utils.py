@@ -1,12 +1,8 @@
-
-# -*- coding: utf-8 -*-
-# Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and contributors
-# For license information, please see license.txt
-
-from __future__ import division
-import frappe, math
+from __future__ import division, unicode_literals
+import frappe, math, json
 from frappe.utils import get_request_session
 from frappe.exceptions import AuthenticationError, ValidationError
+from .exceptions import ShopifySetupError
 from functools import wraps
 
 import hashlib, base64, hmac, json
@@ -65,11 +61,6 @@ def get_collection_by_product_id(product_id):
 		
 	return collections
 
-
-from __future__ import unicode_literals
-import frappe
-import json
-from .exceptions import ShopifySetupError
 
 def disable_shopify_sync_for_item(item, rollback=False):
 	"""Disable Item if not exist on shopify"""
