@@ -334,13 +334,13 @@ def validate_customer_and_product(order):
         except Exception, e:
             continue
 
-def create_employee(employee_id, employee_name):
-    if not frappe.db.sql("""select employee_id from tabEmployee where employee_id = %(employee_id)s""", {"employee_id": employee_id}, as_dict = 1):
+def create_employee(employee_number, employee_name):
+    if not frappe.db.sql("""select employee_number from tabEmployee where employee_number = %(employee_number)s""", {"employee_number": employee_number}, as_dict = 1):
         try:
             employee = frappe.get_doc({
                 "doctype": "Employee",
                 "employee_name": employee_name,
-                "employee_id": employee_id
+                "employee_number": employee_number
             }).insert()
         except Exception, e:
             pass
@@ -357,21 +357,21 @@ def create_order(order):
 
 def create_sales_order(order, shopify_settings):
 
-    shopify_employee_name = None
+ #   shopify_employee_name = None
 
     # Deal with 'user_id in order entry' and 'employee accounts' mapping
-    if order.get("user_id") == 26626308:
-        shopify_employee_name = u"Joyce Teoh"
-    elif order.get("user_id") == 26626372:
-        shopify_employee_name = u"Lucus Tan"
-    elif order.get("user_id") == 29492868:
-        shopify_employee_name = u"Vong Guat Theng"
-    elif order.get("user_id") == 29527236:
-        shopify_employee_name = u"Sam Chong"
-    elif order.get("user_id") == 47503940:
-        shopify_employee_name = u"Too Shen Chew"
-    elif order.get("user_id") == 26202436:
-        shopify_employee_name = u"Massimo Hair Lib"
+  #  if order.get("user_id") == 26626308:
+  #      shopify_employee_name = u"Joyce Teoh"
+  #  elif order.get("user_id") == 26626372:
+  #      shopify_employee_name = u"Lucus Tan"
+  #  elif order.get("user_id") == 29492868:
+  #      shopify_employee_name = u"Vong Guat Theng"
+  #  elif order.get("user_id") == 29527236:
+  #      shopify_employee_name = u"Sam Chong"
+  #  elif order.get("user_id") == 47503940:
+  #      shopify_employee_name = u"Too Shen Chew"
+  #  elif order.get("user_id") == 26202436:
+  #      shopify_employee_name = u"Massimo Hair Lib"
 
     shopify_employee_name = shopify_employee_name or order.get("user_id")
 
