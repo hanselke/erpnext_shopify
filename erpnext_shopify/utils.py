@@ -1,6 +1,70 @@
+
 # -*- coding: utf-8 -*-
 # Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and contributors
 # For license information, please see license.txt
+
+from __future__ import division
+import frappe, math
+from frappe.utils import get_request_session
+from frappe.exceptions import AuthenticationError, ValidationError
+from functools import wraps
+
+import hashlib, base64, hmac, json
+
+def get_collection_pages_number(type):
+	return int(math.ceil(get_request('/admin/' + type + '/count.json').get('count') / 250))
+
+def get_shopify_items():
+	products = []
+	for x in range(1, get_collection_pages_number('products') + 1):
+		products.extend(get_request('/admin/products.json?limit=250&page=' + str(x))['products'])
+	return products
+
+def get_shopify_orders():
+	orders = []
+	for x in range(1, get_collection_pages_number('orders') + 1):
+		orders.extend(get_request('/admin/orders.json?limit=250&page=' + str(x))['orders'])
+	return orders
+
+def get_country():
+	countries = []
+	for x in range(1, get_collection_pages_number('countries') + 1):
+		countries.extend(get_request('/admin/countries.json?limit=250&page=' + str(x))['countries'])
+	return countries
+	
+def get_shopify_customers():
+	customers = []
+	for x in range(1, get_collection_pages_number('customers') + 1):
+		customers.extend(get_request('/admin/customers.json?limit=250&page=' + str(x))['customers'])
+	return customers
+
+# Just in case later using
+def get_shopify_customer_by_id(customerId):
+	customer = None
+	try:
+		customer = get_request('/admin/customers/' + str(customerId) + '.json')['customer']
+	except Exception, e:
+		pass
+	else:
+		pass
+	finally:
+		pass
+
+	return customer
+
+def get_collection_by_product_id(product_id):
+	collections = None
+	try:
+		collections = get_request('/admin/custom_collections.json?product_id=' + str(product_id))['custom_collections']
+	except Exception, e:
+		pass
+	else:
+		pass
+	finally:
+		pass
+		
+	return collections
+
 
 from __future__ import unicode_literals
 import frappe

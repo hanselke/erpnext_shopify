@@ -2,6 +2,6 @@
 
 Shopify connector for ERPNext
 
-#### License
+#### License 
 
 GNU GPL v3.0
